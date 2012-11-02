@@ -1103,6 +1103,7 @@ public class ManageApplications extends Fragment implements
             mOptionsMenu.findItem(SHOW_RUNNING_SERVICES).setVisible(showingBackground);
             mOptionsMenu.findItem(SHOW_BACKGROUND_PROCESSES).setVisible(!showingBackground);
             mOptionsMenu.findItem(RESET_APP_PREFERENCES).setVisible(false);
+            mShowBackground = showingBackground;
             if (!Utils.isRestrictedProfile(getActivity())) {
                 mOptionsMenu.findItem(SHOW_PROTECTED_APPS).setVisible(true);
             }
