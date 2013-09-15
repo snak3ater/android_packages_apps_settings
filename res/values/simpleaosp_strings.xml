@@ -799,4 +799,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Heads-up disable on lockscreen -->
     <string name="heads_up_exclude_from_lock_screen">Disable on lockscreen</string>
+
+    <!-- Restart SystemUI -->
+    <string name="restart_systemui">Restart SystemUI</string>
 </resources>
