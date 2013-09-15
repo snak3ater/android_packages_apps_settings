@@ -765,4 +765,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- USB Mass Storage -->
     <string name="storage_rescan_media">Rescan media for the storage volume</string>
     <string name="storage_rescan_media_complete">Scan completed</string>
+
+    <!-- Restart SystemUI -->
+    <string name="restart_systemui">Restart SystemUI</string>
 </resources>
