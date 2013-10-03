@@ -128,6 +128,9 @@
     <!-- Lockscreen interface -->
     <string name="lockscreen_title">Lock screen</string>
 
+    <!-- Lockscreen battery ring -->
+    <string name="battery_around_lockscreen_ring">Battery around unlock ring</string>
+
     <!--Quick unlock -->
     <string name="unlock_quick_unlock_control_title">Quick unlock</string>
     <string name="unlock_quick_unlock_control_summary">Unlock automatically when the correct PIN/password is entered</string>

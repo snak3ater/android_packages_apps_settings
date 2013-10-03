@@ -13,6 +13,11 @@
         <PreferenceCategory
             android:title="@string/general_string" >
 
+        <CheckBoxPreference
+            android:key="battery_around_lockscreen_ring"
+            android:title="@string/battery_around_lockscreen_ring"
+            android:defaultValue="true" />
+
         <com.android.settings.simpleaosp.SystemSettingCheckBoxPreference
             android:key="see_through"
             android:title="@string/see_through_title"
