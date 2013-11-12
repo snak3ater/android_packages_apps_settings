@@ -566,4 +566,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="increasing_ring_interval_3seconds">3 seconds</string>
     <string name="increasing_ring_interval_5seconds">5 seconds</string>
     <string name="increasing_ring_interval_10seconds">10 seconds</string>
+
+    <!-- Lockscreen widgets -->
+    <string name="security_maximize_widgets_title">Maximize lockscreen widgets</string>
 </resources>
