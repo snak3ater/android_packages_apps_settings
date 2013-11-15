@@ -163,10 +163,6 @@
     <string name="pref_volume_wake_title">Volume rocker wake</string>
     <string name="pref_volume_wake_summary">Pressing the volume rocker will wake your device</string>
 
-    <!-- Volume rocker music control -->
-    <string name="volbtn_music_controls_title">Volume rocker music controls</string>
-    <string name="volbtn_music_controls_summary">When screen off, long-pressing the volume rockers will seek music tracks</string>
-
      <!--Battery Icon selection-->
      <string name="battery_status_icon_title">Status icon</string>
      <string name="battery_bar">Battery bar</string>
