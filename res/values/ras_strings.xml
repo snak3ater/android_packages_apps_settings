@@ -662,4 +662,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="lockscreen_lock_color_summary">Color of the lock handles</string>
     <string name="lockscreen_dots_color_title">Dots color</string>
     <string name="lockscreen_dots_color_summary">Color of the glowpad dots</string>
+
+    <!-- Lock before unlock -->
+    <string name="lock_before_unlock_title">Show slider before secure unlock</string>
+    <string name="lock_before_unlock_summary">Show slider lockscreen before secure unlock mechanism</string>
 </resources>
