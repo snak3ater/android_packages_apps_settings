@@ -19,6 +19,11 @@
 	android:icon="@drawable/ic_lock_power_off"
         android:summary="@string/power_menu_summary" />
 
+        <PreferenceScreen
+            android:key="keyguard_style"
+            android:fragment="com.android.settings.rascarlo.LockscreenStyle"
+            android:title="@string/lockscreen_style_title"/>
+
 	<CheckBoxPreference
         android:key="see_through"
         android:title="@string/see_through_title"
