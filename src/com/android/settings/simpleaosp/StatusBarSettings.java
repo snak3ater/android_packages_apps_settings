@@ -31,6 +31,7 @@ OnPreferenceChangeListener {
     private static final String NETWORK_TRAFFIC_UNIT = "network_traffic_unit";
     private static final String NETWORK_TRAFFIC_PERIOD = "network_traffic_period";
     private static final String KEY_HOVER_NOTIFICATONS = "hover_notifications";
+    private static final String STATUS_BAR_NETWORK_ACTIVITY = "status_bar_network_activity";
 
     private ListPreference mQuickPulldown;
     private CheckBoxPreference mStatusBarBrightnessControl;
@@ -41,6 +42,7 @@ OnPreferenceChangeListener {
     private ListPreference mNetTrafficUnit;
     private ListPreference mNetTrafficPeriod;
     private PreferenceScreen mhoverNotifications;
+    private CheckBoxPreference mStatusBarNetworkActivity;
 
     private int mNetTrafficVal;
     private int MASK_UP;
@@ -129,9 +131,15 @@ OnPreferenceChangeListener {
             getPreferenceScreen().removePreference(mStatusBarBrightnessControl);
             getPreferenceScreen().removePreference(mQuickPulldown);
         }
+
+        mStatusBarNetworkActivity = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_NETWORK_ACTIVITY);
+        mStatusBarNetworkActivity.setChecked(Settings.System.getInt(resolver,
+            Settings.System.STATUS_BAR_NETWORK_ACTIVITY, 0) == 1);
+         mStatusBarNetworkActivity.setOnPreferenceChangeListener(this);
     }
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
+        ContentResolver resolver = getActivity().getContentResolver();
 	if (preference == mStatusBarNotifCount) {
             Settings.System.putInt(getActivity().getContentResolver(), Settings.System.STATUSBAR_NOTIF_COUNT,
                     ((CheckBoxPreference)preference).isChecked() ? 0 : 1);
@@ -169,6 +177,10 @@ OnPreferenceChangeListener {
             Settings.System.putInt(getActivity().getContentResolver(), Settings.System.NETWORK_TRAFFIC_STATE, mNetTrafficVal);
             int index = mNetTrafficPeriod.findIndexOfValue((String) objValue);
             mNetTrafficPeriod.setSummary(mNetTrafficPeriod.getEntries()[index]);      
+        } else if (preference == mStatusBarNetworkActivity) {
+            boolean value = (Boolean) objValue;
+            Settings.System.putInt(resolver,
+                Settings.System.STATUS_BAR_NETWORK_ACTIVITY, value ? 1 : 0);
         } else {
             return false;
         }

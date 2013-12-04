@@ -466,6 +466,10 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="pa_login_checking_password">Checking account\u2026</string>
     <string name="pa_login_incorrect_login">Login was incorrect</string>
 
+    <!-- Status Bar Activity Indicators -->
+    <string name="show_activity_indicators_on_status_bar_title">Network activity indicator</string>
+    <string name="show_activity_indicators_on_status_bar_summary">Show network activity in statusbar</string>
+
     <!-- Notification count -->
     <string name="status_bar_notif_count_title">Show notification count</string>
     <string name="status_bar_notif_count_summary">Display the number of pending notifications</string>
