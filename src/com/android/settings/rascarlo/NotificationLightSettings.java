@@ -634,9 +634,8 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
             if (convertView != null) {
                 holder = (ViewHolder) convertView.getTag();
             } else {
-                final LayoutInflater layoutInflater =
-                    (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                convertView = layoutInflater.inflate(R.layout.preference_icon, null, false);
+                final LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                convertView = layoutInflater.inflate(R.layout.notification_app_item, null, false);
                 holder = new ViewHolder();
                 convertView.setTag(holder);
                 holder.title =
