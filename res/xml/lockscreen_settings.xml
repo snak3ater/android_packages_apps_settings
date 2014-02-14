@@ -32,6 +32,13 @@
             android:title="@string/notification_category">
 
 	<PreferenceScreen
+        android:key="lockscreen_notifications"
+        android:fragment="com.android.settings.simpleaosp.lsn.LockscreenNotifications"
+        android:title="@string/lockscreen_notifications"
+        android:summary="@string/lockscreen_notifications_summary">
+        </PreferenceScreen>
+
+	<PreferenceScreen
             android:fragment="com.android.settings.simpleaosp.PeekSettings"
             android:key="notification_peek"
 	    android:summary="@string/notification_peek_summary"
