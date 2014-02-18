@@ -16,6 +16,15 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <PreferenceCategory android:key="app_security"
+            android:title="@string/blacklist_settings_title"
+            android:persistent="false">
+
+        <PreferenceScreen android:key="blacklist"
+                android:title="@string/blacklist_title"
+                android:fragment="com.android.settings.blacklist.BlacklistSettings" />
+    </PreferenceCategory>
+
     <PreferenceCategory android:key="sim_lock"
             android:title="@string/sim_lock_settings_title"
             android:persistent="false">
@@ -26,7 +35,7 @@
                      android:targetPackage="com.android.settings"
                      android:targetClass="com.android.settings.IccLockSettings"/>
         </Preference>
-    </PreferenceCategory>
+    </PreferenceCategory>  
 
     <PreferenceCategory android:title="@string/security_passwords_title"
             android:persistent="false">
