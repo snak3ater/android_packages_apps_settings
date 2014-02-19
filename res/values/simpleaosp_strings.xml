@@ -797,4 +797,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="pie_angle_normal">Normal (default)</string>
     <string name="pie_angle_big">Big</string>
     <string name="pie_angle_huge">Huge</string>
+    <!-- EdgeGesture service -->
+    <string name="edge_gesture_service_title">Block gesture touch events</string>
+    <string name="edge_gesture_service_summary">Don\'t send touch events for navigation and status bar gestures to apps</string>
 </resources>
