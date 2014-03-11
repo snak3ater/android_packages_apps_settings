@@ -17,6 +17,7 @@
 
 package com.android.settings.simpleaosp.service;
 
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -32,7 +33,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.support.v4.app.NotificationCompat;
+import android.os.UserHandle;
 
 import com.android.settings.R;
 
@@ -49,6 +50,7 @@ public class AlarmService extends Service {
 
     @Override
     public void onCreate() {
+        super.onCreate();
         mAudioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
         mManager = (NotificationManager)
                 this.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -57,7 +59,9 @@ public class AlarmService extends Service {
     @Override
     public void onDestroy() {
         stopAlarm();
-        mManager.cancel(NOTI_ID);
+        if (mManager != null) {
+            mManager.cancelAsUser(null, NOTI_ID, UserHandle.ALL);
+        }
         super.onDestroy();
     }
 
@@ -75,7 +79,7 @@ public class AlarmService extends Service {
                 R.string.quiet_hours_alarm_dialog_title);
         Bitmap bm = BitmapFactory.decodeResource(getResources(), R.drawable.ic_quiethours);
 
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
+        Notification.Builder builder = new Notification.Builder(this)
                 .setTicker(title)
                 .setContentTitle(title)
                 .setContentText(names)
@@ -83,7 +87,7 @@ public class AlarmService extends Service {
                 .setOngoing(true)
                 .setSmallIcon(R.drawable.ic_quiethours)
                 .setLargeIcon(bm)
-                .setStyle(new NotificationCompat.BigTextStyle()
+                .setStyle(new Notification.BigTextStyle()
                         .bigText(names + getResources().getString(
                                 R.string.quiet_hours_alarm_message)));
 
@@ -91,7 +95,7 @@ public class AlarmService extends Service {
         alarmDialog.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                 | Intent.FLAG_ACTIVITY_SINGLE_TOP
                 | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        alarmDialog.setClass(this, com.android.settings.simpleaosp.service.BypassAlarm.class);
+        alarmDialog.setClass(this, BypassAlarm.class);
         alarmDialog.putExtra("number", names);
         alarmDialog.putExtra("norun", true);
 
@@ -99,7 +103,8 @@ public class AlarmService extends Service {
                 this, 0, alarmDialog, PendingIntent.FLAG_CANCEL_CURRENT);
 
         builder.setContentIntent(result);
-        mManager.notify(NOTI_ID, builder.build());
+        mManager.notifyAsUser(null, NOTI_ID, builder.build(),
+                    UserHandle.ALL);
         return START_STICKY;
     }
 
@@ -111,7 +116,7 @@ public class AlarmService extends Service {
     public void startAlarmSound()
             throws java.io.IOException, IllegalArgumentException, IllegalStateException {
 
-        Uri alertSound = SmsCallHelper.returnUserRingtone(this);
+        Uri alertSound = SmsCallController.getInstance(this).returnUserRingtone();
 
         if (mPlaying) {
             stopAlarm();
@@ -138,7 +143,7 @@ public class AlarmService extends Service {
         mMediaPlayer.setDataSource(this, alertSound);
         mMediaPlayer.setAudioStreamType(AudioManager.STREAM_ALARM);
 
-        if (SmsCallHelper.returnUserRingtoneLoop(this)) {
+        if (SmsCallController.getInstance(this).returnUserRingtoneLoop()) {
             mMediaPlayer.setLooping(true);
         } else {
             mMediaPlayer.setLooping(false);

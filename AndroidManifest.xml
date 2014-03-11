@@ -99,6 +99,7 @@
 
     <uses-permission android:name="android.permission.READ_PHONE_BLACKLIST" />
     <uses-permission android:name="android.permission.CHANGE_PHONE_BLACKLIST" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
 
     <application android:label="@string/settings_label"
             android:icon="@mipmap/ic_launcher_settings"
@@ -223,6 +224,8 @@
 
         <service android:name=".simpleaosp.service.SmsCallService"/>
         <service android:name=".simpleaosp.service.AlarmService"/>
+        <service android:name=".simpleaosp.service.NotificationService"/>
+        <receiver android:name=".simpleaosp.service.NotificationService$NotificationReceiver" />
 
         <receiver
             android:name=".simpleaosp.service.AlarmReceiver">
@@ -230,7 +233,9 @@
                 <action android:name="android.intent.action.TIMEZONE_CHANGED"></action>
                 <action android:name="android.intent.action.TIME_CHANGED"></action>
                 <action android:name="android.intent.action.DATE_CHANGED"></action>
-                <action android:name="com.android.settings.simpleaosp.service.SCHEDULE_SERVICE_COMMAND"/>
+                <action android:name="com.android.settings.simpleaosp.service.SCHEDULE_SERVICE_COMMAND"/>             
+                <action android:name="com.android.settings.simpleaosp.service.STOP_SMSCALL_SERVICE_COMMAND"/>
+                <action android:name="com.android.settings.simpleaosp.service.STOP_NOTIFICATION_SERVICE_COMMAND"/>
             </intent-filter>
         </receiver>
 
