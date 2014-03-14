@@ -20,5 +20,11 @@
              android:title="@string/navigation_bar_height"
              android:max="100"
              android:defaultValue="100" />
+
+   <SeekBarPreference
+            android:key="navigation_button_glow_time"
+            android:title="@string/navigation_button_glow_time_title"
+            android:max="500"
+            android:defaultValue="500" />
     </PreferenceCategory>
 </PreferenceScreen>
