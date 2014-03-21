@@ -72,7 +72,6 @@ public class SecuritySettings extends RestrictedSettingsFragment
     private static final String KEY_OWNER_INFO_SETTINGS = "owner_info_settings";
     private static final String KEY_ENABLE_WIDGETS = "keyguard_enable_widgets";
     private static final String LOCKSCREEN_QUICK_UNLOCK_CONTROL = "quick_unlock_control";
-    private static final String LOCKSCREEN_MAXIMIZE_WIDGETS = "lockscreen_maximize_widgets";
 
     private static final int SET_OR_CHANGE_LOCK_METHOD_REQUEST = 123;
     private static final int CONFIRM_EXISTING_FOR_BIOMETRIC_WEAK_IMPROVE_REQUEST = 124;
@@ -280,21 +279,6 @@ public class SecuritySettings extends RestrictedSettingsFragment
                             R.string.security_enable_widgets_disabled_summary);
                 }
                 mEnableKeyguardWidgets.setEnabled(!disabled);
-            }
-        }
-
-        mMaximizeKeyguardWidgets = (CheckBoxPreference) root.findPreference(LOCKSCREEN_MAXIMIZE_WIDGETS);
-        if (mMaximizeKeyguardWidgets != null) {
-            if (isTablet()) {
-                PreferenceGroup securityCategory
-                        = (PreferenceGroup) root.findPreference(KEY_SECURITY_CATEGORY);
-                if (securityCategory != null) {
-                    securityCategory.removePreference(root.findPreference(LOCKSCREEN_MAXIMIZE_WIDGETS));
-                    mMaximizeKeyguardWidgets = null;
-                }
-            } else {
-                mMaximizeKeyguardWidgets.setChecked(Settings.System.getInt(getContentResolver(),
-                        Settings.System.LOCKSCREEN_MAXIMIZE_WIDGETS, 0) == 1);
             }
         }
 
@@ -667,11 +651,5 @@ public class SecuritySettings extends RestrictedSettingsFragment
         Intent intent = new Intent();
         intent.setClassName("com.android.facelock", "com.android.facelock.AddToSetup");
         startActivity(intent);
-    }
-
-    private boolean isTablet() {
-    return (getActivity().getApplicationContext().getResources().getConfiguration().screenLayout
-            & Configuration.SCREENLAYOUT_SIZE_MASK)
-            >= Configuration.SCREENLAYOUT_SIZE_LARGE;
     }
 }
