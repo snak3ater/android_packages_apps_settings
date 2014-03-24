@@ -687,5 +687,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="battery_light_low_color_title">Battery low</string>
     <string name="battery_light_medium_color_title">Medium charge</string>
     <string name="battery_light_full_color_title">Fully charged</string>
+    <string name="battery_light_really_full_color_title">Charged (100%)</string>
     <string name="display_category_light_options_title">Light options</string>
 </resources>

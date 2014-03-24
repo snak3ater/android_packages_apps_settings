@@ -34,6 +34,7 @@
 
     <PreferenceScreen
         android:key="battery_light"
+	android:icon="@drawable/ic_settings_battery"
         android:title="@string/battery_light_title"
         android:fragment="com.android.settings.rascarlo.BatteryLightSettings" />
 
