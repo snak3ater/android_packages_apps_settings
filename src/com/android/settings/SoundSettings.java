@@ -16,8 +16,6 @@
 
 package com.android.settings;
 
-import com.android.settings.bluetooth.DockEventReceiver;
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.bluetooth.BluetoothDevice;
@@ -48,6 +46,12 @@ import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
+import com.android.settings.bluetooth.DockEventReceiver;
+import com.android.settings.preference.AppSelectListPreference;
+import com.android.settings.R;
+import com.android.settings.SettingsPreferenceFragment;
+
+import java.net.URISyntaxException;
 import java.util.List;
 
 public class SoundSettings extends SettingsPreferenceFragment implements
@@ -75,6 +79,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private static final String KEY_DOCK_AUDIO_SETTINGS = "dock_audio";
     private static final String KEY_DOCK_SOUNDS = "dock_sounds";
     private static final String KEY_DOCK_AUDIO_MEDIA_ENABLED = "dock_audio_media_enabled";
+    private static final String KEY_HEADSET_PLUG = "headset_plug";
 
     private static final String[] NEED_VOICE_CAPABILITY = {
             KEY_RINGTONE, KEY_DTMF_TONE, KEY_CATEGORY_CALLS,
@@ -101,7 +106,8 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private CheckBoxPreference mDockSounds;
     private Intent mDockIntent;
     private CheckBoxPreference mDockAudioMediaEnabled;
-
+    private AppSelectListPreference mHeadsetPlug;
+    
     private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
@@ -167,6 +173,10 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         mLockSounds.setPersistent(false);
         mLockSounds.setChecked(Settings.System.getInt(resolver,
                 Settings.System.LOCKSCREEN_SOUNDS_ENABLED, 1) != 0);
+
+        mHeadsetPlug = (AppSelectListPreference) findPreference(KEY_HEADSET_PLUG);
+        mHeadsetPlug.setOnPreferenceChangeListener(this);
+        updateHeadsetPlugSummary();
 
         mRingtonePreference = findPreference(KEY_RINGTONE);
         mNotificationPreference = findPreference(KEY_NOTIFICATION_SOUND);
@@ -350,9 +360,42 @@ public class SoundSettings extends SettingsPreferenceFragment implements
             } catch (NumberFormatException e) {
                 Log.e(TAG, "could not persist emergency tone setting", e);
             }
-        }
 
+        } else if (preference == mHeadsetPlug) {
+           String value = (String) objValue;
+           Settings.System.putString(getContentResolver(),
+                    Settings.System.HEADSET_PLUG_ENABLED, value);
+           updateHeadsetPlugSummary();
+        }
         return true;
+    }
+
+    private void updateHeadsetPlugSummary(){
+        final PackageManager packageManager = getPackageManager();
+
+        mHeadsetPlug.setSummary(getResources().getString(R.string.headset_plug_positive_title));
+
+        String headSetPlugIntentUri = Settings.System.getString(getContentResolver(), Settings.System.HEADSET_PLUG_ENABLED);
+
+        if (headSetPlugIntentUri != null) {
+            if(headSetPlugIntentUri.equals(Settings.System.HEADSET_PLUG_SYSTEM_DEFAULT)) {
+                 mHeadsetPlug.setSummary(getResources().getString(R.string.headset_plug_neutral_summary));
+            } else {
+                Intent headSetPlugIntent = null;
+                try {
+                    headSetPlugIntent = Intent.parseUri(headSetPlugIntentUri, 0);
+                } catch (URISyntaxException e) {
+                    headSetPlugIntent = null;
+                }
+
+                if(headSetPlugIntent != null) {
+                    ResolveInfo info = packageManager.resolveActivity(headSetPlugIntent, 0);
+                    if (info != null) {
+                        mHeadsetPlug.setSummary(info.loadLabel(packageManager));
+                    }
+                }
+            }
+        }
     }
 
     @Override
