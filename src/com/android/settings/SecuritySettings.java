@@ -22,6 +22,8 @@ import static android.provider.Settings.System.SCREEN_OFF_TIMEOUT;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.app.admin.DevicePolicyManager;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -44,7 +46,7 @@ import android.telephony.TelephonyManager;
 import android.util.Log;
 
 import com.android.internal.widget.LockPatternUtils;
-
+import com.android.internal.util.rascarlo.DeviceUtils;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,9 +71,13 @@ public class SecuritySettings extends RestrictedSettingsFragment
     private static final String KEY_ENABLE_WIDGETS = "keyguard_enable_widgets";
     private static final String LOCKSCREEN_QUICK_UNLOCK_CONTROL = "quick_unlock_control";
     private static final String LOCK_BEFORE_UNLOCK = "lock_before_unlock";
+    private static final String KEY_SHAKE_TO_SECURE = "shake_to_secure";
+    private static final String KEY_SHAKE_AUTO_TIMEOUT = "shake_auto_timeout";
     private static final int SET_OR_CHANGE_LOCK_METHOD_REQUEST = 123;
     private static final int CONFIRM_EXISTING_FOR_BIOMETRIC_WEAK_IMPROVE_REQUEST = 124;
     private static final int CONFIRM_EXISTING_FOR_BIOMETRIC_WEAK_LIVELINESS_OFF = 125;
+    private static final int CONFIRM_EXISTING_FOR_TEMPORARY_INSECURE = 126;
+    private static final int DLG_SHAKE_WARN = 0;
 
     // Misc Settings
     private static final String KEY_SIM_LOCK = "sim_lock";
@@ -90,6 +96,7 @@ public class SecuritySettings extends RestrictedSettingsFragment
 
     private PackageManager mPM;
     private DevicePolicyManager mDPM;
+    private PreferenceGroup mSecurityCategory;
 
     private ChooseLockSettingsHelper mChooseLockSettingsHelper;
     private LockPatternUtils mLockPatternUtils;
@@ -109,8 +116,12 @@ public class SecuritySettings extends RestrictedSettingsFragment
     private CheckBoxPreference mPowerButtonInstantlyLocks;
     private CheckBoxPreference mEnableKeyguardWidgets;
     private CheckBoxPreference mLockBeforeUnlock;
+    private CheckBoxPreference mShakeToSecure;
+    private ListPreference mShakeTimer;
 
     private Preference mNotificationAccess;
+    private Preference mLockInterface;
+    private Preference mLockTargets;
 
     private boolean mIsPrimary;
 
@@ -216,10 +227,10 @@ public class SecuritySettings extends RestrictedSettingsFragment
         if (mEnableKeyguardWidgets != null) {
             if (ActivityManager.isLowRamDeviceStatic()) {
                 // Widgets take a lot of RAM, so disable them on low-memory devices
-                PreferenceGroup securityCategory
+                PreferenceGroup mSecurityCategory
                         = (PreferenceGroup) root.findPreference(KEY_SECURITY_CATEGORY);
-                if (securityCategory != null) {
-                    securityCategory.removePreference(root.findPreference(KEY_ENABLE_WIDGETS));
+                if (mSecurityCategory != null) {
+                    mSecurityCategory.removePreference(root.findPreference(KEY_ENABLE_WIDGETS));
                     mEnableKeyguardWidgets = null;
                 }
             } else {
@@ -254,10 +265,10 @@ public class SecuritySettings extends RestrictedSettingsFragment
         if (resid == R.xml.security_settings_biometric_weak &&
                 mLockPatternUtils.getKeyguardStoredPasswordQuality() !=
                 DevicePolicyManager.PASSWORD_QUALITY_SOMETHING) {
-            PreferenceGroup securityCategory = (PreferenceGroup)
+            PreferenceGroup mSecurityCategory = (PreferenceGroup)
                     root.findPreference(KEY_SECURITY_CATEGORY);
-            if (securityCategory != null && mVisiblePattern != null) {
-                securityCategory.removePreference(root.findPreference(KEY_VISIBLE_PATTERN));
+             if (mSecurityCategory != null && mVisiblePattern != null) {
+                mSecurityCategory.removePreference(root.findPreference(KEY_VISIBLE_PATTERN));
             }
         }
 
@@ -267,6 +278,35 @@ public class SecuritySettings extends RestrictedSettingsFragment
         if (mQuickUnlockScreen != null) {
             mQuickUnlockScreen.setChecked(Settings.System.getInt(getContentResolver(),
                     Settings.System.LOCKSCREEN_QUICK_UNLOCK_CONTROL, 0) == 1);
+        }
+
+	// Shake to secure
+        // Don't show if device admin requires security
+        boolean shakeEnabled = mLockPatternUtils.getRequestedMinimumPasswordLength()
+                == DevicePolicyManager.PASSWORD_QUALITY_UNSPECIFIED;
+        mShakeToSecure = (CheckBoxPreference) root
+                .findPreference(KEY_SHAKE_TO_SECURE);
+        if (mShakeToSecure != null) {
+            mShakeToSecure.setChecked(
+                    Settings.Secure.getInt(getContentResolver(),
+                    Settings.Secure.LOCK_SHAKE_TEMP_SECURE, 0) == 1);
+            mShakeToSecure.setOnPreferenceChangeListener(this);
+            if (!shakeEnabled) {
+                mSecurityCategory.removePreference(mShakeToSecure);
+            }
+        }
+
+        mShakeTimer = (ListPreference) root.findPreference(KEY_SHAKE_AUTO_TIMEOUT);
+        if (mShakeTimer != null) {
+            long shakeTimer = Settings.Secure.getLongForUser(getContentResolver(),
+                    Settings.Secure.LOCK_SHAKE_SECURE_TIMER, 0,
+                    UserHandle.USER_CURRENT);
+            mShakeTimer.setValue(String.valueOf(shakeTimer));
+            updateShakeTimerPreferenceSummary();
+            mShakeTimer.setOnPreferenceChangeListener(this);
+            if (!shakeEnabled) {
+                mSecurityCategory.removePreference(mShakeTimer);
+            }
         }
 
         // Lock before Unlock
@@ -302,10 +342,10 @@ public class SecuritySettings extends RestrictedSettingsFragment
             if (ActivityManager.isLowRamDeviceStatic()
                     || mLockPatternUtils.isLockScreenDisabled()) {
                 // Widgets take a lot of RAM, so disable them on low-memory devices
-                PreferenceGroup securityCategory
+                PreferenceGroup mSecurityCategory
                         = (PreferenceGroup) root.findPreference(KEY_SECURITY_CATEGORY);
-                if (securityCategory != null) {
-                    securityCategory.removePreference(root.findPreference(KEY_ENABLE_WIDGETS));
+                if (mSecurityCategory != null) {
+                    mSecurityCategory.removePreference(root.findPreference(KEY_ENABLE_WIDGETS));
                     mEnableKeyguardWidgets = null;
                 }
             } else {
@@ -411,6 +451,13 @@ public class SecuritySettings extends RestrictedSettingsFragment
                                       Settings.Global.INSTALL_NON_MARKET_APPS, 0) > 0;
     }
 
+    private LockPatternUtils lockPatternUtils() {
+        if (mLockPatternUtils == null) {
+            mLockPatternUtils = new LockPatternUtils(getActivity());
+        }
+        return mLockPatternUtils;
+    }
+
     private void setNonMarketAppsAllowed(boolean enabled) {
         final UserManager um = (UserManager) getActivity().getSystemService(Context.USER_SERVICE);
         if (um.hasUserRestriction(UserManager.DISALLOW_INSTALL_UNKNOWN_SOURCES)) {
@@ -500,6 +547,23 @@ public class SecuritySettings extends RestrictedSettingsFragment
             }
         }
         mLockAfter.setSummary(getString(R.string.lock_after_timeout_summary, entries[best]));
+    }
+
+        private void updateShakeTimerPreferenceSummary() {
+        // Update summary message with current value
+        long shakeTimer = Settings.Secure.getLongForUser(getContentResolver(),
+                Settings.Secure.LOCK_SHAKE_SECURE_TIMER, 0,
+                UserHandle.USER_CURRENT);
+        final CharSequence[] entries = mShakeTimer.getEntries();
+        final CharSequence[] values = mShakeTimer.getEntryValues();
+        int best = 0;
+        for (int i = 0; i < values.length; i++) {
+            long timeout = Long.valueOf(values[i].toString());
+            if (shakeTimer >= timeout) {
+                best = i;
+            }
+        }
+        mShakeTimer.setSummary(entries[best]);
     }
 
     private void disableUnusableTimeouts(long maxTimeout) {
@@ -666,6 +730,14 @@ public class SecuritySettings extends RestrictedSettingsFragment
             // Setting the mBiometricWeakLiveliness checked value to false is handled when onResume
             // is called by grabbing the value from lockPatternUtils.  We can't set it here
             // because mBiometricWeakLiveliness could be null
+	    } else if (requestCode == CONFIRM_EXISTING_FOR_TEMPORARY_INSECURE &&
+                resultCode == Activity.RESULT_OK) {
+            // Enable shake to secure
+            Settings.Secure.putInt(getContentResolver(),
+                    Settings.Secure.LOCK_SHAKE_TEMP_SECURE, 1);
+            if (mShakeToSecure != null) {
+                mShakeToSecure.setChecked(true);
+            }
             return;
         }
         createPreferenceHierarchy();
@@ -682,6 +754,25 @@ public class SecuritySettings extends RestrictedSettingsFragment
                 Log.e("SecuritySettings", "could not persist lockAfter timeout setting", e);
             }
             updateLockAfterPreferenceSummary();
+	    } else if (preference == mShakeToSecure) {
+            boolean checked = ((Boolean) value);
+            if (checked) {
+                // Uncheck until confirmed
+                mShakeToSecure.setChecked(false);
+                showDialogInner(DLG_SHAKE_WARN);
+            } else {
+                Settings.Secure.putInt(getContentResolver(),
+                        Settings.Secure.LOCK_SHAKE_TEMP_SECURE, 0);
+            }
+        } else if (preference == mShakeTimer) {
+            int shakeTime = Integer.parseInt((String) value);
+            try {
+                Settings.Secure.putInt(getContentResolver(),
+                        Settings.Secure.LOCK_SHAKE_SECURE_TIMER, shakeTime);
+            } catch (NumberFormatException e) {
+                Log.e("SecuritySettings", "could not persist lockAfter timeout setting", e);
+            }
+            updateShakeTimerPreferenceSummary();
         } else if (preference == mLockBeforeUnlock) {
             Settings.Secure.putInt(getContentResolver(),
                     Settings.Secure.LOCK_BEFORE_UNLOCK,
@@ -699,5 +790,79 @@ public class SecuritySettings extends RestrictedSettingsFragment
         Intent intent = new Intent();
         intent.setClassName("com.android.facelock", "com.android.facelock.AddToSetup");
         startActivity(intent);
+    }
+	private void showDialogInner(int id) {
+        DialogFragment newFragment = MyAlertDialogFragment.newInstance(id);
+        newFragment.setTargetFragment(this, 0);
+        newFragment.show(getFragmentManager(), "dialog " + id);
+    }
+
+
+    public static class MyAlertDialogFragment extends DialogFragment {
+
+        public static MyAlertDialogFragment newInstance(int id) {
+            MyAlertDialogFragment frag = new MyAlertDialogFragment();
+            Bundle args = new Bundle();
+            args.putInt("id", id);
+            frag.setArguments(args);
+            return frag;
+        }
+
+        SecuritySettings getOwner() {
+            return (SecuritySettings) getTargetFragment();
+        }
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            int id = getArguments().getInt("id");
+            switch (id) {
+                case DLG_SHAKE_WARN:
+                    return new AlertDialog.Builder(getActivity())
+                    .setTitle(R.string.shake_to_secure_dlg_title)
+                    .setMessage(R.string.shake_to_secure_dlg_message)
+                    .setNegativeButton(R.string.cancel,
+                        new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            disableShakeLock();
+                        }
+                    })
+                    .setPositiveButton(R.string.dlg_ok,
+                        new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            ChooseLockSettingsHelper helper =
+                                    new ChooseLockSettingsHelper(
+                                    getOwner().getActivity(), getOwner());
+                            if (!helper.launchConfirmationActivity(
+                                    getOwner().CONFIRM_EXISTING_FOR_TEMPORARY_INSECURE,
+                                    null, null)) {
+                                // We just want the return data here
+                                // this boolean may return something useful one day.
+                            }
+                        }
+                    })
+                    .create();
+            }
+            throw new IllegalArgumentException("unknown id " + id);
+        }
+
+        @Override
+        public void onCancel(DialogInterface dialog) {
+            int id = getArguments().getInt("id");
+            switch (id) {
+                case DLG_SHAKE_WARN:
+                    disableShakeLock();
+                    break;
+                default:
+                    // N/A at the moment
+            }
+        }
+
+        private void disableShakeLock() {
+            if (getOwner().mShakeToSecure != null) {
+                Settings.Secure.putInt(getActivity().getContentResolver(),
+                        Settings.Secure.LOCK_SHAKE_TEMP_SECURE, 0);
+                getOwner().mShakeToSecure.setChecked(false);
+            }
+        }
     }
 }
