@@ -47,7 +47,7 @@ import android.telephony.TelephonyManager;
 import android.util.Log;
 
 import com.android.settings.bluetooth.DockEventReceiver;
-import com.android.settings.preference.AppSelectListPreference;
+import com.android.settings.rascarlo.AppSelectListPreference;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
