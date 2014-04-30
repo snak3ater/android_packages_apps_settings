@@ -677,4 +677,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="battery_light_full_color_title">Fully charged</string>
     <string name="battery_light_really_full_color_title">Charged (100%)</string>
     <string name="display_category_light_options_title">Light options</string>
+
+    <!-- Bluetooth accept all Filestypes -->
+    <string name="bluetooth_accept_all_files">Accept all file types</string>
 </resources>
