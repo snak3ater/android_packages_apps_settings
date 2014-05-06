@@ -220,14 +220,11 @@
             </intent-filter>
         </activity>
 
-        <!-- QuietHours SmsCall Service -->
-
-        <service android:name=".simpleaosp.service.SmsCallService"/>
-        <service android:name=".simpleaosp.service.AlarmService"/>
-        <receiver android:name=".simpleaosp.service.SmsCallController$NotificationIntentReceiver" />
+        <!-- QuietHours  -->
+        <receiver android:name=".simpleaosp.service.QuietHoursController$NotificationIntentReceiver" />
 
         <receiver
-            android:name=".simpleaosp.service.AlarmReceiver">
+            android:name=".simpleaosp.service.QuietHoursAlarmReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.TIMEZONE_CHANGED"></action>
                 <action android:name="android.intent.action.TIME_CHANGED"></action>
@@ -244,20 +241,11 @@
         </receiver>
 
         <receiver
-            android:name=".simpleaosp.service.BootReceiver">
+            android:name=".simpleaosp.service.QuietHoursBootReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
         </receiver>
-
-        <activity
-            android:name=".simpleaosp.service.BypassAlarm"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:excludeFromRecents="true"
-            android:launchMode="singleInstance"
-            android:screenOrientation="portrait"
-            android:taskAffinity="com.android.settings.simpleaosp.service.BypassAlarm"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
 
         <!-- Wireless Controls -->
 
