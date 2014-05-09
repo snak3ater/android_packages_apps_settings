@@ -37,10 +37,11 @@
             android:summary="@string/lockscreen_notifications_summary"
             android:widgetLayout="@layout/listview_embedded_switchpreference" />
 
-       <com.android.settings.rascarlo.SystemSettingCheckBoxPreference
+       <SwitchPreference
             android:key="notification_peek"
             android:title="@string/notification_peek_title"
-            android:summary="@string/notification_peek_summary" />
+            android:summary="@string/notification_peek_summary"
+            android:widgetLayout="@layout/listview_embedded_switchpreference" />
 
        <ListPreference
             android:key="peek_pickup_timeout"
@@ -48,6 +49,6 @@
             android:persistent="false"
             android:entries="@array/peek_pickup_timeout_entries"
             android:entryValues="@array/peek_pickup_timeout_values"
-            android:dependency="notification_peek" />
+	    android:dependency="notification_peek" />
 	</PreferenceCategory>
 </PreferenceScreen>
