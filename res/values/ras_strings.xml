@@ -60,7 +60,8 @@
     <!-- Status bar -->
     <string name="status_bar_title">Status bar</string>
     <string name="status_bar_style_title">Style</string>
- <!-- Status bar | Clock -->
+   
+    <!-- Status bar | Clock -->
     <string name="status_bar_clock">Clock and date</string>
     <string name="status_bar_clock_title">Clock and date style</string>
     <string name="status_bar_clock_summary">Change Clock and Date Settings</string>
@@ -98,6 +99,10 @@
     <string name="ok">OK</string>
     <string name="attention">Attention</string>
     <string name="default_string">Default</string>  
+
+    <!-- Statusbar Second Clock -->
+    <string name="clock_use_second">Use second clock</string>
+    <string name="clock_use_second_summary">Show second in clock</string>
 
     <!-- Status bar quick settings -->
     <string name="status_bar_quick_settings_category">Quick settings</string>
