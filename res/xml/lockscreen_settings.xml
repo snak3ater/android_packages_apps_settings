@@ -40,8 +40,7 @@
        <SwitchPreference
             android:key="notification_peek"
             android:title="@string/notification_peek_title"
-            android:summary="@string/notification_peek_summary"
-            android:widgetLayout="@layout/listview_embedded_switchpreference" />
+            android:summary="@string/notification_peek_summary" />
 
        <ListPreference
             android:key="peek_pickup_timeout"
