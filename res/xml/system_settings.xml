@@ -43,5 +43,6 @@
      <PreferenceScreen
         android:fragment="com.android.settings.rascarlo.MoreSettings"
         android:key="more_srttings"
+	android:icon="@drawable/ic_settings_more"
         android:title="@string/interface_more_title" />
 </PreferenceScreen>
