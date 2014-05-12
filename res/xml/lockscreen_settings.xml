@@ -29,9 +29,14 @@
             android:key="notification_category"
             android:title="@string/notification_category">
 
+	<Preference
+            style="?android:preferenceInformationStyle"
+            android:title="@string/note"
+            android:summary="@string/notifications_on_lockscreen_warning_summary"
+            android:selectable="false" />
+
         <com.android.settings.rascarlo.lsn.LockscreenNotificationsPreference
             android:key="lockscreen_notifications"
-            android:defaultValue="false"
             android:fragment="com.android.settings.rascarlo.lsn.LockscreenNotifications"
             android:title="@string/lockscreen_notifications"
             android:summary="@string/lockscreen_notifications_summary"
