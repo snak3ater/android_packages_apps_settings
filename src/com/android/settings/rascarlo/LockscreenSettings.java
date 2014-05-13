@@ -72,7 +72,7 @@ private static final String KEY_NOTIFICATON_PEEK = "notification_peek";
 
         mPeekPickupTimeout = (ListPreference) prefSet.findPreference(KEY_PEEK_PICKUP_TIMEOUT);
         int peekTimeout = Settings.System.getIntForUser(getContentResolver(),
-                Settings.System.PEEK_PICKUP_TIMEOUT, 0, UserHandle.USER_CURRENT);
+                Settings.System.PEEK_PICKUP_TIMEOUT, 10000, UserHandle.USER_CURRENT);
         mPeekPickupTimeout.setValue(String.valueOf(peekTimeout));
         mPeekPickupTimeout.setSummary(mPeekPickupTimeout.getEntry());
         mPeekPickupTimeout.setOnPreferenceChangeListener(this);
@@ -87,11 +87,12 @@ private static final String KEY_NOTIFICATON_PEEK = "notification_peek";
             updateVisiblePreferences();
             return true;
 	} else if (pref == mPeekPickupTimeout) {
+ 	    int index = mPeekPickupTimeout.findIndexOfValue((String) objValue);
             int peekTimeout = Integer.valueOf((String) objValue);
             Settings.System.putIntForUser(getContentResolver(),
                 Settings.System.PEEK_PICKUP_TIMEOUT,
                     peekTimeout, UserHandle.USER_CURRENT);
-            updatePeekTimeoutOptions(objValue);
+		    mPeekPickupTimeout.setSummary(mPeekPickupTimeout.getEntries()[index]);
             return true;
 	}
     	    return false;
@@ -128,14 +129,6 @@ private static final String KEY_NOTIFICATON_PEEK = "notification_peek";
             mLockscreenNotifications.setEnabled(true);
             mNotificationPeek.setEnabled(true);
         }
-    }
-
-	private void updatePeekTimeoutOptions(Object newValue) {
-        int index = mPeekPickupTimeout.findIndexOfValue((String) newValue);
-        int value = Integer.valueOf((String) newValue);
-        Settings.Secure.putInt(getActivity().getContentResolver(),
-                Settings.System.PEEK_PICKUP_TIMEOUT, value);
-        mPeekPickupTimeout.setSummary(mPeekPickupTimeout.getEntries()[index]);
     }
 
     @Override
