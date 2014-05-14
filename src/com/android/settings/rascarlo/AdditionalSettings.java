@@ -26,7 +26,6 @@ import com.android.settings.rascarlo.StatusBarSettings;
 import com.android.settings.rascarlo.NavigationBarSettings;
 import com.android.settings.rascarlo.SystemSettings;
 import com.android.settings.rascarlo.LockscreenSettings;
-import com.android.settings.rascarlo.DepthPageTransformer;
 import com.android.internal.util.rascarlo.DeviceUtils;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -53,8 +52,6 @@ public class AdditionalSettings extends SettingsPreferenceFragment implements Ac
 
         StatusBarAdapter StatusBarAdapter = new StatusBarAdapter(getFragmentManager());
         mViewPager.setAdapter(StatusBarAdapter);
-
-mViewPager.setPageTransformer(true, new DepthPageTransformer());
         mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
