@@ -23,12 +23,6 @@
         android:title="@string/volume_rocker_category_title" />
 
     <PreferenceScreen
-        android:id="@+id/theme_settings"
-        android:fragment="com.android.settings.slim.themes.ThemeSettings"
-	android:icon="@drawable/ic_settings_themes"
-        android:title="@string/theme_menu_title" />
-
-    <PreferenceScreen
         android:fragment="com.android.settings.rascarlo.NotificationLightSettings"
         android:key="notification_pulse"
 	android:icon="@drawable/ic_buildtweaks_notificationled"

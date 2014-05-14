@@ -360,7 +360,8 @@ public class Settings extends PreferenceActivity
         TrustedCredentialsSettings.class.getName(),
         PaymentSettings.class.getName(),
         KeyboardLayoutPickerFragment.class.getName(),
-        QuietHours.class.getName()
+        QuietHours.class.getName(),
+	com.android.settings.slim.themes.ThemeSettings.class.getName()
     };
 
     @Override
