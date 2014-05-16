@@ -28,7 +28,7 @@
         <PreferenceCategory
             android:key="notification_category"
             android:title="@string/notification_category">
-
+	
 	<Preference
             style="?android:preferenceInformationStyle"
             android:title="@string/note"
@@ -37,6 +37,7 @@
 
         <com.android.settings.rascarlo.lsn.LockscreenNotificationsPreference
             android:key="lockscreen_notifications"
+	    android:defaultValue="false"
             android:fragment="com.android.settings.rascarlo.lsn.LockscreenNotifications"
             android:title="@string/lockscreen_notifications"
             android:summary="@string/lockscreen_notifications_summary"
@@ -45,6 +46,7 @@
        <SwitchPreference
             android:key="notification_peek"
             android:title="@string/notification_peek_title"
+	    android:defaultValue="false"
             android:summary="@string/notification_peek_summary" />
 
        <ListPreference

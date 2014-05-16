@@ -22,6 +22,7 @@
     <SwitchPreference
         android:key="lockscreen_notifications"
         android:title="@string/lockscreen_notifications"
+	android:defaultValue="false"
         android:summary="@string/lockscreen_notifications_summary" />
 
     <PreferenceCategory

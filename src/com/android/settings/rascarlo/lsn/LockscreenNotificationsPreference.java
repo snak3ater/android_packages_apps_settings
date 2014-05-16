@@ -51,7 +51,7 @@ public class LockscreenNotificationsPreference extends Preference implements OnC
         super.onBindView(view);
         mSwitch = (Switch) view.findViewById(R.id.mswitch);
         mSwitch.setChecked(Settings.System.getInt(getContext().getContentResolver(),
-                Settings.System.LOCKSCREEN_NOTIFICATIONS, 1) != 0);
+                Settings.System.LOCKSCREEN_NOTIFICATIONS, 0) == 1);
         mSwitch.setOnCheckedChangeListener(this);
     }
 

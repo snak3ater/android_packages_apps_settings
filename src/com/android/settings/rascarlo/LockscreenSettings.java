@@ -94,7 +94,7 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
             boolean value = (Boolean) objValue;
             Settings.System.putInt(cr, Settings.System.PEEK_STATE,
                     value ? 1 : 0);
-            updateVisiblePreferences();
+        updateVisiblePreferences();
             return true;
 	} else if (pref == mPeekPickupTimeout) {
  	    int index = mPeekPickupTimeout.findIndexOfValue((String) objValue);
@@ -148,6 +148,8 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
             mNotificationPeek.setEnabled(true);
         }
     }
+
+
 
     @Override
     public void onResume() {
