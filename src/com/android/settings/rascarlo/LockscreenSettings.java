@@ -42,12 +42,14 @@ import com.android.settings.Utils;
 public class LockscreenSettings extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
     private static final String TAG = "LockscreenSettings";
     private static final String KEY_SEE_THROUGH = "see_through";
-private static final String KEY_NOTIFICATON_PEEK = "notification_peek";
+    private static final String KEY_NOTIFICATON_PEEK = "notification_peek";
     private static final String KEY_PEEK_PICKUP_TIMEOUT = "peek_pickup_timeout";
+    private static final String KEY_PEEK_WAKE_TIMEOUT = "peek_wake_timeout";
     private static final String KEY_LOCKSCREEN_NOTIFICATONS = "lockscreen_notifications";
 
     private CheckBoxPreference mSeeThrough;
     private ListPreference mPeekPickupTimeout;
+    private ListPreference mPeekWakeTimeout;
     private LockscreenNotificationsPreference mLockscreenNotifications;
     private SwitchPreference mNotificationPeek;
 
@@ -71,12 +73,20 @@ private static final String KEY_NOTIFICATON_PEEK = "notification_peek";
         updateVisiblePreferences();
 
         mPeekPickupTimeout = (ListPreference) prefSet.findPreference(KEY_PEEK_PICKUP_TIMEOUT);
-        int peekTimeout = Settings.System.getIntForUser(getContentResolver(),
+	int peekPickupTimeout = Settings.System.getIntForUser(getContentResolver(),
                 Settings.System.PEEK_PICKUP_TIMEOUT, 10000, UserHandle.USER_CURRENT);
-        mPeekPickupTimeout.setValue(String.valueOf(peekTimeout));
+	mPeekPickupTimeout.setValue(String.valueOf(peekPickupTimeout));
         mPeekPickupTimeout.setSummary(mPeekPickupTimeout.getEntry());
         mPeekPickupTimeout.setOnPreferenceChangeListener(this);
+
+	mPeekWakeTimeout = (ListPreference) prefSet.findPreference(KEY_PEEK_WAKE_TIMEOUT);
+        int peekWakeTimeout = Settings.System.getIntForUser(getContentResolver(),
+                Settings.System.PEEK_WAKE_TIMEOUT, 5000, UserHandle.USER_CURRENT);
+        mPeekWakeTimeout.setValue(String.valueOf(peekWakeTimeout));
+        mPeekWakeTimeout.setSummary(mPeekWakeTimeout.getEntry());
+        mPeekWakeTimeout.setOnPreferenceChangeListener(this);
     }
+
     @Override
     public boolean onPreferenceChange(Preference pref, Object objValue) {
 	ContentResolver cr = getActivity().getContentResolver();
@@ -88,13 +98,21 @@ private static final String KEY_NOTIFICATON_PEEK = "notification_peek";
             return true;
 	} else if (pref == mPeekPickupTimeout) {
  	    int index = mPeekPickupTimeout.findIndexOfValue((String) objValue);
-            int peekTimeout = Integer.valueOf((String) objValue);
+            int peekPickupTimeout = Integer.valueOf((String) objValue);
             Settings.System.putIntForUser(getContentResolver(),
                 Settings.System.PEEK_PICKUP_TIMEOUT,
-                    peekTimeout, UserHandle.USER_CURRENT);
+                   peekPickupTimeout, UserHandle.USER_CURRENT);
 		    mPeekPickupTimeout.setSummary(mPeekPickupTimeout.getEntries()[index]);
             return true;
-	}
+	} else if (pref == mPeekWakeTimeout) {
+            int index = mPeekWakeTimeout.findIndexOfValue((String) objValue);
+            int peekWakeTimeout = Integer.valueOf((String) objValue);
+            Settings.System.putIntForUser(getContentResolver(),
+                Settings.System.PEEK_WAKE_TIMEOUT,
+                    peekWakeTimeout, UserHandle.USER_CURRENT);
+            mPeekWakeTimeout.setSummary(mPeekWakeTimeout.getEntries()[index]);
+            return true;
+        }
     	    return false;
 }
 
