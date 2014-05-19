@@ -21,6 +21,7 @@
 
         <PreferenceScreen
             android:key="keyguard_style"
+	    android:icon="@drawable/prd_ic_style"
             android:fragment="com.android.settings.rascarlo.LockscreenStyle"
             android:title="@string/lockscreen_style_title"/>
 
