@@ -15,6 +15,7 @@
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+    android:icon="@drawable/prd_ic_style"
     android:title="@string/lockscreen_style_title" >
 
     <ListPreference
