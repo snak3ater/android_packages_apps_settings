@@ -680,4 +680,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Bluetooth accept all Filestypes -->
     <string name="bluetooth_accept_all_files">Accept all file types</string>
+
+     <!-- Proximity work-around -->
+     <string name="is_inaccurate_proximity_title">Inaccurate proximity</string>
+     <string name="is_inaccurate_proximity_summary">Work-around for inaccurate proximity sensors: this will force phone to turn on the screen after the call has ended.</string>
 </resources>
