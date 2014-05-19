@@ -1763,7 +1763,8 @@
         <!-- BUILD TWEAKS END -->
 
         <activity android:name=".rascarlo.lsn.LockscreenNotifications" />
-
+	<activity android:name=".rascarlo.NotificationLightSettings" />
+        <activity android:name=".rascarlo.BatteryLightSettings" />
         <receiver android:name=".widget.SettingsAppWidgetProvider"
                 android:label="@string/gadget_title"
                 android:exported="false"

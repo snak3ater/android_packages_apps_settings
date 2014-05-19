@@ -22,11 +22,22 @@
         android:icon="@drawable/ic_buildtweaks_volumerocker"
         android:title="@string/volume_rocker_category_title" />
 
+   <PreferenceCategory
+            android:key="category_light_options"
+            android:title="@string/display_category_light_options_title" >
+
     <PreferenceScreen
         android:fragment="com.android.settings.rascarlo.NotificationLightSettings"
         android:key="notification_pulse"
 	android:icon="@drawable/ic_buildtweaks_notificationled"
         android:title="@string/led_settings_category_title" />
+
+    <PreferenceScreen
+        android:key="battery_light"
+        android:title="@string/battery_light_title"
+        android:fragment="com.android.settings.rascarlo.BatteryLightSettings" />
+
+        </PreferenceCategory>
 
     <PreferenceScreen
         android:fragment="com.android.settings.rascarlo.PlugInPromptSettings"
