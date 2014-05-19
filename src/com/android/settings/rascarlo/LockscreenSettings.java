@@ -70,7 +70,6 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
         mNotificationPeek = (SwitchPreference) prefSet.findPreference(KEY_NOTIFICATON_PEEK);
         mNotificationPeek.setChecked(Settings.System.getInt(getContentResolver(), Settings.System.PEEK_STATE, 0) == 1);
         mNotificationPeek.setOnPreferenceChangeListener(this);
-        updateVisiblePreferences();
 
         mPeekPickupTimeout = (ListPreference) prefSet.findPreference(KEY_PEEK_PICKUP_TIMEOUT);
 	int peekPickupTimeout = Settings.System.getIntForUser(getContentResolver(),
@@ -94,7 +93,6 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
             boolean value = (Boolean) objValue;
             Settings.System.putInt(cr, Settings.System.PEEK_STATE,
                     value ? 1 : 0);
-        updateVisiblePreferences();
             return true;
 	} else if (pref == mPeekPickupTimeout) {
  	    int index = mPeekPickupTimeout.findIndexOfValue((String) objValue);
@@ -129,27 +127,6 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
 		return super.onPreferenceTreeClick(preferenceScreen, preference);
 
     }
-
-	private void updateVisiblePreferences() {
-        int peek = Settings.System.getInt(getContentResolver(),
-                Settings.System.PEEK_STATE, 0);
-        int lsn = Settings.System.getInt(getContentResolver(),
-                Settings.System.LOCKSCREEN_NOTIFICATIONS, 0);
-
-        if (peek == 1) {
-            Settings.System.putInt(getContentResolver(),
-                Settings.System.LOCKSCREEN_NOTIFICATIONS, 0);
-            mLockscreenNotifications.setEnabled(false);
-        } else if (lsn == 1) {
-            Settings.System.putInt(getContentResolver(),
-                Settings.System.PEEK_STATE, 0);
-        } else {
-            mLockscreenNotifications.setEnabled(true);
-            mNotificationPeek.setEnabled(true);
-        }
-    }
-
-
 
     @Override
     public void onResume() {
