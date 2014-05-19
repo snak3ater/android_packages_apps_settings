@@ -18,6 +18,7 @@ package com.android.settings.rascarlo;
 
 import android.os.Bundle;
 import android.preference.Preference;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 
@@ -28,26 +29,41 @@ public class SystemSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     private static final String TAG = "SystemSettings";
     private static final String KEY_NOTIFICATION_PULSE = "notification_pulse";
-
-    private PreferenceScreen mNotificationPulse;
+    private static final String KEY_LIGHT_OPTIONS = "category_light_options";
     private static final String KEY_LED_SETTINGS = "led_settings";
+    private static final String KEY_BATTERY_LIGHT = "battery_light";
 
     private PreferenceScreen mLedSettings;
+    private PreferenceScreen mNotificationPulse;
+    private PreferenceCategory mLightOptions;
+    private PreferenceScreen mBatteryPulse;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.system_settings);
+        PreferenceScreen prefSet = getPreferenceScreen();
 
         // Led settings
+        mLightOptions = (PreferenceCategory) prefSet.findPreference(KEY_LIGHT_OPTIONS);
         mNotificationPulse = (PreferenceScreen) findPreference(KEY_NOTIFICATION_PULSE);
         if (mNotificationPulse != null) {
             if (!getResources().getBoolean(
-                    com.android.internal.R.bool.config_intrusiveNotificationLed)) {
-                getPreferenceScreen().removePreference(mNotificationPulse);
+                com.android.internal.R.bool.config_intrusiveNotificationLed)) {
+                mLightOptions.removePreference(mNotificationPulse);
             } else {
                 updateLightPulseDescription();
+            }
+        }
+
+        mBatteryPulse = (PreferenceScreen) findPreference(KEY_BATTERY_LIGHT);
+        if (mBatteryPulse != null) {
+            if (getResources().getBoolean(
+                    com.android.internal.R.bool.config_intrusiveBatteryLed) == false) {
+                mLightOptions.removePreference(mBatteryPulse);
+            } else {
+                updateBatteryPulseDescription();
             }
         }
     }
@@ -60,6 +76,15 @@ public class SystemSettings extends SettingsPreferenceFragment implements
             mNotificationPulse.setSummary(getString(R.string.disabled_string));
         }
     }
+
+    private void updateBatteryPulseDescription() {
+        if (Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.BATTERY_LIGHT_ENABLED, 1) == 1) {
+            mBatteryPulse.setSummary(getString(R.string.enabled_string));
+        } else {
+            mBatteryPulse.setSummary(getString(R.string.disabled_string));
+        }
+     }
 
     @Override
     public void onResume() {
