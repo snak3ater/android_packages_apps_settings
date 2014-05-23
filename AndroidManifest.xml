@@ -224,8 +224,7 @@
 
         <service android:name=".simpleaosp.service.SmsCallService"/>
         <service android:name=".simpleaosp.service.AlarmService"/>
-        <service android:name=".simpleaosp.service.NotificationService"/>
-        <receiver android:name=".simpleaosp.service.NotificationService$NotificationReceiver" />
+        <receiver android:name=".simpleaosp.service.SmsCallController$NotificationIntentReceiver" />
 
         <receiver
             android:name=".simpleaosp.service.AlarmReceiver">
@@ -233,9 +232,14 @@
                 <action android:name="android.intent.action.TIMEZONE_CHANGED"></action>
                 <action android:name="android.intent.action.TIME_CHANGED"></action>
                 <action android:name="android.intent.action.DATE_CHANGED"></action>
-                <action android:name="com.android.settings.simpleaosp.service.SCHEDULE_SERVICE_COMMAND"/>             
-                <action android:name="com.android.settings.simpleaosp.service.STOP_SMSCALL_SERVICE_COMMAND"/>
-                <action android:name="com.android.settings.simpleaosp.service.STOP_NOTIFICATION_SERVICE_COMMAND"/>
+
+                <action android:name="com.android.settings.simpleaosp.service.QUIET_HOURS_SCHEDULE_COMMAND"/>
+                <action android:name="com.android.settings.simpleaosp.service.QUIET_HOURS_STOP_SMSCALL_COMMAND"/>
+                <action android:name="com.android.settings.simpleaosp.service.QUIET_HOURS_START_COMMAND"/>
+                <action android:name="com.android.settings.simpleaosp.service.QUIET_HOURS_STOP_COMMAND"/>
+                <action android:name="com.android.settings.simpleaosp.service.QUIET_HOURS_PAUSE_COMMAND"/>
+                <action android:name="com.android.settings.simpleaosp.service.QUIET_HOURS_RESUME_COMMAND"/>
+                <action android:name="com.android.settings.simpleaosp.service.QUIET_HOURS_INIT_COMMAND"/>
             </intent-filter>
         </receiver>
 
