@@ -6,21 +6,18 @@
     <PreferenceScreen
 	    android:fragment="com.android.settings.rascarlo.BatteryIconStyle"
             android:key="battery_style_pref"
-	    android:icon="@drawable/ic_settings_battery"
             android:title="@string/battery_icon_title"
 	    android:summary="@string/battery_icon_summary" />
     
     <PreferenceScreen 
         android:fragment="com.android.settings.rascarlo.StatusBarClockStyle"
         android:key="clock_style_pref"
-        android:icon="@drawable/ic_clock_preferences"        
 	android:summary="@string/status_bar_clock_summary"
         android:title="@string/status_bar_clock" />
 
    <PreferenceScreen
             android:key="category_network_traffic"
             android:title="@string/network_traffic_title"
-	    android:icon="@drawable/ic_buildtweaks_statusbar"
             android:summary="@string/network_traffic_summary">
 
     <CheckBoxPreference

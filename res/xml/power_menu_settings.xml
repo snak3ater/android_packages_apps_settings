@@ -18,7 +18,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/category_power_menu_title"
-    android:icon="@drawable/ic_lock_power_off"
     android:key="category_power_menu">
 
 	<CheckBoxPreference
