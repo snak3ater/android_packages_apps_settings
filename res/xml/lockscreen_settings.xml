@@ -6,22 +6,18 @@
 
 	<PreferenceScreen
         android:fragment="com.android.settings.rascarlo.LockscreenTargets"
-	android:icon="@drawable/ic_settings_lockscreen"
         android:key="lockscreen_targets"
         android:title="@string/lockscreen_target_title"
         android:summary="@string/lockscreen_target_summary" />
-	<!--android:icon="@drawable/ic_settings_locktargets"-->
 
 	<PreferenceScreen
 	android:key="category_power_menu"
         android:fragment="com.android.settings.rascarlo.PowerMenu"
 	android:title="@string/category_power_menu_title"
-	android:icon="@drawable/ic_lock_power_off"
         android:summary="@string/power_menu_summary" />
 
         <PreferenceScreen
             android:key="keyguard_style"
-	    android:icon="@drawable/prd_ic_style"
             android:fragment="com.android.settings.rascarlo.LockscreenStyle"
             android:title="@string/lockscreen_style_title"/>
 

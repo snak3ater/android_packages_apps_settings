@@ -6,19 +6,16 @@
 
     <PreferenceScreen
         android:fragment="com.android.settings.rascarlo.NavBar"
-	android:icon="@drawable/stat_navbar_edit_on"
         android:key="navigation_bar_buttons_layout"
         android:title="@string/navigation_bar_buttons_layout_title" />
 
     <PreferenceScreen
         android:fragment="com.android.settings.rascarlo.NavRing"
- 	android:icon="@drawable/ic_buildtweaks_navring"
         android:key="navigation_ring"
         android:title="@string/navigation_ring_title" />
 
     <ListPreference
         android:key="navigation_bar_height"
-	android:icon="@drawable/ic_sysbar_home"
         android:dialogTitle="@string/navigation_bar_height"
         android:title="@string/navigation_bar_height"
         android:entries="@array/navigation_bar_height_entries"
