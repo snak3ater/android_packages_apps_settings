@@ -269,7 +269,7 @@
 
     <!--Lockscreen See Through-->
     <string name="see_through_title">Lockscreen Blur</string>
-    <string name="see_through_summary">Blurs and displays the content behind your lockscreen, your data may be visible to those around you</string>
+    <string name="see_through_summary">Blurs and displays the content behind your lockscreen</string>
 
     <!-- Network traffic -->
     <string name="network_traffic_title">Network traffic meter</string>
