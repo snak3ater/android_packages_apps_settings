@@ -17,12 +17,18 @@
 package com.android.settings.rascarlo;
 
 import android.app.ActivityManager;
+import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
 import android.database.ContentObserver;
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.os.Handler;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.app.admin.DevicePolicyManager;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
@@ -46,6 +52,7 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
     private static final String KEY_PEEK_PICKUP_TIMEOUT = "peek_pickup_timeout";
     private static final String KEY_PEEK_WAKE_TIMEOUT = "peek_wake_timeout";
     private static final String KEY_LOCKSCREEN_NOTIFICATONS = "lockscreen_notifications";
+    private static final String PEEK_APPLICATION = "com.jedga.peek";
 
     private SwitchPreference mSeeThrough;
     private ListPreference mPeekPickupTimeout;
@@ -53,12 +60,39 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
     private LockscreenNotificationsPreference mLockscreenNotifications;
     private SwitchPreference mNotificationPeek;
 
+    private PackageStatusReceiver mPackageStatusReceiver;
+    private IntentFilter mIntentFilter;
+
+    private boolean isPeekAppInstalled() {
+        return isPackageInstalled(PEEK_APPLICATION);
+    }
+
+    private boolean isPackageInstalled(String packagename) {
+        PackageManager pm = getActivity().getPackageManager();
+        try {
+            pm.getPackageInfo(packagename, PackageManager.GET_ACTIVITIES);
+            return true;
+        } catch (NameNotFoundException e) {
+            return false;
+        }
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.lockscreen_settings);
         PreferenceScreen prefSet = getPreferenceScreen();
+
+	if (mPackageStatusReceiver == null) {
+            mPackageStatusReceiver = new PackageStatusReceiver();
+        }
+        if (mIntentFilter == null) {
+            mIntentFilter = new IntentFilter();
+            mIntentFilter.addAction(Intent.ACTION_PACKAGE_ADDED);
+            mIntentFilter.addAction(Intent.ACTION_PACKAGE_REMOVED);
+        }
+        getActivity().registerReceiver(mPackageStatusReceiver, mIntentFilter);
 
         // lockscreen see through
         mSeeThrough = (SwitchPreference) prefSet.findPreference(KEY_SEE_THROUGH);
@@ -130,7 +164,36 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
 
     @Override
     public void onResume() {
+        getActivity().registerReceiver(mPackageStatusReceiver, mIntentFilter);
         super.onResume();
     }
 
+    private void updateState() {
+        updatePeekCheckbox();
+    }
+
+    private void updatePeekCheckbox() {
+        boolean enabled = Settings.System.getInt(getContentResolver(),
+                Settings.System.PEEK_STATE, 0) == 1;
+        mNotificationPeek.setChecked(enabled && !isPeekAppInstalled());
+        mNotificationPeek.setEnabled(!isPeekAppInstalled());
+      }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        getActivity().unregisterReceiver(mPackageStatusReceiver);
+    }
+
+     public class PackageStatusReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (action.equals(Intent.ACTION_PACKAGE_ADDED)) {
+                updatePeekCheckbox();
+            } else if(action.equals(Intent.ACTION_PACKAGE_REMOVED)) {
+                updatePeekCheckbox();
+            }
+        }
+    }
 }
