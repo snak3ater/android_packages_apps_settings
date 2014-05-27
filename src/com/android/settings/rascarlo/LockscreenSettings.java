@@ -47,7 +47,7 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
     private static final String KEY_PEEK_WAKE_TIMEOUT = "peek_wake_timeout";
     private static final String KEY_LOCKSCREEN_NOTIFICATONS = "lockscreen_notifications";
 
-    private CheckBoxPreference mSeeThrough;
+    private SwitchPreference mSeeThrough;
     private ListPreference mPeekPickupTimeout;
     private ListPreference mPeekWakeTimeout;
     private LockscreenNotificationsPreference mLockscreenNotifications;
@@ -61,10 +61,10 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
         PreferenceScreen prefSet = getPreferenceScreen();
 
         // lockscreen see through
-        mSeeThrough = (CheckBoxPreference) prefSet.findPreference(KEY_SEE_THROUGH);
+        mSeeThrough = (SwitchPreference) prefSet.findPreference(KEY_SEE_THROUGH);
         if (mSeeThrough != null) {
-            mSeeThrough.setChecked(Settings.System.getInt(getContentResolver(),
-                    Settings.System.LOCKSCREEN_SEE_THROUGH, 0) == 1);
+            mSeeThrough.setChecked(Settings.System.getInt(getContentResolver(), Settings.System.LOCKSCREEN_SEE_THROUGH, 0) == 1);
+	mSeeThrough.setOnPreferenceChangeListener(this);
         }
         mLockscreenNotifications = (LockscreenNotificationsPreference) prefSet.findPreference(KEY_LOCKSCREEN_NOTIFICATONS);
         mNotificationPeek = (SwitchPreference) prefSet.findPreference(KEY_NOTIFICATON_PEEK);
@@ -89,11 +89,15 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
     @Override
     public boolean onPreferenceChange(Preference pref, Object objValue) {
 	ContentResolver cr = getActivity().getContentResolver();
-	if (pref == mNotificationPeek) {
             boolean value = (Boolean) objValue;
+	if (pref == mNotificationPeek) {
             Settings.System.putInt(cr, Settings.System.PEEK_STATE,
                     value ? 1 : 0);
             return true;
+	}else if (pref == mSeeThrough) {
+            Settings.System.putInt(cr, Settings.System.LOCKSCREEN_SEE_THROUGH,
+                    value ? 1 : 0);
+	return true;
 	} else if (pref == mPeekPickupTimeout) {
  	    int index = mPeekPickupTimeout.findIndexOfValue((String) objValue);
             int peekPickupTimeout = Integer.valueOf((String) objValue);
@@ -116,12 +120,7 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-	boolean value;
-	if (preference == mSeeThrough) {
-            Settings.System.putInt(getContentResolver(), Settings.System.LOCKSCREEN_SEE_THROUGH,
-                    mSeeThrough.isChecked() ? 1 : 0);
-	return true;
-	}else if (preference == mLockscreenNotifications) {
+	if (preference == mLockscreenNotifications) {
             return super.onPreferenceTreeClick(preferenceScreen, preference);
         }        
 		return super.onPreferenceTreeClick(preferenceScreen, preference);
