@@ -41,8 +41,6 @@ public class PowerMenu extends SettingsPreferenceFragment implements
     private static final String KEY_AIRPLANE = "power_menu_airplane";
     private static final String KEY_SILENT = "power_menu_silent";
     private static final String KEY_SCREENRECORD = "power_menu_screenrecord";
-    private static final String POWER_MENU_ONTHEGO_ENABLED = "power_menu_onthego_enabled";
-    private static final String KEY_ENABLE_POWER_MENU = "lockscreen_enable_power_menu";
 
     private CheckBoxPreference mRebootPref;
     private CheckBoxPreference mScreenshotPref;
@@ -50,8 +48,6 @@ public class PowerMenu extends SettingsPreferenceFragment implements
     private CheckBoxPreference mAirplanePref;
     private CheckBoxPreference mSilentPref;
     private CheckBoxPreference mScreenrecordPref;
-    private CheckBoxPreference mOnTheGoPowerMenu;
-    private CheckBoxPreference mEnablePowerMenu;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,7 +55,6 @@ public class PowerMenu extends SettingsPreferenceFragment implements
 
         addPreferencesFromResource(R.xml.power_menu_settings);
 
-        PreferenceScreen prefSet = getPreferenceScreen();
         mRebootPref = (CheckBoxPreference) findPreference(KEY_REBOOT);
         mRebootPref.setChecked((Settings.System.getInt(getContentResolver(),
                 Settings.System.POWER_MENU_REBOOT_ENABLED, 1) == 1));
@@ -80,19 +75,7 @@ public class PowerMenu extends SettingsPreferenceFragment implements
         mScreenrecordPref.setChecked((Settings.System.getInt(getContentResolver(),
                 Settings.System.POWER_MENU_SCREENRECORD_ENABLED, 0) == 1));
 
-	// On the go
-        mOnTheGoPowerMenu = (CheckBoxPreference) prefSet.findPreference(POWER_MENU_ONTHEGO_ENABLED);
-        mOnTheGoPowerMenu.setChecked((Settings.System.getInt(getContentResolver(),
-        Settings.System.POWER_MENU_ONTHEGO_ENABLED, 0) == 1));
-        mOnTheGoPowerMenu.setOnPreferenceChangeListener(this);
-
-	mEnablePowerMenu = (CheckBoxPreference) findPreference(KEY_ENABLE_POWER_MENU);
-	if (mEnablePowerMenu != null) {
-	mEnablePowerMenu.setChecked(Settings.System.getInt(getContentResolver(),
-        Settings.System.LOCKSCREEN_ENABLE_POWER_MENU, 1) == 1);
-	mEnablePowerMenu.setOnPreferenceChangeListener(this);
-	}
-
+       PreferenceScreen prefSet = getPreferenceScreen();
         mImmersiveModePref = (ListPreference) prefSet.findPreference(KEY_IMMERSIVE_MODE);
         mImmersiveModePref.setOnPreferenceChangeListener(this);
         int expandedDesktopValue = Settings.System.getInt(getContentResolver(), Settings.System.GLOBAL_IMMERSIVE_MODE_STYLE, 0);
@@ -107,15 +90,7 @@ public class PowerMenu extends SettingsPreferenceFragment implements
                     Settings.System.GLOBAL_IMMERSIVE_MODE_STYLE, expandedDesktopValue);
             updateExpandedDesktopSummary(expandedDesktopValue);
             return true;
- 	} else if (preference == mEnablePowerMenu) {
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.LOCKSCREEN_ENABLE_POWER_MENU, (Boolean) newValue ? 1 : 0);
-	return true;
-        } else if (preference == mOnTheGoPowerMenu) {
-            Settings.System.putInt(getContentResolver(),
-	    Settings.System.POWER_MENU_ONTHEGO_ENABLED, (Boolean) newValue ? 1 : 0);
-	return true;
-	}
+        }
         return false;
     }
 
