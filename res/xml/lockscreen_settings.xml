@@ -10,12 +10,6 @@
         android:title="@string/lockscreen_target_title"
         android:summary="@string/lockscreen_target_summary" />
 
-	<PreferenceScreen
-	android:key="category_power_menu"
-        android:fragment="com.android.settings.rascarlo.PowerMenu"
-	android:title="@string/category_power_menu_title"
-        android:summary="@string/power_menu_summary" />
-
         <PreferenceScreen
             android:key="keyguard_style"
             android:fragment="com.android.settings.rascarlo.LockscreenStyle"
