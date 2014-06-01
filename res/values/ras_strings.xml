@@ -668,4 +668,24 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="reset_user_preferences_title">Reset preferences</string>
     <string name="reset_user_preferences_summary">Restores user interface preferences to default values</string>
     <string name="reset_user_preferences_dialog">Are you sure you want to reset your preferences?</string>
+
+    <!-- Lockscreen background -->
+    <string name="lockscreen_background">Background</string>
+    <string name="lockscreen_background_style_title">Lock screen background</string>
+    <string name="background_default">Default background</string>
+    <string name="background_wallpaper">Custom wallpaper</string>
+    <string name="background_result_successful">Background changed</string>
+    <string name="background_result_not_successful">Background not changed</string>
+    <string name="setting_lockscreen_background">Applying background</string>
+
+    <!-- Theme chooser -->
+    <string name="themes_settings_title">Themes</string>
+    <string name="themepacks_settings_title">Theme Packs</string>
+    <string name="styles_settings_title">Styles</string>
+    <string name="icons_settings_title">Icons</string>
+    <string name="fonts_settings_title">Fonts</string>
+    <string name="wallpaper_settings_title">Wallpapers</string>
+    <string name="lockscreen_wallpaper_settings_title">Lockscreen Wallpapers</string>
+    <string name="bootanim_settings_title">Boot Animations</string>
+    <string name="soundpack_settings_title">Sound Packs</string>
 </resources>
