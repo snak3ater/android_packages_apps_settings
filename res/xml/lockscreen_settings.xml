@@ -53,4 +53,13 @@
             android:entryValues="@array/peek_wake_timeout_values"
             android:dependency="notification_peek" />
 	</PreferenceCategory>
+
+      <PreferenceCategory
+            android:key="category_immersive_mode"
+            android:title="@string/category_immersive_mode_title"/>
+
+        <com.android.settings.rascarlo.SystemSettingCheckBoxPreference
+                    android:key="lockscreen_immersive_mode"
+                    android:title="@string/lockscreen_immersive_mode_title"
+                    android:defaultValue="false" />
 </PreferenceScreen>
