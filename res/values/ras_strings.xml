@@ -690,12 +690,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="ram_bar_button_reset">Reset colors</string>
     <string name="ram_bar_reset">Reset</string>
 
-    <!--User preferences settings-->
-    <string name="personalization">Personalization</string>
-    <string name="reset_user_preferences_title">Reset preferences</string>
-    <string name="reset_user_preferences_summary">Restores user interface preferences to default values</string>
-    <string name="reset_user_preferences_dialog">Are you sure you want to reset your preferences?</string>
-
    <!-- Lockscreen immersive mode -->
    <string name="category_immersive_mode_title">Immersive mode</string>
    <string name="lockscreen_immersive_mode_title">Disable immersive mode on lockscreen</string>
