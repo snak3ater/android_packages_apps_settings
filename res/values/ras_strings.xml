@@ -549,20 +549,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="wakelock_blocker_warning_title">Proceed with Caution</string>
     <string name="wakelock_blocker_warning">Blocking wakelocks have the potential to cause instability, crashes or data loss.</string>
 
-    <!-- Recents panel menu -->
-    <string name="recents_panel_settings_title">Recents panel</string>
-    <string name="recents_panel_settings_summary">Enable a clear all button in the recents panel and more</string>
-
-    <!-- Recents clear all -->
-    <string name="show_recent_clear_all_button_title">Clear all button</string>
-    <string name="show_recent_clear_all_button_summary">Show clear all button within the recent applications view</string>
-    <string name="recent_clear_all_button_location_title">Clear all button position</string>
-    <string name="recent_clear_all_button_location_summary">Choose position of the clear all button</string>
-    <string name="recent_clear_all_button_location_top_left">Top left</string>
-    <string name="recent_clear_all_button_location_top_right">Top right</string>
-    <string name="recent_clear_all_button_location_bottom_left">Bottom left</string>
-    <string name="recent_clear_all_button_location_bottom_right">Bottom right</string>
-
     <!-- StatusBar Battery Settings -->
     <string name="battery_icon_title">Battery icon</string>
     <string name="battery_icon_summary">View or change the battery style settings</string>
@@ -699,4 +685,3 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="peek_blacklist_label">Blacklist from Peek</string>
     <string name="floating_blacklist_label">Blacklist from Floating Mode</string>
 </resources>
-

@@ -15,10 +15,9 @@
         android:title="@string/volume_rocker_category_title" />
 
     <PreferenceScreen
-        android:key="recents_panel"
-        android:title="@string/recents_panel_settings_title"
-        android:summary="@string/recents_panel_settings_summary"
-        android:fragment="com.android.settings.rascarlo.RecentsPanelSettings" />
+        android:fragment="com.android.settings.rascarlo.PlugInPromptSettings"
+        android:key="plug_in_prompt_settings"
+        android:title="@string/plug_in_prompt_settings_title" />
 
     <PreferenceCategory
             android:key="category_light_options"
