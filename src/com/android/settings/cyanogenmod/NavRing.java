@@ -129,7 +129,7 @@ public class NavRing extends Fragment implements
         mActions.addAction(ACTION_SCREENSHOT, R.string.navring_action_take_screenshot);
         mActions.addAction(ACTION_IME, R.string.navring_action_open_ime_switcher);
         mActions.addAction(ACTION_SILENT, R.string.navring_action_ring_silent);
-
+	mActions.addAction(ACTION_LAST_APP, R.string.navring_action_last_app);
         Vibrator vibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
         if (vibrator != null && vibrator.hasVibrator()) {
             mActions.addAction(ACTION_VIBRATE, R.string.navring_action_ring_vibrate);
