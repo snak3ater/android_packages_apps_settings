@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
+import android.preference.SeekBarPreference;
 import android.provider.Settings;
 
 import com.android.settings.R;
@@ -15,7 +16,7 @@ OnPreferenceChangeListener {
 
     private static final String KEY_NAVIGATION_BAR_HEIGHT = "navigation_bar_height";
 
-    private ListPreference mNavigationBarHeight;
+    private SeekBarPreference mNavigationBarHeight;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -23,22 +24,18 @@ OnPreferenceChangeListener {
 
         addPreferencesFromResource(R.xml.navigation_bar_settings);
 
-        mNavigationBarHeight = (ListPreference) findPreference(KEY_NAVIGATION_BAR_HEIGHT);
+        mNavigationBarHeight = (SeekBarPreference) findPreference(KEY_NAVIGATION_BAR_HEIGHT);
+        mNavigationBarHeight.setProgress((int)(Settings.System.getFloat(getContentResolver(),
+                    Settings.System.NAVIGATION_BAR_HEIGHT, 1f) * 100));
+        mNavigationBarHeight.setTitle(getResources().getText(R.string.navigation_bar_height) + " " + mNavigationBarHeight.getProgress() + "%");
         mNavigationBarHeight.setOnPreferenceChangeListener(this);
-        int statusNavigationBarHeight = Settings.System.getInt(getActivity().getApplicationContext()
-                .getContentResolver(),
-                Settings.System.NAVIGATION_BAR_HEIGHT, 48);
-        mNavigationBarHeight.setValue(String.valueOf(statusNavigationBarHeight));
-        mNavigationBarHeight.setSummary(mNavigationBarHeight.getEntry());
     }
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         if (preference == mNavigationBarHeight) {
-            int statusNavigationBarHeight = Integer.valueOf((String) objValue);
-            int index = mNavigationBarHeight.findIndexOfValue((String) objValue);
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.NAVIGATION_BAR_HEIGHT, statusNavigationBarHeight);
-            mNavigationBarHeight.setSummary(mNavigationBarHeight.getEntries()[index]);
+            Settings.System.putFloat(getActivity().getContentResolver(),
+                    Settings.System.NAVIGATION_BAR_HEIGHT, (Integer)objValue / 100f);
+            mNavigationBarHeight.setTitle(getResources().getText(R.string.navigation_bar_height) + " " + (Integer)objValue + "%");
         }
         return true;
     }
