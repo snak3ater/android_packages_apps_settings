@@ -9,6 +9,11 @@
         android:fragment="com.android.settings.rascarlo.QuietHours"
         android:title="@string/quiet_hours_title" />
 
+   <PreferenceScreen
+        android:key="pie_settings"
+        android:title="@string/pie_settings_title"
+        android:fragment="com.android.settings.rascarlo.PieSettings" />
+
     <PreferenceScreen
         android:fragment="com.android.settings.rascarlo.VolumeRocker"
         android:key="volume_rocker_settings"
