@@ -15,11 +15,6 @@
             android:fragment="com.android.settings.rascarlo.LockscreenStyle"
             android:title="@string/lockscreen_style_title"/>
 
-	<SwitchPreference
-        android:key="see_through"
-        android:title="@string/see_through_title"
-        android:summary="@string/see_through_summary" />
-
         <!-- Notifications -->
         <PreferenceCategory
             android:key="notification_category"

@@ -248,10 +248,6 @@
     <string name="navring_action_screenrecord">Screen record</string>
     <string name="navring_action_last_app">Switch to last app</string>
 
-    <!--Lockscreen See Through-->
-    <string name="see_through_title">Lockscreen Blur</string>
-    <string name="see_through_summary">Blurs and displays the content behind your lockscreen</string>
-
     <!-- Network traffic -->
     <string name="network_traffic_title">Network traffic meter</string>
     <string name="network_traffic_summary">Enables the network speed to appear in the Statusbar</string>
