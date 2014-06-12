@@ -89,12 +89,13 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
     @Override
     public boolean onPreferenceChange(Preference pref, Object objValue) {
 	ContentResolver cr = getActivity().getContentResolver();
-            boolean value = (Boolean) objValue;
 	if (pref == mNotificationPeek) {
+            boolean value = (Boolean) objValue;
             Settings.System.putInt(cr, Settings.System.PEEK_STATE,
                     value ? 1 : 0);
             return true;
 	}else if (pref == mSeeThrough) {
+            boolean value = (Boolean) objValue;
             Settings.System.putInt(cr, Settings.System.LOCKSCREEN_SEE_THROUGH,
                     value ? 1 : 0);
 	return true;
