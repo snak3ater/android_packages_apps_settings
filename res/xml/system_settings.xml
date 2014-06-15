@@ -14,11 +14,6 @@
         android:key="volume_rocker_settings"
         android:title="@string/volume_rocker_category_title" />
 
-    <PreferenceScreen
-        android:fragment="com.android.settings.rascarlo.PlugInPromptSettings"
-        android:key="plug_in_prompt_settings"
-        android:title="@string/plug_in_prompt_settings_title" />
-
     <PreferenceCategory
             android:key="category_light_options"
             android:title="@string/display_category_light_options_title" >
