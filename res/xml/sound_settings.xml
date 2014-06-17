@@ -116,6 +116,12 @@
         android:title="@string/dock_sounds_enable_title"
         android:defaultValue="false" />
 
+        <com.android.settings.rascarlo.SystemSettingCheckBoxPreference
+            android:key="swap_volume_buttons"
+            android:title="@string/swap_vol_buttons_title"
+            android:summary="@string/swap_vol_buttons_title_summary"
+	    android:defaultValue="false"/>
+
         <com.android.settings.rascarlo.AppSelectListPreference
             android:key="headset_plug"
             android:title="@string/headset_plug_enable_title"

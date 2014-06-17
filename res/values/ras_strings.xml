@@ -728,4 +728,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="pie_battery_juice_color_summary">Color of the battery indicator in normal percentage</string>
     <string name="pie_battery_juice_low_color_summary">Color of the battery indicator in low percentage</string>
     <string name="pie_battery_juice_critical_color_summary">Color of the battery indicator in critical percentage</string>
+
+    <!-- Swap volume buttons -->
+    <string name="swap_vol_buttons_title">Swap vol buttons on rotation</string>
+    <string name="swap_vol_buttons_title_summary">Swap volume buttons when the screen is rotated by 90 or 180 degrees.</string>
 </resources>
