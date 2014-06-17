@@ -9,14 +9,14 @@
         android:key="navigation_ring"
         android:title="@string/navigation_ring_title" />
 
-    <SeekBarPreference
-             android:key="navigation_bar_height"
-             android:title="@string/navigation_bar_height"
-             android:max="100"
-             android:defaultValue="100" />
-
  <net.margaritov.preference.colorpicker.ColorPickerPreference
         android:key="navbar_button_tint"
         android:title="@string/navbar_button_tint_title"
         android:defaultValue="#ffffff" />
+
+ <SeekBarPreference
+             android:key="navigation_bar_height"
+             android:title="@string/navigation_bar_height"
+             android:max="100"
+             android:defaultValue="100" />
 </PreferenceScreen>
