@@ -91,13 +91,6 @@
 	android:icon="@drawable/prd_ic_themepacks"
         android:title="@string/theme_settings_title" />
 
- <!-- Hover -->
-    <header
-        android:id="@+id/hover_settings"
-        android:icon="@drawable/ic_settings_hover"
-        android:fragment="com.android.settings.rascarlo.HoverSettings"
-        android:title="@string/hover_settings_title" />
-
     <!-- Home -->
     <header
         android:id="@+id/home_settings"

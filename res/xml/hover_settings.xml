@@ -6,21 +6,37 @@
     android:title="@string/hover_settings_title">
 
     <com.android.settings.rascarlo.SystemSettingCheckBoxPreference
+            android:key="hover_state"
+            android:summary="@string/hover_summary"
+            android:title="@string/hover_state_title"
+            android:persistent="false"/>
+
+    <com.android.settings.rascarlo.SystemSettingCheckBoxPreference
         android:key="hover_require_fullscreen_mode"
         android:title="@string/hover_require_fullscreen_mode_title"
         android:summary="@string/hover_require_fullscreen_mode_summary"
+        android:dependency="hover_state"
         android:defaultValue="false" />
 
     <com.android.settings.rascarlo.SystemSettingCheckBoxPreference
         android:key="hover_exclude_non_clearable"
         android:title="@string/hover_exclude_non_clearable_title"
         android:summary="@string/hover_exclude_non_clearable_summary"
+        android:dependency="hover_state"
         android:defaultValue="false" />
 
     <com.android.settings.rascarlo.SystemSettingCheckBoxPreference
         android:key="hover_exclude_low_priority"
         android:title="@string/hover_exclude_low_priority_title"
         android:summary="@string/hover_exclude_low_priority_summary"
+        android:dependency="hover_state"
+        android:defaultValue="false" />
+
+    <com.android.settings.rascarlo.SystemSettingCheckBoxPreference
+        android:key="hover_exclude_topmost"
+        android:title="@string/hover_exclude_topmost_title"
+        android:summary="@string/hover_exclude_topmost_summary"
+        android:dependency="hover_state"
         android:defaultValue="false" />
 
     <ListPreference
@@ -28,12 +44,6 @@
         android:title="@string/hover_long_fadeout_title"
         android:persistent="false"
         android:entries="@array/hover_long_fadeout_entries"
+        android:dependency="hover_state"
         android:entryValues="@array/hover_long_fadeout_values" />
-
-    <com.android.settings.rascarlo.SystemSettingCheckBoxPreference
-        android:key="hover_exclude_topmost"
-        android:title="@string/hover_exclude_topmost_title"
-        android:summary="@string/hover_exclude_topmost_summary"
-        android:defaultValue="false" />
-
 </PreferenceScreen>

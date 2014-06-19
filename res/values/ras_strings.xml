@@ -748,4 +748,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Hover exclude topmost app -->
     <string name="hover_exclude_topmost_title">Exclude topmost app</string>
     <string name="hover_exclude_topmost_summary">Exclude notifications from the app running in foreground</string>
+
+    <!-- Hover state -->
+    <string name="hover_title">Hover</string>
+    <string name="hover_state_title">Enable Hover</string>
+    <string name="hover_summary">Enables and customize hover notifications</string>
 </resources>
