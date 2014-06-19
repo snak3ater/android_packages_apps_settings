@@ -5,7 +5,7 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/hover_settings_title">
 
-    <com.android.settings.rascarlo.SystemSettingCheckBoxPreference
+    <SwitchPreference
             android:key="hover_state"
             android:summary="@string/hover_summary"
             android:title="@string/hover_state_title"

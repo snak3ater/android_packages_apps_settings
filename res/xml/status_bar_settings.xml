@@ -28,11 +28,12 @@
         android:summary="@string/status_bar_clock_summary"
         android:title="@string/status_bar_clock" />
 
-   <PreferenceScreen 
+   <com.android.settings.rascarlo.lsn.HoverPreference
         android:id="@+id/hover_settings"
         android:summary="@string/hover_summary"
         android:fragment="com.android.settings.rascarlo.HoverSettings"
-        android:title="@string/hover_settings_title" />
+        android:title="@string/hover_settings_title"
+        android:widgetLayout="@layout/listview_embedded_switchpreference" />
 
    <PreferenceScreen
             android:key="category_network_traffic"

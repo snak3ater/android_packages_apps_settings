@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.os.UserHandle;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
+import android.preference.SwitchPreference;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
@@ -38,7 +39,7 @@ public class HoverSettings extends SettingsPreferenceFragment implements
     CheckBoxPreference mHoverExcludeNonLowPriority;
     CheckBoxPreference mHoverRequireFullScreenMode;
     CheckBoxPreference mHoverExcludeTopmost;
-    private CheckBoxPreference mHoverState;
+    private SwitchPreference mHoverState;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,7 +50,7 @@ public class HoverSettings extends SettingsPreferenceFragment implements
         ContentResolver resolver = getActivity().getContentResolver();
 
         // Hover state
-        mHoverState = (CheckBoxPreference) prefSet.findPreference(PREF_HOVER_STATE);
+        mHoverState = (SwitchPreference) prefSet.findPreference(PREF_HOVER_STATE);
         mHoverState.setChecked((Settings.System.getInt(resolver,
                 Settings.System.HOVER_STATE, 0) == 1));
 
@@ -98,7 +99,11 @@ public class HoverSettings extends SettingsPreferenceFragment implements
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
-        if (preference == mHoverLongFadeOutDelay) {
+	if (preference == mHoverState) {
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.HOVER_STATE, (Boolean) objValue ? 1 : 0);
+	return true;
+        } else if (preference == mHoverLongFadeOutDelay) {
             int index = mHoverLongFadeOutDelay.findIndexOfValue((String) objValue);
             int hoverLongFadeOutDelay = Integer.valueOf((String) objValue);
             Settings.System.putIntForUser(getContentResolver(),
@@ -132,15 +137,6 @@ public class HoverSettings extends SettingsPreferenceFragment implements
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        ContentResolver resolver = getActivity().getContentResolver();
-        boolean value;
-	if (preference == mHoverState) {
-            value = mHoverState.isChecked();
-            Settings.System.putInt(resolver,
-                    Settings.System.HOVER_STATE, value ? 1 : 0);
-        } else {
         return super.onPreferenceTreeClick(preferenceScreen, preference);
-	}
-        return true;
 	}
 }
