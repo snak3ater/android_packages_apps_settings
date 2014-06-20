@@ -51,7 +51,7 @@ public class HoverPreference extends Preference implements OnCheckedChangeListen
         super.onBindView(view);
         mSwitch = (Switch) view.findViewById(R.id.mswitch);
         mSwitch.setChecked(Settings.System.getInt(getContext().getContentResolver(),
-                Settings.System.HOVER_STATE, 1) != 0);
+                Settings.System.HOVER_STATE, 0) == 1);
         mSwitch.setOnCheckedChangeListener(this);
     }
 

@@ -31,6 +31,7 @@
    <com.android.settings.rascarlo.lsn.HoverPreference
         android:id="@+id/hover_settings"
         android:summary="@string/hover_summary"
+	android:defaultValue="false"
         android:fragment="com.android.settings.rascarlo.HoverSettings"
         android:title="@string/hover_settings_title"
         android:widgetLayout="@layout/listview_embedded_switchpreference" />
