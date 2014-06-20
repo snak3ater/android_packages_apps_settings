@@ -65,10 +65,15 @@
             android:title="@string/status_bar_clock" />
 
 	<PreferenceScreen
-        android:id="@+id/hover_settings"
-        android:summary="@string/hover_summary"
-        android:fragment="com.android.settings.simpleaosp.HoverSettings"
-        android:title="@string/hover_settings_title" />
+            android:id="@+id/hover_settings"
+            android:summary="@string/hover_summary"
+            android:fragment="com.android.settings.simpleaosp.HoverSettings"
+            android:title="@string/hover_settings_title" />
+
+        <PreferenceScreen
+            android:key="heads_up"
+            android:fragment="com.android.settings.headsup.HeadsUpDoNotDisturbSettings"
+            android:title="@string/category_heads_up" />
 
         <ListPreference
             android:entries="@array/quick_pulldown_entries"
