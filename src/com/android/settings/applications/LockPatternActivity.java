@@ -41,6 +41,7 @@ import java.util.List;
 
 public class LockPatternActivity extends Activity implements OnNotifyAccountReset {
     public static final String PATTERN_LOCK_PROTECTED_APPS = "pattern_lock_protected_apps";
+    public static final String RECREATE_PATTERN = "recreate_pattern_lock";
 
     private static final int MIN_PATTERN_SIZE = 4;
     private static final int MAX_PATTERN_RETRY = 5;
@@ -317,4 +318,3 @@ public class LockPatternActivity extends Activity implements OnNotifyAccountRese
             return res;
         }
     }
-}
