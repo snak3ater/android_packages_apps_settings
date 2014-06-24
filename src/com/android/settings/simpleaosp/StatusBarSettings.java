@@ -5,6 +5,7 @@ import android.content.ContentResolver;
 import android.content.res.Resources;
 import android.net.TrafficStats;
 import android.os.Bundle;
+import android.os.UserHandle;
 import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
@@ -17,6 +18,8 @@ import android.provider.Settings.SettingNotFoundException;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
+
+import com.android.settings.simpleaosp.SystemSettingSwitchPreference;
 
 public class StatusBarSettings extends SettingsPreferenceFragment implements
 OnPreferenceChangeListener {
@@ -50,6 +53,8 @@ OnPreferenceChangeListener {
     private int MASK_UNIT;
     private int MASK_PERIOD;
 
+    private SystemSettingSwitchPreference mSwitchPreference;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,6 +66,9 @@ OnPreferenceChangeListener {
         ContentResolver resolver = getActivity().getContentResolver();
 
         mhoverNotifications = (PreferenceScreen) prefSet.findPreference(KEY_HOVER_NOTIFICATONS);
+
+        mSwitchPreference = (SystemSettingSwitchPreference)
+                findPreference(Settings.System.HEADS_UP_NOTIFICATION);
 
  	    // Notification Count
  	    mStatusBarNotifCount = (CheckBoxPreference) findPreference(STATUSBAR_NOTIF_COUNT);
@@ -209,6 +217,11 @@ OnPreferenceChangeListener {
                 getContentResolver(), Settings.System.HOVER_STATE, 0) == 1;
         mhoverNotifications.setSummary(hoverEnabled
                 ? R.string.summary_hover_notifications_enabled : R.string.summary_hover_notifications_disabled);
+
+        boolean headsUpEnabled = Settings.System.getIntForUser(
+                getActivity().getContentResolver(),
+                Settings.System.HEADS_UP_NOTIFICATION, 0, UserHandle.USER_CURRENT) == 1;
+        mSwitchPreference.setChecked(headsUpEnabled);
     }
 
 	 private void loadResources() {

@@ -1922,6 +1922,6 @@
 	<activity android:name="com.android.settings.cyanogenmod.LockscreenTargets" />
         <activity android:name="com.android.settings.cyanogenmod.LockscreenInterface" />
         <activity android:name=".simpleaosp.StatusBarClockStyle" />
+        <activity android:name=".headsup.HeadsUpSettings" />
     </application>
 </manifest>
-
