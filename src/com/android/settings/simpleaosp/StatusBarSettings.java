@@ -19,8 +19,6 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
-import com.android.settings.simpleaosp.SystemSettingSwitchPreference;
-
 public class StatusBarSettings extends SettingsPreferenceFragment implements
 OnPreferenceChangeListener {
 
@@ -53,7 +51,7 @@ OnPreferenceChangeListener {
     private int MASK_UNIT;
     private int MASK_PERIOD;
 
-    private SystemSettingSwitchPreference mSwitchPreference;
+    private Preference mHeadsUp;
 
 
     @Override
@@ -67,8 +65,7 @@ OnPreferenceChangeListener {
 
         mhoverNotifications = (PreferenceScreen) prefSet.findPreference(KEY_HOVER_NOTIFICATONS);
 
-        mSwitchPreference = (SystemSettingSwitchPreference)
-                findPreference(Settings.System.HEADS_UP_NOTIFICATION);
+        mHeadsUp = findPreference(Settings.System.HEADS_UP_NOTIFICATION);
 
  	    // Notification Count
  	    mStatusBarNotifCount = (CheckBoxPreference) findPreference(STATUSBAR_NOTIF_COUNT);
@@ -218,10 +215,10 @@ OnPreferenceChangeListener {
         mhoverNotifications.setSummary(hoverEnabled
                 ? R.string.summary_hover_notifications_enabled : R.string.summary_hover_notifications_disabled);
 
-        boolean headsUpEnabled = Settings.System.getIntForUser(
-                getActivity().getContentResolver(),
-                Settings.System.HEADS_UP_NOTIFICATION, 0, UserHandle.USER_CURRENT) == 1;
-        mSwitchPreference.setChecked(headsUpEnabled);
+        boolean headsUpEnabled = Settings.System.getInt(
+                getContentResolver(), Settings.System.HEADS_UP_NOTIFICATION, 0) == 1;
+        mHeadsUp.setSummary(headsUpEnabled
+                ? R.string.summary_heads_up_enabled : R.string.summary_heads_up_disabled);
     }
 
 	 private void loadResources() {
