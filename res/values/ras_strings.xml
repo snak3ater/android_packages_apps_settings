@@ -753,10 +753,4 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="hover_title">Hover</string>
     <string name="hover_state_title">Enable Hover</string>
     <string name="hover_summary">Enables and customize hover notifications</string>
-
-    <!-- Heads Up -->
-    <string name="category_heads_up">Heads up</string>
-    <string name="title_heads_up_enabled">Enable heads up</string>
-    <string name="add_heads_up_dnd_package">Add app to \'Do not disturb\'</string>
-    <string name="heads_up_dnd_title">Do not disturb</string>
 </resources>
