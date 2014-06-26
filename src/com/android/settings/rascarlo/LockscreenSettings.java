@@ -39,7 +39,7 @@ import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.util.Log;
-import com.android.settings.rascarlo.lsn.LockscreenNotificationsPreference;
+import com.android.settings.rascarlo.SystemSettingSwitchPreference;
 import android.preference.SwitchPreference;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -51,13 +51,12 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
     private static final String KEY_NOTIFICATON_PEEK = "notification_peek";
     private static final String KEY_PEEK_PICKUP_TIMEOUT = "peek_pickup_timeout";
     private static final String KEY_PEEK_WAKE_TIMEOUT = "peek_wake_timeout";
-    private static final String KEY_LOCKSCREEN_NOTIFICATONS = "lockscreen_notifications";
     private static final String PEEK_APPLICATION = "com.jedga.peek";
 
     private SwitchPreference mSeeThrough;
     private ListPreference mPeekPickupTimeout;
     private ListPreference mPeekWakeTimeout;
-    private LockscreenNotificationsPreference mLockscreenNotifications;
+    private SystemSettingSwitchPreference mLockscreenNotifications;;
     private SwitchPreference mNotificationPeek;
 
     private PackageStatusReceiver mPackageStatusReceiver;
@@ -100,7 +99,7 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
             mSeeThrough.setChecked(Settings.System.getInt(getContentResolver(), Settings.System.LOCKSCREEN_SEE_THROUGH, 0) == 1);
 	mSeeThrough.setOnPreferenceChangeListener(this);
         }
-        mLockscreenNotifications = (LockscreenNotificationsPreference) prefSet.findPreference(KEY_LOCKSCREEN_NOTIFICATONS);
+	mLockscreenNotifications = (SystemSettingSwitchPreference) findPreference(Settings.System.LOCKSCREEN_NOTIFICATIONS);
         mNotificationPeek = (SwitchPreference) prefSet.findPreference(KEY_NOTIFICATON_PEEK);
         mNotificationPeek.setChecked(Settings.System.getInt(getContentResolver(), Settings.System.PEEK_STATE, 0) == 1);
         mNotificationPeek.setOnPreferenceChangeListener(this);
@@ -155,9 +154,6 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-	if (preference == mLockscreenNotifications) {
-            return super.onPreferenceTreeClick(preferenceScreen, preference);
-        }        
 		return super.onPreferenceTreeClick(preferenceScreen, preference);
 
     }
@@ -166,6 +162,11 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
     public void onResume() {
         getActivity().registerReceiver(mPackageStatusReceiver, mIntentFilter);
         super.onResume();
+
+	boolean lockscreenNotificationsEnabled = Settings.System.getIntForUser(
+                getActivity().getContentResolver(),
+                Settings.System.LOCKSCREEN_NOTIFICATIONS, 0, UserHandle.USER_CURRENT) == 1;
+        mLockscreenNotifications.setChecked(lockscreenNotificationsEnabled);
     }
 
     private void updateState() {
