@@ -17,6 +17,9 @@
 package com.android.settings.simpleaosp;
 
 import android.content.Context;
+import android.database.ContentObserver;
+import android.net.Uri;
+import android.os.Handler;
 import android.os.UserHandle;
 import android.provider.Settings;
 import android.widget.CompoundButton;
@@ -27,17 +30,28 @@ public class HoverNotificationsEnabler implements CompoundButton.OnCheckedChange
     private Switch mSwitch;
     private boolean mStateMachineEvent;
 
-    public HoverNotificationsEnabler(Context context, Switch switch_) {
+    private ContentObserver mSettingsObserver = new ContentObserver(new Handler()) {
+        @Override
+        public void onChange(boolean selfChange, Uri uri) {
+            setSwitchState();
+        }
+    };
+
+   public HoverNotificationsEnabler(Context context, Switch switch_) {
         mContext = context;
         mSwitch = switch_;
     }
 
     public void resume() {
+        mContext.getContentResolver().registerContentObserver(
+                Settings.System.getUriFor(Settings.System.HOVER_STATE),
+                true, mSettingsObserver);
         mSwitch.setOnCheckedChangeListener(this);
         setSwitchState();
     }
 
     public void pause() {
+        mContext.getContentResolver().unregisterContentObserver(mSettingsObserver);
         mSwitch.setOnCheckedChangeListener(null);
     }
 
