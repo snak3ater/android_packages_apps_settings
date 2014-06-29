@@ -37,6 +37,7 @@ import android.view.WindowManager;
 
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
+import com.android.settings.Utils;
 
 import com.android.settings.simpleaosp.lsn.AppMultiSelectListPreference;
 
@@ -230,6 +231,13 @@ public class LockscreenNotifications extends SettingsPreferenceFragment implemen
                 Settings.System.getUriFor(Settings.System.LOCKSCREEN_NOTIFICATIONS),
                 true, mSettingsObserver);
         updateEnabledState();
+
+        // If running on a phone, remove padding around container
+        // and the preference listview
+        if (!Utils.isTablet(getActivity())) {
+            mPrefsContainer.setPadding(0, 0, 0, 0);
+            getListView().setPadding(0, 0, 0, 0);
+        }
     }
 
     public void onPause() {
