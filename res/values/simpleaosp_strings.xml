@@ -140,18 +140,8 @@
 
     <!-- Navigation bar -->
     <string name="navigation_bar_title">Navigation bar</string>
-
-    <!-- Navigation bar height -->
-    <string name="navigation_bar_height">Height</string>
-    <string name="navigation_bar_height_48">48dp (default)</string>
-    <string name="navigation_bar_height_44">44dp</string>
-    <string name="navigation_bar_height_40">40dp</string>
-    <string name="navigation_bar_height_36">36dp</string>
-    <string name="navigation_bar_height_32">32dp</string>
-    <string name="navigation_bar_height_28">28dp</string>
-    <string name="navigation_bar_height_24">24dp</string>
-    <string name="navigation_bar_height_20">20dp</string>
-    <string name="navigation_bar_height_0">0dp (hide)</string>
+    <string name="navigation_bar_summary">Enable or disable the navigation bar</string>
+    <string name="navigation_bar_height">Height:</string>
 
     <!-- Voice+ -->
     <string name="voice_plus_title">Voice+</string>
