@@ -9,12 +9,11 @@
         android:summary="@string/lockscreen_target_summary"
         android:title="@string/lockscreen_target_title" />
 
-        <!-- Notifications -->
+        <!-- General -->
         <PreferenceCategory
-            android:key="notification_category"
-            android:title="@string/notification_category">
+            android:title="@string/general_string" >
 
-	<com.android.settings.simpleaosp.SystemSettingCheckBoxPreference
+        <com.android.settings.simpleaosp.SystemSettingCheckBoxPreference
             android:key="see_through"
             android:title="@string/see_through_title"
             android:summary="@string/see_through_summary" />
@@ -25,6 +24,12 @@
             android:summary="@string/blur_radius_summary"
             android:max="25"
             android:defaultValue="12" />
+        </PreferenceCategory>
+        
+        <!-- Notifications -->
+        <PreferenceCategory
+            android:key="notification_category"
+            android:title="@string/notification_category">
 
        <com.android.settings.simpleaosp.SystemSettingCheckBoxPreference
             android:key="notification_peek"
