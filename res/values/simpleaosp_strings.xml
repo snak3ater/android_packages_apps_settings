@@ -130,7 +130,7 @@
 
     <!--Quick unlock -->
     <string name="unlock_quick_unlock_control_title">Quick unlock</string>
-    <string name="unlock_quick_unlock_control_summary">Unlock automatically when the correct pin/password is entered</string>
+    <string name="unlock_quick_unlock_control_summary">Unlock automatically when the correct PIN/password is entered</string>
 
     <!-- Volume adjust sounds -->
     <string name="volume_adjust_sounds_enable_summary">Play sound while adjusting the volume</string>
@@ -203,7 +203,7 @@
     <string name="auto_brightness_lux">Ambient brightness (lux)</string>
     <string name="auto_brightness_backlight">Screen brightness (%)</string>
     <string name="auto_brightness_reset_dialog_title">Reset levels?</string>
-    <string name="auto_brightness_reset_confirmation">All brightness levels will be reset to their default settings.</string>
+    <string name="auto_brightness_reset_confirmation">All brightness levels will be reset to their default settings</string>
     <string name="auto_brightness_split_lux_format">Split position (between <xliff:g id="min">%1$d</xliff:g> and <xliff:g id="max">%2$d</xliff:g> lux)</string>
     <string name="auto_brightness_level_options">Light level options</string>
     <string name="auto_brightness_menu_edit">Edit</string>
@@ -389,7 +389,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="profiles_add">Add</string>
     <string name="profile_menu_delete">Delete</string>
     <string name="profile_settings_title">Profile</string>
-    <string name="profile_empty_list_profiles_off">To configure and use system profiles, turn profiles on.</string>
+    <string name="profile_empty_list_profiles_off">To configure and use system profiles, turn profiles on</string>
 
     <!-- Add Profile -->
     <string name="add_profile_dialog_title">Create new profile</string>
@@ -433,7 +433,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!--Blacklist-->
     <string name="blacklist_button_title">Blacklist</string>
     <string name="peek_blacklist_label">Blacklist from peek</string>
-    <string name="floating_blacklist_label">Blacklist from floating mode</string>
+    <string name="floating_blacklist_label">Blacklist from floating-mode</string>
     <string name="hover_blacklist_label">Blacklist from hover</string>
 
     <!-- Whether to display the IME switcher notifcation -->
@@ -504,7 +504,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="quiet_hours_auto_string_title">Response to send</string>
     <string name="quiet_hours_auto_string_explain">This message will be sent to anyone who contacts you while
             quiet hours are active</string>
-    <string name="quiet_hours_auto_sms_null">[Automated Message] I\'ll get back to you when I can.</string>
+    <string name="quiet_hours_auto_sms_null">[Automated Message] I\'ll get back to you when I can</string>
     <string name="quiet_hours_auto_disabled">Disabled</string>
     <string name="quiet_hours_auto_enabled">All numbers</string>
     <string name="quiet_hours_auto_contacts">Contacts only</string>
@@ -533,7 +533,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Hover settings -->
     <string name="hover_settings_title">Hover</string>
-    <string name="hover_require_fullscreen_mode_title">Require Fullscreen-Mode</string>
+    <string name="hover_require_fullscreen_mode_title">Require fullscreen-mode</string>
     <string name="hover_require_fullscreen_mode_summary">Only show up when status bar is hidden</string>
     <string name="hover_exclude_low_priority_title">Exclude low priority</string>
     <string name="hover_exclude_low_priority_summary">Exclude notifications marked as low priority</string>
