@@ -54,7 +54,8 @@
 
         <!-- Advanced display settings -->
         <PreferenceCategory
-                android:title="@string/advanced_title"/>
+                android:key="display_advanced_category"
+                android:title="@string/advanced_title">
 
         <PreferenceScreen
                 android:key="plug_in_prompt_settings"
@@ -80,6 +81,7 @@
 	        android:fragment="com.android.settings.simpleaosp.LockscreenSettings"
  	        android:key="lock_screen"
  	        android:title="@string/lockscreen_title" />
+        </PreferenceCategory>
 
         <!-- Notification light settings -->
         <PreferenceCategory

@@ -52,6 +52,7 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
     private static final String KEY_BLUR_RADIUS = "blur_radius";
     private static final String KEY_PEEK_PICKUP_TIMEOUT = "peek_pickup_timeout";
     private static final String KEY_PEEK_WAKE_TIMEOUT = "peek_wake_timeout";
+    private static final String KEY_LOCKSCREEN_GENERAL_CATEGORY = "lockscreen_general_category";
 
     private SystemSettingCheckBoxPreference mNotificationPeek;
     private SystemSettingCheckBoxPreference mSeeThrough;

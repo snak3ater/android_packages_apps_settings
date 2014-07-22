@@ -11,7 +11,8 @@
 
         <!-- General -->
         <PreferenceCategory
-            android:title="@string/general_string" >
+            android:key="lockscreen_general_category"
+            android:title="@string/general_string">
 
         <CheckBoxPreference
             android:key="battery_around_lockscreen_ring"
