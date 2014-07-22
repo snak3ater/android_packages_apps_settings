@@ -15,6 +15,7 @@ public class NavigationBarSettings extends SettingsPreferenceFragment implements
 OnPreferenceChangeListener {
 
     private static final String KEY_NAVIGATION_BAR_HEIGHT = "navigation_bar_height";
+    private static final String KEY_NAVIGATION_BAR_GENERAL_CATEGORY = "navigation_bar_general_category";
 
     private SeekBarPreference mNavigationBarHeight;
 
