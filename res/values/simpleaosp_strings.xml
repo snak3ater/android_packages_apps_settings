@@ -438,6 +438,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="peek_blacklist_label">Blacklist from peek</string>
     <string name="floating_blacklist_label">Blacklist from floating-mode</string>
     <string name="hover_blacklist_label">Blacklist from hover</string>
+    <string name="hover_summary">Customize hover notifications</string>
 
     <!-- Whether to display the IME switcher notifcation -->
     <string name="ime_switcher_notify">Selector notification</string>
