@@ -53,6 +53,8 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
     private static final String KEY_PEEK_PICKUP_TIMEOUT = "peek_pickup_timeout";
     private static final String KEY_PEEK_WAKE_TIMEOUT = "peek_wake_timeout";
     private static final String KEY_LOCKSCREEN_GENERAL_CATEGORY = "lockscreen_general_category";
+    // Omni Additions
+    private static final String BATTERY_AROUND_LOCKSCREEN_RING = "battery_around_lockscreen_ring";
 
     private SystemSettingCheckBoxPreference mNotificationPeek;
     private SystemSettingCheckBoxPreference mSeeThrough;
@@ -61,6 +63,8 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
     private IntentFilter mIntentFilter;
     private ListPreference mPeekPickupTimeout;
     private ListPreference mPeekWakeTimeout;
+    // Omni Additions
+    private SystemSettingCheckBoxPreference mLockRingBattery;
 
     private boolean isPeekAppInstalled() {
         return isPackageInstalled(PEEK_APPLICATION);
@@ -83,6 +87,14 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
 
         addPreferencesFromResource(R.xml.lockscreen_settings);
         PreferenceScreen prefSet = getPreferenceScreen();
+
+	// Add the additional Omni settings
+        mLockRingBattery = (SystemSettingCheckBoxPreference) getPreferenceScreen()
+                .findPreference(BATTERY_AROUND_LOCKSCREEN_RING);
+        if (mLockRingBattery != null) {
+            mLockRingBattery.setChecked(Settings.System.getInt(getContentResolver(),
+                    Settings.System.BATTERY_AROUND_LOCKSCREEN_RING, 0) == 1);
+        }
 
  	// lockscreen see through
         mSeeThrough = (SystemSettingCheckBoxPreference) findPreference(KEY_SEE_THROUGH);
@@ -159,6 +171,11 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
                     mSeeThrough.isChecked() ? 1 : 0);
 		mBlurRadius.setEnabled(mSeeThrough.isChecked() && mSeeThrough.isEnabled());
             return true;
+ 	} else if (preference == mLockRingBattery) {
+	value = mLockRingBattery.isChecked();
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.BATTERY_AROUND_LOCKSCREEN_RING, value ? 1 : 0);
+	return true;
 	} else if (preference == mNotificationPeek) {
             Settings.System.putInt(getContentResolver(), Settings.System.PEEK_STATE,
                     mNotificationPeek.isChecked() ? 1 : 0);
