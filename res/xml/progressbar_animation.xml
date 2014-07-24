@@ -18,7 +18,7 @@
 
     <PreferenceCategory
             android:key="category_progressbar"
-            android:title="@string/progressbar_title">
+            android:title="@string/progressbar_category_title">
 
         <CheckBoxPreference
             android:key="progressbar_mirror"
