@@ -66,8 +66,8 @@ public class ProgressBar extends SettingsPreferenceFragment implements
 	private ColorPickerPreference mprogressbar_color_4;
 	private ListPreference mprogressbar_interpolator;
 
-    private static final int MENU_RESET = Menu.FIRST;
-	private static final int defaultColor = 0xffffffff;
+        private static final int MENU_RESET = Menu.FIRST;
+	private static final int defaultColor = 0xFF33B5E5;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
