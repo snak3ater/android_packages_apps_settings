@@ -30,6 +30,7 @@ OnPreferenceChangeListener {
     private static final String NETWORK_TRAFFIC_STATE = "network_traffic_state";
     private static final String NETWORK_TRAFFIC_UNIT = "network_traffic_unit";
     private static final String NETWORK_TRAFFIC_PERIOD = "network_traffic_period";
+    private static final String KEY_HOVER_NOTIFICATONS = "hover_notifications";
 
     private ListPreference mQuickPulldown;
     private CheckBoxPreference mStatusBarBrightnessControl;
@@ -39,6 +40,7 @@ OnPreferenceChangeListener {
     private ListPreference mNetTrafficState;
     private ListPreference mNetTrafficUnit;
     private ListPreference mNetTrafficPeriod;
+    private PreferenceScreen mhoverNotifications;
 
     private int mNetTrafficVal;
     private int MASK_UP;
@@ -55,6 +57,8 @@ OnPreferenceChangeListener {
         addPreferencesFromResource(R.xml.status_bar_settings);
 	PreferenceScreen prefSet = getPreferenceScreen();
         ContentResolver resolver = getActivity().getContentResolver();
+
+        mhoverNotifications = (PreferenceScreen) prefSet.findPreference(KEY_HOVER_NOTIFICATONS);
 
  	    // Notification Count
  	    mStatusBarNotifCount = (CheckBoxPreference) findPreference(STATUSBAR_NOTIF_COUNT);
@@ -190,6 +194,11 @@ OnPreferenceChangeListener {
     @Override
     public void onResume() {
         super.onResume();
+
+	boolean hoverEnabled = Settings.System.getInt(
+                getContentResolver(), Settings.System.HOVER_STATE, 0) == 1;
+        mhoverNotifications.setSummary(hoverEnabled
+                ? R.string.summary_hover_notifications_enabled : R.string.summary_hover_notifications_disabled);
     }
 
 	 private void loadResources() {
