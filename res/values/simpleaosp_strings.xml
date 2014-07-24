@@ -373,7 +373,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="pulse_speed_very_slow">Very slow</string>
 
     <!-- Generic strings -->
-    <string name="ok_string">Ok</string>
+    <string name="ok_string">OK</string>
     <string name="default_string">Default</string>
     <string name="enabled_string">Enabled</string>
     <string name="disabled_string">Disabled</string>
@@ -381,7 +381,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="reset_string">Reset</string>
     <string name="reset">Reset</string>
     <string name="empty_string">Empty</string>
-     <string name="ok">Ok</string>
+     <string name="ok">OK</string>
 
     <!-- Add application dialog box title -->
     <string name="profile_choose_app">Choose app</string>
@@ -508,7 +508,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="quiet_hours_auto_string_title">Response to send</string>
     <string name="quiet_hours_auto_string_explain">This message will be sent to anyone who contacts you while
             quiet hours are active</string>
-    <string name="quiet_hours_auto_sms_null">[Automated Message] I\'ll get back to you when I can</string>
+    <string name="quiet_hours_auto_sms_null">[Automated Message] I\'ll get back to you when I can.</string>
     <string name="quiet_hours_auto_disabled">Disabled</string>
     <string name="quiet_hours_auto_enabled">All numbers</string>
     <string name="quiet_hours_auto_contacts">Contacts only</string>
