@@ -318,3 +318,4 @@ public class LockPatternActivity extends Activity implements OnNotifyAccountRese
             return res;
         }
     }
+}
