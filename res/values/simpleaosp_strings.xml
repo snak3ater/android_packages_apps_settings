@@ -441,7 +441,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="floating_blacklist_label">Blacklist from floating-mode</string>
     <string name="hover_blacklist_label">Blacklist from hover</string>
     <string name="hover_summary">Customize hover notifications</string>
-    <string name="hover_disabled_notice">Enable hover notifications.</string>
+    <string name="hover_disabled_notice">Enable hover notifications</string>
     <string name="hover_notifications">Hover notifications</string>
     <string name="summary_hover_notifications_enabled">Hover notifications are enabled</string>
     <string name="summary_hover_notifications_disabled">Hover notifications are disabled</string>
