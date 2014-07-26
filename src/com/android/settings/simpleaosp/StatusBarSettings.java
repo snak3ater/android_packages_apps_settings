@@ -139,7 +139,6 @@ OnPreferenceChangeListener {
     }
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
-        ContentResolver resolver = getActivity().getContentResolver();
 	if (preference == mStatusBarNotifCount) {
             Settings.System.putInt(getActivity().getContentResolver(), Settings.System.STATUSBAR_NOTIF_COUNT,
                     ((CheckBoxPreference)preference).isChecked() ? 0 : 1);
@@ -179,8 +178,7 @@ OnPreferenceChangeListener {
             mNetTrafficPeriod.setSummary(mNetTrafficPeriod.getEntries()[index]);      
         } else if (preference == mStatusBarNetworkActivity) {
             boolean value = (Boolean) objValue;
-            Settings.System.putInt(resolver,
-                Settings.System.STATUS_BAR_NETWORK_ACTIVITY, value ? 1 : 0);
+            Settings.System.putInt(getActivity().getContentResolver(), Settings.System.STATUS_BAR_NETWORK_ACTIVITY, value ? 1 : 0);
         } else {
             return false;
         }
