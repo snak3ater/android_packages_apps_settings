@@ -41,6 +41,9 @@
     <string name="navring_choose_action_title">Choose action</string>
     <string name="navring_action_last_app">Switch to last app</string>
 
+    <!-- Navigation bar glow time -->
+    <string name="navigation_button_glow_time_title">Button glow time</string>
+
     <!-- Description of the unlock target in the Slide unlock screen. [CHAR LIMIT=NONE] -->
     <string name="description_target_unlock">Unlock</string>
     <!-- Description of the unlock target in the Slide unlock screen. [CHAR LIMIT=NONE] -->
@@ -618,7 +621,4 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Screen-On Notification Light -->
     <string name="screen_on_notification_led_title">Screen-on notification light</string>
     <string name="screen_on_notification_led_summary">Enable notification light even when screen is on</string> 
-
-    <!-- Navigation bar glow time -->
-    <string name="navigation_button_glow_time_title">Navigation button glow time</string>
 </resources>
