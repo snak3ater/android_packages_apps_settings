@@ -67,28 +67,18 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
         Preference.OnPreferenceChangeListener, AdapterView.OnItemLongClickListener {
     private static final String TAG = "NotificationLightSettings";
 
-    private static final String NOTIFICATION_LIGHT_PULSE_DEFAULT_COLOR
-        = "notification_light_pulse_default_color";
-    private static final String NOTIFICATION_LIGHT_PULSE_DEFAULT_LED_ON
-        = "notification_light_pulse_default_led_on";
-    private static final String NOTIFICATION_LIGHT_PULSE_DEFAULT_LED_OFF
-        = "notification_light_pulse_default_led_off";
-    private static final String NOTIFICATION_LIGHT_PULSE_CUSTOM_ENABLE
-        = "notification_light_pulse_custom_enable";
-    private static final String NOTIFICATION_LIGHT_PULSE
-        = "notification_light_pulse";
-    private static final String NOTIFICATION_LIGHT_PULSE_CALL_COLOR
-        = "notification_light_pulse_call_color";
-    private static final String NOTIFICATION_LIGHT_PULSE_CALL_LED_ON
-        = "notification_light_pulse_call_led_on";
-    private static final String NOTIFICATION_LIGHT_PULSE_CALL_LED_OFF
-        = "notification_light_pulse_call_led_off";
-    private static final String NOTIFICATION_LIGHT_PULSE_VMAIL_COLOR
-        = "notification_light_pulse_vmail_color";
-    private static final String NOTIFICATION_LIGHT_PULSE_VMAIL_LED_ON
-        = "notification_light_pulse_vmail_led_on";
-    private static final String NOTIFICATION_LIGHT_PULSE_VMAIL_LED_OFF
-        = "notification_light_pulse_vmail_led_off";
+    private static final String NOTIFICATION_LIGHT_PULSE_DEFAULT_COLOR = "notification_light_pulse_default_color";
+    private static final String NOTIFICATION_LIGHT_PULSE_DEFAULT_LED_ON = "notification_light_pulse_default_led_on";
+    private static final String NOTIFICATION_LIGHT_PULSE_DEFAULT_LED_OFF = "notification_light_pulse_default_led_off";
+    private static final String NOTIFICATION_LIGHT_PULSE_CUSTOM_ENABLE = "notification_light_pulse_custom_enable";
+    private static final String NOTIFICATION_LIGHT_PULSE = "notification_light_pulse";
+    private static final String NOTIFICATION_LIGHT_PULSE_CALL_COLOR = "notification_light_pulse_call_color";
+    private static final String NOTIFICATION_LIGHT_PULSE_CALL_LED_ON = "notification_light_pulse_call_led_on";
+    private static final String NOTIFICATION_LIGHT_PULSE_CALL_LED_OFF = "notification_light_pulse_call_led_off";
+    private static final String NOTIFICATION_LIGHT_PULSE_VMAIL_COLOR = "notification_light_pulse_vmail_color";
+    private static final String NOTIFICATION_LIGHT_PULSE_VMAIL_LED_ON = "notification_light_pulse_vmail_led_on";
+    private static final String NOTIFICATION_LIGHT_PULSE_VMAIL_LED_OFF = "notification_light_pulse_vmail_led_off";
+    private static final String KEY_SCREEN_ON_NOTIFICATION_LED = "screen_on_notification_led";
 
     private static final String PULSE_PREF = "pulse_enabled";
     private static final String DEFAULT_PREF = "default";
@@ -107,6 +97,8 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
     private boolean mLightEnabled;
     private boolean mVoiceCapable;
     private PreferenceGroup mApplicationPrefList;
+    private CheckBoxPreference mScreenOnNotificationLed;
+
     private ApplicationLightPreference mDefaultPref;
     private ApplicationLightPreference mCallPref;
     private ApplicationLightPreference mVoicemailPref;
@@ -128,6 +120,12 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
                 com.android.internal.R.integer.config_defaultNotificationLedOn);
         mDefaultLedOff = resources.getInteger(
                 com.android.internal.R.integer.config_defaultNotificationLedOff);
+       
+	 mScreenOnNotificationLed = (CheckBoxPreference) findPreference(KEY_SCREEN_ON_NOTIFICATION_LED);
+        int screenOnNotificationLed = Settings.System.getInt(getContentResolver(),
+                Settings.System.SCREEN_ON_NOTIFICATION_LED, 0);
+        mScreenOnNotificationLed.setChecked(screenOnNotificationLed == 1);
+        mScreenOnNotificationLed.setOnPreferenceChangeListener(this);
 
         // Get launch-able applications
         mPackageManager = getPackageManager();
@@ -402,6 +400,7 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
     }
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
+
         String key = preference.getKey();
 
         if (PULSE_PREF.equals(key)) {
@@ -416,6 +415,12 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
             Settings.System.putInt(getContentResolver(), NOTIFICATION_LIGHT_PULSE_CUSTOM_ENABLE,
                     mCustomEnabled ? 1 : 0);
             setCustomEnabled();
+
+        } else if (preference == mScreenOnNotificationLed) {
+            boolean value = (Boolean) objValue;
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.SCREEN_ON_NOTIFICATION_LED, value ? 1 : 0);
+
         } else {
             ApplicationLightPreference tPref = (ApplicationLightPreference) preference;
             updateValues(key, tPref.getColor(), tPref.getOnValue(), tPref.getOffValue());
