@@ -29,6 +29,7 @@
             android:key="screen_on_notification_led"
             android:title="@string/screen_on_notification_led_title"
             android:summary="@string/screen_on_notification_led_summary"
+            android:dependency="pulse_enabled"
             android:persistent="false" />
 
         <com.android.settings.simpleaosp.notificationlight.ApplicationLightPreference
