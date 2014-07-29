@@ -587,12 +587,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Advanced options title -->
     <string name="advanced_title">Advanced</string>
 
-    <!-- Quickboot -->
-    <!-- Title of checkbox setting that enable quickboot. [CHAR LIMIT=32] -->
-    <string name="enable_quickboot_title">Enable QuickBoot mode</string>
-    <!-- Summary of checkbox setting that enable quickboot. [CHAR LIMIT=64] -->
-    <string name="enable_quickboot_summary">Put device into QuickBoot mode instead of normal power off</string>
-
     <!--App ops-->
     <string name="appops_settings_title">App ops</string>
 
