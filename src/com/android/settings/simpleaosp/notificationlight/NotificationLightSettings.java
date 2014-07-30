@@ -275,8 +275,6 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
                 }
             }
         }
-
-        mPackageAdapter.reloadList();
     }
 
     private void setCustomEnabled() {
