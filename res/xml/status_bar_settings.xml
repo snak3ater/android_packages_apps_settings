@@ -64,16 +64,17 @@
 	    android:summary="@string/status_bar_clock_summary"
             android:title="@string/status_bar_clock" />
 
+        <Preference
+            android:key="heads_up_enabled"
+            android:summary="@string/heads_up_summary"
+            android:fragment="com.android.settings.headsup.HeadsUpSettings"
+            android:title="@string/category_heads_up" />
+
 	<PreferenceScreen
             android:id="@+id/hover_settings"
             android:summary="@string/hover_summary"
             android:fragment="com.android.settings.simpleaosp.HoverSettings"
             android:title="@string/hover_settings_title" />
-
-        <Preference
-            android:key="heads_up_enabled"
-            android:fragment="com.android.settings.headsup.HeadsUpSettings"
-            android:title="@string/category_heads_up" />
 
         <ListPreference
             android:entries="@array/quick_pulldown_entries"
