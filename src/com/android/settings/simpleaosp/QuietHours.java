@@ -82,8 +82,8 @@ public class QuietHours extends SettingsPreferenceFragment implements
 
     private SwitchPreference mQuietHoursEnabled;
     private ListPreference mQuietHoursRinger;
-    private SystemCheckBoxPreference mQuietHoursDim;
-    private SystemCheckBoxPreference mRingtoneLoop;
+    private SystemSettingCheckBoxPreference mQuietHoursDim;
+    private SystemSettingCheckBoxPreference mRingtoneLoop;
     private ListPreference mAutoSms;
     private ListPreference mAutoSmsCall;
     private ListPreference mSmsBypass;
@@ -132,9 +132,9 @@ public class QuietHours extends SettingsPreferenceFragment implements
             mQuietHoursRinger =
                 (ListPreference) prefSet.findPreference(KEY_QUIET_HOURS_RINGER);
             mQuietHoursDim =
-                (SystemCheckBoxPreference) prefSet.findPreference(KEY_QUIET_HOURS_DIM);
+                (SystemSettingCheckBoxPreference) prefSet.findPreference(KEY_QUIET_HOURS_DIM);
             mRingtoneLoop =
-                (SystemCheckBoxPreference) prefSet.findPreference(KEY_LOOP_BYPASS_RINGTONE);
+                (SystemSettingCheckBoxPreference) prefSet.findPreference(KEY_LOOP_BYPASS_RINGTONE);
             mAutoSms =
                 (ListPreference) prefSet.findPreference(KEY_AUTO_SMS);
             mAutoSmsCall =

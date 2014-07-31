@@ -76,6 +76,13 @@ z     distributed under the License is distributed on an "AS IS" BASIS,
             android:dependency="quiet_hours_enabled" />
 
 	<com.android.settings.simpleaosp.SystemSettingCheckBoxPreference
+            android:key="quiet_hours_system"
+            android:title="@string/quiet_hours_system"
+            android:summaryOn="@string/quiet_hours_system_on"
+            android:summaryOff="@string/quiet_hours_system_off"
+            android:dependency="quiet_hours_enabled" />
+
+        <com.android.settings.simpleaosp.SystemSettingCheckBoxPreference
             android:key="quiet_hours_haptic"
             android:title="@string/quiet_hours_haptic"
             android:summaryOn="@string/quiet_hours_haptic_on"
