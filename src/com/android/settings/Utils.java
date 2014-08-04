@@ -616,6 +616,11 @@ public class Utils {
                 .getUsers().size() > 1;
     }
 
+    public static boolean isRestrictedProfile(Context context) {
+        UserManager um = (UserManager) context.getSystemService(Context.USER_SERVICE);
+        return um.getUserInfo(um.getUserHandle()).isRestricted();
+    }
+
     public static boolean isPackageInstalled(Context context, String pkg) {
         if (pkg == null) {
             return false;
