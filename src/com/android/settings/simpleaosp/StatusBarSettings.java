@@ -5,7 +5,6 @@ import android.content.ContentResolver;
 import android.content.res.Resources;
 import android.net.TrafficStats;
 import android.os.Bundle;
-import android.os.UserHandle;
 import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
@@ -22,7 +21,6 @@ import com.android.settings.Utils;
 public class StatusBarSettings extends SettingsPreferenceFragment implements
 OnPreferenceChangeListener {
 
-    private static final String QUICK_PULLDOWN = "quick_pulldown";
     private static final String STATUS_BAR_BRIGHTNESS_CONTROL = "status_bar_brightness_control";
     // Double-tap to sleep
     private static final String DOUBLE_TAP_SLEEP_GESTURE = "double_tap_sleep_gesture";
@@ -34,7 +32,6 @@ OnPreferenceChangeListener {
     private static final String KEY_HOVER_NOTIFICATONS = "hover_notifications";
     private static final String STATUS_BAR_NETWORK_ACTIVITY = "status_bar_network_activity";
 
-    private ListPreference mQuickPulldown;
     private CheckBoxPreference mStatusBarBrightnessControl;
     // Double-tap to sleep
     private CheckBoxPreference mStatusBarDoubleTapSleepGesture;
@@ -51,8 +48,6 @@ OnPreferenceChangeListener {
     private int MASK_UNIT;
     private int MASK_PERIOD;
 
-    private Preference mHeadsUp;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,8 +59,6 @@ OnPreferenceChangeListener {
         ContentResolver resolver = getActivity().getContentResolver();
 
         mhoverNotifications = (PreferenceScreen) prefSet.findPreference(KEY_HOVER_NOTIFICATONS);
-
-        mHeadsUp = findPreference(Settings.System.HEADS_UP_NOTIFICATION);
 
  	    // Notification Count
  	    mStatusBarNotifCount = (CheckBoxPreference) findPreference(STATUSBAR_NOTIF_COUNT);
@@ -109,15 +102,6 @@ OnPreferenceChangeListener {
             prefSet.removePreference(findPreference(NETWORK_TRAFFIC_PERIOD));
         }
 
-        // Quick Settings pull down
-        mQuickPulldown = (ListPreference) getPreferenceScreen().findPreference(QUICK_PULLDOWN);
-        mQuickPulldown.setOnPreferenceChangeListener(this);
-        int quickPulldownValue = Settings.System.getInt(getActivity().getApplicationContext()
-                .getContentResolver(),
-                Settings.System.QS_QUICK_PULLDOWN, 0);
-        mQuickPulldown.setValue(String.valueOf(quickPulldownValue));
-        mQuickPulldown.setSummary(mQuickPulldown.getEntry());
-
         // Status bar brightness control
         mStatusBarBrightnessControl = (CheckBoxPreference) getPreferenceScreen().findPreference(STATUS_BAR_BRIGHTNESS_CONTROL);
         mStatusBarBrightnessControl.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
@@ -131,10 +115,9 @@ OnPreferenceChangeListener {
         } catch (SettingNotFoundException e) {
         }
 
-        // don't show status bar brightnees and quick settings pull down control on tablet
+        // don't show status bar brightnees control on tablet
         if (Utils.isTablet(getActivity())) {
             getPreferenceScreen().removePreference(mStatusBarBrightnessControl);
-            getPreferenceScreen().removePreference(mQuickPulldown);
         }
 
         mStatusBarNetworkActivity = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_NETWORK_ACTIVITY);
@@ -147,13 +130,6 @@ OnPreferenceChangeListener {
 	if (preference == mStatusBarNotifCount) {
             Settings.System.putInt(getActivity().getContentResolver(), Settings.System.STATUSBAR_NOTIF_COUNT,
                     ((CheckBoxPreference)preference).isChecked() ? 0 : 1);
-            return true;
-        } else if (preference == mQuickPulldown) {
-            int quickPulldownValue = Integer.valueOf((String) objValue);
-            int quickPulldownIndex = mQuickPulldown.findIndexOfValue((String) objValue);
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.QS_QUICK_PULLDOWN, quickPulldownValue);
-            mQuickPulldown.setSummary(mQuickPulldown.getEntries()[quickPulldownIndex]);
             return true;
        } else if (preference == mNetTrafficState) {
             int intState = Integer.valueOf((String)objValue);
@@ -214,11 +190,6 @@ OnPreferenceChangeListener {
                 getContentResolver(), Settings.System.HOVER_STATE, 0) == 1;
         mhoverNotifications.setSummary(hoverEnabled
                 ? R.string.summary_hover_notifications_enabled : R.string.summary_hover_notifications_disabled);
-
-        boolean headsUpEnabled = Settings.System.getInt(
-                getContentResolver(), Settings.System.HEADS_UP_NOTIFICATION, 0) == 1;
-        mHeadsUp.setSummary(headsUpEnabled
-                ? R.string.summary_heads_up_enabled : R.string.summary_heads_up_disabled);
     }
 
 	 private void loadResources() {

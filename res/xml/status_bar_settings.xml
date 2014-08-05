@@ -75,13 +75,5 @@
             android:summary="@string/hover_summary"
             android:fragment="com.android.settings.simpleaosp.HoverSettings"
             android:title="@string/hover_settings_title" />
-
-        <ListPreference
-            android:entries="@array/quick_pulldown_entries"
-            android:entryValues="@array/quick_pulldown_values"
-            android:key="quick_pulldown"
-            android:persistent="false"
-            android:title="@string/quick_pulldown_title" />
-
     </PreferenceCategory>
 </PreferenceScreen>
