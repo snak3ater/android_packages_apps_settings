@@ -48,6 +48,8 @@ OnPreferenceChangeListener {
     private int MASK_UNIT;
     private int MASK_PERIOD;
 
+    private Preference mHeadsUp;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -59,6 +61,8 @@ OnPreferenceChangeListener {
         ContentResolver resolver = getActivity().getContentResolver();
 
         mhoverNotifications = (PreferenceScreen) prefSet.findPreference(KEY_HOVER_NOTIFICATONS);
+
+        mHeadsUp = findPreference(Settings.System.HEADS_UP_NOTIFICATION);
 
  	    // Notification Count
  	    mStatusBarNotifCount = (CheckBoxPreference) findPreference(STATUSBAR_NOTIF_COUNT);
@@ -190,6 +194,11 @@ OnPreferenceChangeListener {
                 getContentResolver(), Settings.System.HOVER_STATE, 0) == 1;
         mhoverNotifications.setSummary(hoverEnabled
                 ? R.string.summary_hover_notifications_enabled : R.string.summary_hover_notifications_disabled);
+
+ 	boolean headsUpEnabled = Settings.System.getInt(
+ 	getContentResolver(), Settings.System.HEADS_UP_NOTIFICATION, 0) == 1;
+ 	mHeadsUp.setSummary(headsUpEnabled
+ 	? R.string.summary_heads_up_enabled : R.string.summary_heads_up_disabled);
     }
 
 	 private void loadResources() {
