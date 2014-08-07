@@ -329,10 +329,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="status_bar_toggle_brightness_summary">Adjust brightness by sliding across status bar</string>
     <string name="status_bar_toggle_info">Automatic brightness must be disabled</string>
 
-    <!-- Safe headset volume restore checkbox -->
-    <string name="safe_headset_volume_title">Safe headset volume</string>
-    <string name="safe_headset_volume_summary">Prevent loud volume levels when headset is first plugged in</string>
-
     <!-- Display settings screen, notification light settings -->
     <string name="display_category_light_options_title">Lights</string>
     <string name="notification_light_title">Notification light</string>

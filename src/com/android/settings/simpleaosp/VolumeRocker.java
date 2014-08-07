@@ -16,12 +16,10 @@ public class VolumeRocker extends SettingsPreferenceFragment implements OnPrefer
     private static final String KEY_VOLUME_WAKE = "pref_volume_wake";
     private static final String KEY_VOLBTN_MUSIC_CTRL = "volbtn_music_controls";
     private static final String VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
-    private static final String KEY_SAFE_HEADSET_VOLUME = "safe_headset_volume";
 
     private CheckBoxPreference mVolumeWake;
     private CheckBoxPreference mVolBtnMusicCtrl;
     private ListPreference mVolumeKeyCursorControl;
-    private CheckBoxPreference mSafeHeadsetVolume;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,14 +42,6 @@ public class VolumeRocker extends SettingsPreferenceFragment implements OnPrefer
                     .getContentResolver(), Settings.System.VOLUME_KEY_CURSOR_CONTROL, 0)));
             mVolumeKeyCursorControl.setSummary(mVolumeKeyCursorControl.getEntry());
         }
-
-        // volume safe head set
-        mSafeHeadsetVolume = (CheckBoxPreference) findPreference(KEY_SAFE_HEADSET_VOLUME);
-        mSafeHeadsetVolume.setPersistent(false);
-        boolean safeMediaVolumeEnabled = getResources().getBoolean(
-                com.android.internal.R.bool.config_safe_media_volume_enabled);
-        mSafeHeadsetVolume.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.SAFE_HEADSET_VOLUME, safeMediaVolumeEnabled ? 1 : 0) != 0);
     }
 
     @Override
@@ -66,11 +56,6 @@ public class VolumeRocker extends SettingsPreferenceFragment implements OnPrefer
                     Settings.System.VOLBTN_MUSIC_CONTROLS,
                     mVolBtnMusicCtrl.isChecked()
                     ? 1 : 0);
-         } else if (preference == mSafeHeadsetVolume) {
-             Settings.System.putInt(getActivity().getContentResolver(),
-                     Settings.System.SAFE_HEADSET_VOLUME,
-                     mSafeHeadsetVolume.isChecked()
-                     ? 1 : 0);
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
