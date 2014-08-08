@@ -102,6 +102,8 @@ OnPreferenceChangeListener {
             if (intIndex <= 0) {
                 mNetTrafficUnit.setEnabled(false);
                 mNetTrafficPeriod.setEnabled(false);
+                mNetTrafficAutohide.setEnabled(false);
+                mNetTrafficAutohideThreshold.setEnabled(false);
             }
             mNetTrafficState.setValueIndex(intIndex >= 0 ? intIndex : 0);
             mNetTrafficState.setSummary(mNetTrafficState.getEntry());
