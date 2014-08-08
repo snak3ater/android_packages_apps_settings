@@ -13,6 +13,7 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
+import com.android.settings.chameleonos.SeekBarPreference;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -31,6 +32,8 @@ OnPreferenceChangeListener {
     private static final String NETWORK_TRAFFIC_PERIOD = "network_traffic_period";
     private static final String KEY_HOVER_NOTIFICATONS = "hover_notifications";
     private static final String STATUS_BAR_NETWORK_ACTIVITY = "status_bar_network_activity";
+    private static final String NETWORK_TRAFFIC_AUTOHIDE = "network_traffic_autohide";
+    private static final String NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD = "network_traffic_autohide_threshold";
 
     private CheckBoxPreference mStatusBarBrightnessControl;
     // Double-tap to sleep
@@ -41,6 +44,8 @@ OnPreferenceChangeListener {
     private ListPreference mNetTrafficPeriod;
     private PreferenceScreen mhoverNotifications;
     private CheckBoxPreference mStatusBarNetworkActivity;
+    private CheckBoxPreference mNetTrafficAutohide;
+    private SeekBarPreference mNetTrafficAutohideThreshold;
 
     private int mNetTrafficVal;
     private int MASK_UP;
@@ -77,6 +82,17 @@ OnPreferenceChangeListener {
         mNetTrafficUnit = (ListPreference) prefSet.findPreference(NETWORK_TRAFFIC_UNIT);
         mNetTrafficPeriod = (ListPreference) prefSet.findPreference(NETWORK_TRAFFIC_PERIOD);
 
+	mNetTrafficAutohide =
+	(CheckBoxPreference) prefSet.findPreference(NETWORK_TRAFFIC_AUTOHIDE);
+	mNetTrafficAutohide.setChecked((Settings.System.getInt(getContentResolver(),
+	Settings.System.NETWORK_TRAFFIC_AUTOHIDE, 0) == 1));
+	mNetTrafficAutohide.setOnPreferenceChangeListener(this);
+	mNetTrafficAutohideThreshold = (SeekBarPreference) prefSet.findPreference(NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD);
+	int netTrafficAutohideThreshold = Settings.System.getInt(resolver,
+	Settings.System.NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD, 10);
+	mNetTrafficAutohideThreshold.setValue(netTrafficAutohideThreshold / 1);
+	mNetTrafficAutohideThreshold.setOnPreferenceChangeListener(this);
+
         // TrafficStats will return UNSUPPORTED if the device does not support it.
         if (TrafficStats.getTotalTxBytes() != TrafficStats.UNSUPPORTED &&
                 TrafficStats.getTotalRxBytes() != TrafficStats.UNSUPPORTED) {
@@ -104,6 +120,8 @@ OnPreferenceChangeListener {
             prefSet.removePreference(findPreference(NETWORK_TRAFFIC_STATE));
             prefSet.removePreference(findPreference(NETWORK_TRAFFIC_UNIT));
             prefSet.removePreference(findPreference(NETWORK_TRAFFIC_PERIOD));
+	    prefSet.removePreference(findPreference(NETWORK_TRAFFIC_AUTOHIDE));
+	    prefSet.removePreference(findPreference(NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD));
         }
 
         // Status bar brightness control
@@ -145,9 +163,13 @@ OnPreferenceChangeListener {
             if (intState == 0) {
                 mNetTrafficUnit.setEnabled(false);
                 mNetTrafficPeriod.setEnabled(false);
+		mNetTrafficAutohide.setEnabled(false);
+		mNetTrafficAutohideThreshold.setEnabled(false);
             } else {
                 mNetTrafficUnit.setEnabled(true);
                 mNetTrafficPeriod.setEnabled(true);
+		mNetTrafficAutohide.setEnabled(true);
+		mNetTrafficAutohideThreshold.setEnabled(true);
             }
         } else if (preference == mNetTrafficUnit) {
             // 1 = Display as Byte/s; default is bit/s
@@ -160,7 +182,15 @@ OnPreferenceChangeListener {
             mNetTrafficVal = setBit(mNetTrafficVal, MASK_PERIOD, false) + (intState << 16);
             Settings.System.putInt(getActivity().getContentResolver(), Settings.System.NETWORK_TRAFFIC_STATE, mNetTrafficVal);
             int index = mNetTrafficPeriod.findIndexOfValue((String) objValue);
-            mNetTrafficPeriod.setSummary(mNetTrafficPeriod.getEntries()[index]);      
+            mNetTrafficPeriod.setSummary(mNetTrafficPeriod.getEntries()[index]);
+	} else if (preference == mNetTrafficAutohide) {
+	boolean value = (Boolean) objValue;
+	Settings.System.putInt(getActivity().getContentResolver(), Settings.System.NETWORK_TRAFFIC_AUTOHIDE,
+	value ? 1 : 0);
+	} else if (preference == mNetTrafficAutohideThreshold) {
+	int netTrafficAutohideThreshold = (Integer) objValue;
+	Settings.System.putInt(getContentResolver(),
+	Settings.System.NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD, netTrafficAutohideThreshold * 1);
         } else if (preference == mStatusBarNetworkActivity) {
             boolean value = (Boolean) objValue;
             Settings.System.putInt(getActivity().getContentResolver(), Settings.System.STATUS_BAR_NETWORK_ACTIVITY, value ? 1 : 0);
