@@ -463,8 +463,8 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="hover_exclude_low_priority_summary">Exclude notifications marked as low priority</string>
     <string name="hover_exclude_non_clearable_title">Exclude non-clearable</string>
     <string name="hover_exclude_non_clearable_summary">Exclude not dismissable notifications</string>
-    <string name="hover_summary">Customize hover notifications</string>
-    <string name="hover_disabled_notice">Enable hover notifications.</string>
+    <string name="hover_summary">Enable and customize hover notifications</string>
+    <string name="hover_disabled_notice">To allow applications to display interactive notifications in a window that appears below your status bar, enable hover.</string>
     <string name="hover_notifications">Hover notifications</string>
     <string name="summary_hover_notifications_enabled">Hover notifications are enabled</string>
     <string name="summary_hover_notifications_disabled">Hover notifications are disabled</string>
