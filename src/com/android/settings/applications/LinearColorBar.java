@@ -14,6 +14,7 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.widget.LinearLayout;
+
 import com.android.settings.R;
 
 public class LinearColorBar extends LinearLayout {

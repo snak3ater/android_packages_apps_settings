@@ -25,6 +25,17 @@
     <color name="data_usage_sweep_warning_label_color">#f7931d</color>
     <color name="data_usage_sweep_limit_label_color">#c01a2c</color>
 
+    <color name="linear_color_bar_left_color">#ff0099cc</color>
+    <color name="linear_color_bar_middle_color">#ff0099cc</color>
+    <color name="linear_color_bar_right_color">#ff888888</color>
+    <color name="linear_color_bar_gray_color">#ff555555</color>
+    <color name="linear_color_bar_white_color">#ffffffff</color>
+
+    <color name="auto_brightness_preview_background">@android:color/black</color>
+    <color name="auto_brightness_preview_foreground">@android:color/white</color>
+    <color name="auto_brightness_preview_markers">@android:color/holo_blue_light</color>
+    <color name="auto_brightness_preview_grid">#44ffffff</color>
+
     <!-- Lockscreen themeable colors -->
     <color name="card_lockscreen_targets">@android:color/holo_blue_light</color>
     <color name="card_lockscreen_targets_text_color">@android:color/white</color>
