@@ -57,4 +57,3 @@
             android:dependency="notification_peek" />
 	</PreferenceCategory>
 </PreferenceScreen>
-

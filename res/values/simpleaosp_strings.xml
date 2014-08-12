@@ -507,9 +507,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Sound settings, charging sounds label for ringtone == none -->
     <string name="power_notifications_ringtone_silent">Silent</string>
 
-    <!-- Advanced options title -->
-    <string name="advanced_title">Advanced</string>
-
     <!--App ops-->
     <string name="appops_settings_title">App ops</string>
 

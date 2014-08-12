@@ -116,14 +116,8 @@
         android:title="@string/dock_sounds_enable_title"
         android:defaultValue="false" />
 
-    <!-- Advanced sound settings -->
-    <PreferenceCategory
-            android:title="@string/advanced_title"
-            android:key="sound_advanced_category">
-
     <PreferenceScreen
             android:key="volume_rocker_settings"
             android:fragment="com.android.settings.simpleaosp.VolumeRocker"
             android:title="@string/volume_rocker_category_title" />
-    </PreferenceCategory>
 </PreferenceScreen>
