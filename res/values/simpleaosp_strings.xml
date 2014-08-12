@@ -558,9 +558,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="increasing_ring_interval_5seconds">5 seconds</string>
     <string name="increasing_ring_interval_10seconds">10 seconds</string>
 
-    <!-- Lockscreen widgets -->
-    <string name="security_maximize_widgets_title">Maximize lockscreen widgets</string>
-
     <!-- Low battery warning policy -->
     <string name="low_battery_warning_policy_title">Low battery warning</string>
     <string name="low_battery_warning_policy_popup_sound">Pop-up and sound</string>
