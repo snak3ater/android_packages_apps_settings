@@ -40,6 +40,7 @@
     <string name="navring_action_google_now">Google Now</string>
     <string name="navring_choose_action_title">Choose action</string>
     <string name="navring_action_last_app">Switch to last app</string>
+    <string name="navring_action_power_menu">Power menu</string>
 
     <!-- Navigation bar glow time -->
     <string name="navigation_button_glow_time_title">Button glow time</string>
