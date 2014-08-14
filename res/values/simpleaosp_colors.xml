@@ -42,4 +42,9 @@
 
     <!-- Pager tab strip themeable colors -->
     <color name="pager_tab_strip_apps">@android:color/holo_blue_light</color>
+
+    <!-- QuietHours -->
+    <color name="holo_bright">#ffCCCCCC</color>
+    <color name="holo_light">#ff999999</color>
+    <color name="white">#FFF</color>
 </resources>
