@@ -250,6 +250,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Smooth Progessbar -->
     <string name="progressbar_title">Progress bar</string>
+    <string name="progressbar_summary">View or change progress bar animations and color</string>
     <string name="progressbar_category_title">Progress bar customization options</string>
     <string name="progressbar_mirror_title">Mirror Mode</string>
     <string name="progressbar_reverse_title">Reversed</string>
@@ -706,4 +707,5 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="overscroll_summary">Choose how scrollable objects look when they overshoot</string>
     <string name="overscroll_weight_title">Over scrolling weight</string>
     <string name="overscroll_weight_summary">Select the weight of the scrollable objects</string>
+    <string name="anim_settings_title">Animations</string>
 </resources>
