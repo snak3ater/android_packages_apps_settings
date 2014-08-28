@@ -604,14 +604,6 @@ public class Settings extends PreferenceActivity
                             PackageManager.FEATURE_NFC_HOST_CARD_EMULATION)) {
                         target.remove(i);
                     }
-                }
-            } else if (id == R.id.development_settings) {
-                if (!showDev) {
-                    target.remove(i);
-                }
-            } else if (id == R.id.account_add) {
-                if (um.hasUserRestriction(UserManager.DISALLOW_MODIFY_ACCOUNTS)) {
-                    target.remove(i);
                 }  
             } else if (id == R.id.supersu_settings) {
                 // Embedding into Settings is supported from SuperSU v1.85 and up
@@ -621,23 +613,32 @@ public class Settings extends PreferenceActivity
                 } catch (PackageManager.NameNotFoundException e) {
                 }
                 if (!supported) {
-                   //remove SuperSU header
+                    //remove SuperSU header
                     target.remove(i);
                 }
             } else if (id == R.id.superuser) {
-                boolean supported = false;
-                try {
-                    supported = (getPackageManager().getPackageInfo("eu.chainfire.supersu", 0).versionCode >= 185);
-                } catch (PackageManager.NameNotFoundException e) {
-                }
-                if (supported) {
-                    //SuperSu is installed and embeddable, so remove SuperUser header 
-                    target.remove(i);
-                }
                 if (!DevelopmentSettings.isRootForAppsEnabled()) {
                     target.remove(i);
+                } else {
+                    boolean supported = false;
+                    try {
+                        supported = (getPackageManager().getPackageInfo("eu.chainfire.supersu", 0).versionCode >= 185);
+                    } catch (PackageManager.NameNotFoundException e) {
+                    }
+                    if (supported) {
+                        //SuperSu is installed and embeddable, so remove SuperUser header 
+                        target.remove(i);
+                    }
                 }
-            }
+             } else if (id == R.id.development_settings) {
+                if (!showDev) {
+                    target.remove(i);
+                }
+             } else if (id == R.id.account_add) {
+                if (um.hasUserRestriction(UserManager.DISALLOW_MODIFY_ACCOUNTS)) {
+                    target.remove(i);
+                }
+            } 
 
             if (i < target.size() && target.get(i) == header
                     && UserHandle.MU_ENABLED && UserHandle.myUserId() != 0
