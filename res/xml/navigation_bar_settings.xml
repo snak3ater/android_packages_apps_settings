@@ -7,6 +7,7 @@
 	<PreferenceScreen
         android:fragment="com.android.settings.simpleaosp.NavBar"
         android:key="navigation_bar"
+        android:summary="@string/navigation_bar_summary"
         android:title="@string/navigation_bar_button_title" />
 
     <PreferenceScreen
