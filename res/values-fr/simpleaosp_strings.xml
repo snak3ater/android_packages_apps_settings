@@ -334,7 +334,7 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <string name="notification_light_phonelist_title">Téléphone</string>
     <string name="notification_light_use_custom">Utiliser des valeurs personnalisées</string>
     <string name="enabled">Activé</string>
-    <string name="notification_light_default_value"> Par Défaut</string>
+    <string name="notification_light_default_value">Par Défaut</string>
     <string name="notification_light_missed_call_title">Appels manqués</string>
     <string name="notification_light_voicemail_title">Messagerie vocale</string>
     <string name="notification_light_choose_app">Choisir une application</string>
@@ -377,20 +377,20 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <string name="profile_choose_app">Choisir l\'application</string>
 
     <!-- Profiles settings -->
-    <string name="profiles_settings_title">Profiles</string>
-    <string name="profiles_general_title">General</string>
-    <string name="profiles_add">Add</string>
-    <string name="profile_menu_delete">Delete</string>
-    <string name="profile_settings_title">Profile</string>
-    <string name="profile_empty_list_profiles_off">To configure and use system profiles, turn profiles on</string>
+    <string name="profiles_settings_title">Profils</string>
+    <string name="profiles_general_title">Général</string>
+    <string name="profiles_add">Ajouter</string>
+    <string name="profile_menu_delete">Supprimer</string>
+    <string name="profile_settings_title">Profil</string>
+    <string name="profile_empty_list_profiles_off">Pour configurer et utiliser le système de profils, activer les profils</string>
 
     <!-- Add Profile -->
-    <string name="add_profile_dialog_title">Create new profile</string>
-    <string name="profile_name_title">Name</string>
-    <string name="profile_profile_name_prompt">Enter a name for the new profile</string>
-    <string name="menu_new_profile">New profile</string>
-    <string name="menu_new_profile_summary">Add and configure a new profile</string>
-    <string name="new_profile_name">\u003Cnew profile\u003E</string>
+    <string name="add_profile_dialog_title">Créer un nouveau profil</string>
+    <string name="profile_name_title">Nom</string>
+    <string name="profile_profile_name_prompt">Entrer un nom pour le nouveau profil</string>
+    <string name="menu_new_profile">Nouveau profil</string>
+    <string name="menu_new_profile_summary">Ajouter ou configurer le nouveau profil</string>
+    <string name="new_profile_name">\u003Cnew profil\u003E</string>
 
     <!-- Reset Profiles -->
     <string name="profile_reset_title">réinitialiser</string>
@@ -408,45 +408,45 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <string name="notification_category">Notifications</string>
 
     <!--Notification peek-->
-    <string name="notification_peek_title">Notification peek</string>
-    <string name="notification_peek_summary">Show latest notification after picking up your device</string>
-    <string name="peek_pickup_timeout_title">Peek pickup timeout</string>
-    <string name="peek_pickup_10seconds">10 seconds (default)</string>
-    <string name="peek_pickup_30seconds">30 seconds</string>
-    <string name="peek_pickup_45seconds">45 seconds</string>
+    <string name="notification_peek_title">Notification Peek</string>
+    <string name="notification_peek_summary">Afficher la dernière notification après avoir pris votre appareil</string>
+    <string name="peek_pickup_timeout_title">Délai de récupération Peek</string>
+    <string name="peek_pickup_10seconds">10 secondes (par défaut)</string>
+    <string name="peek_pickup_30seconds">30 secondes</string>
+    <string name="peek_pickup_45seconds">45 secondes</string>
     <string name="peek_pickup_60seconds">1 minute</string>
     <string name="peek_pickup_120seconds">2 minutes</string>
-    <string name="peek_wake_timeout_title">Peek wake timeout</string>
-    <string name="peek_wake_3seconds">3 seconds</string>
-    <string name="peek_wake_5seconds">5 seconds (default)</string>
-    <string name="peek_wake_10seconds">10 seconds</string>
-    <string name="peek_wake_20seconds">20 seconds</string>
-    <string name="peek_wake_30seconds">30 seconds</string>
+    <string name="peek_wake_timeout_title">Délai de réveil Peek</string>
+    <string name="peek_wake_3seconds">3 secondes</string>
+    <string name="peek_wake_5seconds">5 secondes (par défaut)</string>
+    <string name="peek_wake_10seconds">10 secondes</string>
+    <string name="peek_wake_20seconds">20 secondes</string>
+    <string name="peek_wake_30seconds">30 secondes</string>
 
     <!--Blacklist-->
-    <string name="blacklist_button_title">Blacklist</string>
-    <string name="peek_blacklist_label">Blacklist from peek</string>
-    <string name="floating_blacklist_label">Blacklist from floating-mode</string>
-    <string name="hover_blacklist_label">Blacklist from hover</string>
+    <string name="blacklist_button_title">Liste noire</string>
+    <string name="peek_blacklist_label">Liste noire de Peek</string>
+    <string name="floating_blacklist_label">Liste noire du mode flottant</string>
+    <string name="hover_blacklist_label">Liste noire du Hover</string>
 
     <!-- Whether to display the IME switcher notifcation -->
-    <string name="ime_switcher_notify">Selector notification</string>
-    <string name="ime_switcher_notify_summary">Display input method selector notification</string>
+    <string name="ime_switcher_notify">Notification du sélecteur de clavier</string>
+    <string name="ime_switcher_notify_summary">Afficher la notification du sélecteur de clavier</string>
 
     <!-- Protected apps -->
-    <string name="menu_hidden_apps_delete">Reset</string>
-    <string name="menu_hidden_apps_reset_lock">Reset pattern lock</string>
-    <string name="protected_apps">Protected apps</string>
-    <string name="saving_protected_components">Saving component state</string>
+    <string name="menu_hidden_apps_delete">Réinitialiser</string>
+    <string name="menu_hidden_apps_reset_lock">Réinitialiser le schéma de déverrouillage</string>
+    <string name="protected_apps">Protection des applications</string>
+    <string name="saving_protected_components">Sauvegarde de l\'état des éléments</string>
 
     <!-- Protected apps lockpattern reset button -->
-    <string name="lockpattern_reset_button">Reset pattern</string>
-    <string name="lockpattern_settings_reset_summary">Enter primary email account and associated password to reset pattern lock</string>
-    <string name="pa_login_username_hint">Username (email)</string>
-    <string name="pa_login_password_hint">Password</string>
-    <string name="pa_login_submit_button">Sign in</string>
-    <string name="pa_login_checking_password">Checking account\u2026</string>
-    <string name="pa_login_incorrect_login">Login was incorrect</string>
+    <string name="lockpattern_reset_button">Réinitialiser le schéma</string>
+    <string name="lockpattern_settings_reset_summary">Entrer le compte e-mail principal et le mot de passe associé pour réinitialiser verrouillage</string>
+    <string name="pa_login_username_hint">Nom d\'utilisateur (Email)</string>
+    <string name="pa_login_password_hint">Mot de passe</string>
+    <string name="pa_login_submit_button">Se connecter</string>
+    <string name="pa_login_checking_password">Vérification du compte\u2026</string>
+    <string name="pa_login_incorrect_login">Mot de passe incorrect</string>
 
     <!-- Status Bar Activity Indicators -->
     <string name="show_activity_indicators_on_status_bar_title">Indicateur d\'activité réseau</string>
@@ -531,17 +531,17 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
 
     <!-- Hover -->
     <string name="hover_settings_title">Hover</string>
-    <string name="hover_require_fullscreen_mode_title">Require fullscreen-mode</string>
-    <string name="hover_require_fullscreen_mode_summary">Only show up when status bar is hidden</string>
-    <string name="hover_exclude_low_priority_title">Exclude low priority</string>
-    <string name="hover_exclude_low_priority_summary">Exclude notifications marked as low priority</string>
-    <string name="hover_exclude_non_clearable_title">Exclude non-clearable</string>
-    <string name="hover_exclude_non_clearable_summary">Exclude not dismissable notifications</string>
-    <string name="hover_summary">Enable and customize hover notifications</string>
-    <string name="hover_disabled_notice">To allow applications to display interactive notifications in a window that appears below your status bar, enable hover.</string>
-    <string name="hover_notifications">Hover notifications</string>
-    <string name="summary_hover_notifications_enabled">Hover notifications are enabled</string>
-    <string name="summary_hover_notifications_disabled">Hover notifications are disabled</string>
+    <string name="hover_require_fullscreen_mode_title">Nécessite le mode plein écran</string>
+    <string name="hover_require_fullscreen_mode_summary">Apparaît seulement lorsque la barre de statut est cachée</string>
+    <string name="hover_exclude_low_priority_title">Exclure les basses priorités</string>
+    <string name="hover_exclude_low_priority_summary">Exclure les notifications marqués comme basse priorité</string>
+    <string name="hover_exclude_non_clearable_title">Exclure les non-effaçable</string>
+    <string name="hover_exclude_non_clearable_summary">Exclure les notifications non rejetable</string>
+    <string name="hover_summary">Activer et personnaliser les notifications Hover</string>
+    <string name="hover_disabled_notice">Pour permettre aux applications d\'afficher des notifications interactives dans une fenêtre qui apparaît en dessous de votre barre de statut, activer hover.</string>
+    <string name="hover_notifications">Notifications Hover</string>
+    <string name="summary_hover_notifications_enabled">Les notifications Hover sont activées</string>
+    <string name="summary_hover_notifications_disabled">Les notifications Hover sont désactivées</string>
 
     <!-- Hover long fade out delay -->
     <string name="hover_long_fadeout_title">Temps de notification Hover</string>
@@ -552,179 +552,179 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <string name="hover_long_fadeout_15seconds">15 secondes</string>
 
     <!-- Hover exclude topmost app -->
-    <string name="hover_exclude_topmost_title">Exclude topmost app</string>
-    <string name="hover_exclude_topmost_summary">Exclude notifications from the app running in foreground</string>
+    <string name="hover_exclude_topmost_title">Exclure l\'application en cours d\'exécution</string>
+    <string name="hover_exclude_topmost_summary">Exclure les notifications de l\'application en cours d\'exécution au premier plan</string>
 
      <!-- Hover no notif in insecure lockscreen -->
-    <string name="hover_exclude_from_insecure_lock_screen_title">Exclude insecure lockscreen</string>
-    <string name="hover_exclude_from_insecure_lock_screen_summary">Check to exclude hover notifications from insecure lockscreen</string>
+    <string name="hover_exclude_from_insecure_lock_screen_title">Exclure l\'écran de verrouillage non sécurisé</string>
+    <string name="hover_exclude_from_insecure_lock_screen_summary">Vérifiez d\'exclure les notifications hover de l\'écran de verrouillage non sécurisé</string>
 
     <!--  Plug-in prompt -->
-    <string name="plug_in_prompt_settings_title">Plug-in prompt</string>
+    <string name="plug_in_prompt_settings_title">Branchement / débranchement rapide</string>
 
     <!-- Turn on display when power connected; turn off display when power disconnected -->
-    <string name="wake_when_plugged_or_unplugged_title">Wake on plug</string>
-    <string name="wake_when_plugged_or_unplugged_summary">Turn the screen on when plugged/unplugged</string>
+    <string name="wake_when_plugged_or_unplugged_title">Réveil par le connecteur</string>
+    <string name="wake_when_plugged_or_unplugged_summary">Allume l\'écran lorsqu\'il est branché / débranché</string>
 
     <!-- Sound settings, Charging sounds enable/disable, setting check box label -->
-    <string name="power_notifications_enable_title">Enable sound/vibration</string>
-    <string name="power_notifications_enable_summary">Play a sound/vibrate when plugged/unplugged</string>
+    <string name="power_notifications_enable_title">Activer sons/vibreur</string>
+    <string name="power_notifications_enable_summary">Jouer un sons/vibreur lorsqu\'il est branché / débranché</string>
     <!-- Sound settings, Charging sounds vibrate enable/disable, setting check box label -->
-    <string name="power_notifications_vibrate_title">Vibrate</string>
+    <string name="power_notifications_vibrate_title">Vibreur</string>
     <!-- Sound settings, Charging sounds ringtone selection, preference label -->
-    <string name="power_notifications_ringtone_title">Notification sound</string>
+    <string name="power_notifications_ringtone_title">Son de notification</string>
     <!-- Sound settings, charging sounds label for ringtone == none -->
-    <string name="power_notifications_ringtone_silent">Silent</string>
+    <string name="power_notifications_ringtone_silent">Silencieux</string>
 
     <!--App ops-->
-    <string name="appops_settings_title">App ops</string>
+    <string name="appops_settings_title">Autorisations des applications</string>
 
     <!--User preferences settings-->
-    <string name="personalization">Personalization</string>
-    <string name="reset_user_preferences_title">Reset preferences</string>
-    <string name="reset_user_preferences_summary">Restores user interface preferences to default values</string>
-    <string name="reset_user_preferences_dialog">Are you sure you want to reset your preferences?</string>
+    <string name="personalization">Personnalisations</string>
+    <string name="reset_user_preferences_title">Réinitialiser les préférences</string>
+    <string name="reset_user_preferences_summary">Restaure l\'interface utilisateur des préférences aux valeurs par défaut</string>
+    <string name="reset_user_preferences_dialog">Etes-vous sûr de vouloir réinitialiser vos préférences ?</string>
 
     <!-- Network traffic -->
-    <string name="network_traffic_title">Network traffic</string>
-    <string name="show_network_traffic_state">Status bar traffic monitor</string>
-    <string name="network_traffic_summary">Enable various network traffic options in statusbar</string>
-    <string name="show_network_traffic_unit">Display unit</string>
-    <string name="show_network_traffic_frequency">Update interval</string>
-    <string name="show_network_traffic_disable">Disabled</string>
-    <string name="show_network_traffic_up">Outgoing</string>
-    <string name="show_network_traffic_down">Incoming</string>
-    <string name="show_network_traffic_all">Outgoing and incoming</string>
-    <string name="show_network_traffic_bit">Bits per second</string>
-    <string name="show_network_traffic_byte">Bytes per second</string>
+    <string name="network_traffic_title">Trafic réseau</string>
+    <string name="show_network_traffic_state">Surveillance du trafic dans la barre de statut</string>
+    <string name="network_traffic_summary">Activer les diverses options du trafic réseau dans barre de statut</string>
+    <string name="show_network_traffic_unit">Unité d\'affichage</string>
+    <string name="show_network_traffic_frequency">Intervalle de mise à jour</string>
+    <string name="show_network_traffic_disable">Désactiver</string>
+    <string name="show_network_traffic_up">Sortant</string>
+    <string name="show_network_traffic_down">Entrant</string>
+    <string name="show_network_traffic_all">Sortant et entrant</string>
+    <string name="show_network_traffic_bit">Bits par seconde</string>
+    <string name="show_network_traffic_byte">Bytes par seconde</string>
     <string name="show_network_traffic_500">500 ms</string>
     <string name="show_network_traffic_1000">1000 ms</string>
     <string name="show_network_traffic_1500">1500 ms</string>
     <string name="show_network_traffic_2000">2000 ms</string>
-    <string name="network_traffic_autohide">Auto hide</string>
-    <string name="network_traffic_autohide_summary">Hide the traffic monitor when there is no activity</string>
-    <string name="network_traffic_autohide_threshold">Inactivity threshold</string>
-    <string name="network_traffic_color_style">Color style</string>
-    <string name="network_traffic_color_reset">Reset color</string>
-    <string name="network_traffic_color_reset_message">Reset network traffic color to default?</string>
+    <string name="network_traffic_autohide">Masquer automatiquement</string>
+    <string name="network_traffic_autohide_summary">Masquer le moniteur de trafic quand il n\'y a pas d\'activité</string>
+    <string name="network_traffic_autohide_threshold">Seuil d\'inactivité</string>
+    <string name="network_traffic_color_style">Style de couleur</string>
+    <string name="network_traffic_color_reset">Réinitialiser la couleur</string>
+    <string name="network_traffic_color_reset_message">Réinitialiser la couleur du trafic du réseau par défaut ?</string>
    
     <!--  development shortcut -->
-    <string name="development_shortcut_title">Development shortcut</string>
-    <string name="development_shortcut_summary">Enable \'wipe data\' and \'force close\' options in notification area and recent apps list</string>
+    <string name="development_shortcut_title">Raccourci de développement</string>
+    <string name="development_shortcut_summary">Activer \'effacer les données \' et \'Forcer la fermeture \' options dans la zone de notification et la liste récente des applications</string>
 
-    <string name="increasing_ring_title">Ascending ringtone</string>
+    <string name="increasing_ring_title">Sonnerie progressive</string>
     <!-- Sound settings screen, the caption of the checkbox for making incoming calls increase in volume -->
-    <string name="checkbox_increasing_ring">Enable</string>
+    <string name="checkbox_increasing_ring">Activer</string>
     <!-- Sound settings screen, the title of the volume bar to adjust the minimum increasing ring volume -->
-    <string name="increasing_ring_min_volume_title">Ringing start volume</string>
-    <string name="increasing_ring_volume_notice">Notice:\nAs the start volume is set higher than the ringer volume, the ring tone will be played using the ringer volume.</string>
-    <string name="increasing_ring_interval_title">Increase interval</string>
-    <string name="increasing_ring_interval_eachring">On each ring</string>
-    <string name="increasing_ring_interval_half_second">0.5 seconds</string>
-    <string name="increasing_ring_interval_1second">1 second</string>
-    <string name="increasing_ring_interval_2seconds">2 seconds</string>
-    <string name="increasing_ring_interval_3seconds">3 seconds</string>
-    <string name="increasing_ring_interval_5seconds">5 seconds</string>
-    <string name="increasing_ring_interval_10seconds">10 seconds</string>
+    <string name="increasing_ring_min_volume_title">Le volume de départ de la sonnerie</string>
+    <string name="increasing_ring_volume_notice">Indication: \ nComme le volume de démarrage est plus élevé que le volume de la sonnerie, la sonnerie sera jouée avec le volume de la sonnerie.</string>
+    <string name="increasing_ring_interval_title">Allongement de l\'intervalle</string>
+    <string name="increasing_ring_interval_eachring">Entre chaque sonnerie</string>
+    <string name="increasing_ring_interval_half_second">0.5 secondes</string>
+    <string name="increasing_ring_interval_1second">1 seconde</string>
+    <string name="increasing_ring_interval_2seconds">2 secondes</string>
+    <string name="increasing_ring_interval_3seconds">3 secondes</string>
+    <string name="increasing_ring_interval_5seconds">5 secondes</string>
+    <string name="increasing_ring_interval_10seconds">10 secondes</string>
 
     <!-- Low battery warning policy -->
-    <string name="low_battery_warning_policy_title">Low battery warning</string>
-    <string name="low_battery_warning_policy_popup_sound">Pop-up and sound</string>
-    <string name="low_battery_warning_policy_notif_sound">Notification and sound</string>
-    <string name="low_battery_warning_policy_popup">Pop-up dialog only</string>
-    <string name="low_battery_warning_policy_notif">Notification only</string>
-    <string name="low_battery_warning_policy_sound">Sound only</string>
+    <string name="low_battery_warning_policy_title">Avertissement de batterie faible</string>
+    <string name="low_battery_warning_policy_popup_sound">Boîte de dialogue et son</string>
+    <string name="low_battery_warning_policy_notif_sound">Notification et son</string>
+    <string name="low_battery_warning_policy_popup">Boîte de dialogue contextuelle seulement</string>
+    <string name="low_battery_warning_policy_notif">notification uniquement</string>
+    <string name="low_battery_warning_policy_sound">Son uniquement</string>
 
     <!-- Lockscreen widget settings -->
     <string name="lockscreen_widgets_title">Widgets</string>
-    <string name="lockscreen_camera_widget_title">Enable camera widget</string>
-    <string name="lockscreen_camera_widget_summary">Show secure camera widget on the lock screen</string>
-    <string name="lockscreen_maximize_widgets_title">Start maximized</string>
-    <string name="lockscreen_maximize_widgets_summary">Show widget maximized when screen turned on</string>
-    <string name="lockscreen_disable_hints_title">Disable initial page hints</string>
-    <string name="lockscreen_disable_hints_summary">Disables the glow on the edges that surrounds the widget pager on lock screen in portrait mode</string>
-    <string name="lockscreen_use_widget_container_carousel_title">Enable portrait widget carousel</string>
-    <string name="lockscreen_use_widget_container_carousel_summary">Use carousel animation in portrait when switching between lock screen widgets</string>
-    <string name="lockscreen_widget_frame_title">Disable widget frames</string>
-    <string name="lockscreen_widget_frame_summary">Disable widget background frames</string>
-
+    <string name="lockscreen_camera_widget_title">Activer le widget appareil photo</string>
+    <string name="lockscreen_camera_widget_summary">Affiche le widget appareil photo sécurisé sur l\'écran de verrouillage.</string>
+    <string name="lockscreen_maximize_widgets_title">Démarrer maximisé</string>
+    <string name="lockscreen_maximize_widgets_summary">Affiche les widgets maximisé quand l\'écran s\'allume.</string>
+    <string name="lockscreen_disable_hints_title">Désactiver les suggestions</string>
+    <string name="lockscreen_disable_hints_summary">Désactive le halo qui entoure les widgets sur l\'écran de verrouillage en mode portrait.</string>
+    <string name="lockscreen_use_widget_container_carousel_title">Activer le caroussel</string>
+    <string name="lockscreen_use_widget_container_carousel_summary">Utilise l\'animation caroussel en mode portrait lors du défilement des widgets.</string>
+    <string name="lockscreen_widget_frame_title">Désactiver le cadre des widgets</string>
+    <string name="lockscreen_widget_frame_summary">Désactive le cadre de fond des widgets.</string>
+	
     <!-- Display : Rotation -->
     <string name="display_rotation_title">Rotation</string>
-    <string name="display_rotation_disabled">Disabled</string>
-    <string name="display_rotation_unit">degrees</string>
-    <string name="display_rotation_category_title">Rotation modes</string>
-    <string name="display_rotation_0_title">0 degrees</string>
-    <string name="display_rotation_90_title">90 degrees</string>
-    <string name="display_rotation_180_title">180 degrees</string>
-    <string name="display_rotation_270_title">270 degrees</string>
+    <string name="display_rotation_disabled">Désactivée</string>
+    <string name="display_rotation_unit">degrés</string>
+    <string name="display_rotation_category_title">Modes de rotation</string>
+    <string name="display_rotation_0_title">0 degré</string>
+    <string name="display_rotation_90_title">90 degrés</string>
+    <string name="display_rotation_180_title">180 degrés</string>
+    <string name="display_rotation_270_title">270 degrés</string>
 
     <!-- Hostname setting -->
-    <string name="device_hostname">Device hostname</string>
+    <string name="device_hostname">Nom d\'hôte de l\'appareil</string>
 
     <!-- Blacklist preferences -->
-    <string name="blacklist_title">Blacklist</string>
-    <string name="blacklist_settings_title">Blacklist management</string>
-    <string name="blacklist_edit_dialog_title">Edit blacklist entry</string>
-    <string name="blacklist_prefs">Settings</string>
-    <string name="blacklist_button_delete">Delete</string>
-    <string name="blacklist_empty_text">You don\'t have any blacklisted numbers. Add an entry by touching the Add (+) button.</string>
-    <string name="blacklist_disabled_empty_text">To blacklist calls and/or messages from certain numbers, enable the blacklist.</string>
-    <string name="blacklist_summary_disabled">Disabled</string>
-    <string name="blacklist_summary">Incoming calls and messages from phone numbers in the blacklist will be blocked</string>
-    <string name="blacklist_notify">Show notification</string>
-    <string name="blacklist_private_numbers_title">Private numbers</string>
-    <string name="blacklist_private_numbers_summary_disabled">Don\'t block calls from private numbers</string>
-    <string name="blacklist_private_numbers_summary">Block incoming <xliff:g id="type">%s</xliff:g> from private numbers</string>
-    <string name="blacklist_unknown_numbers_title">Unknown numbers</string>
-    <string name="blacklist_unknown_numbers_summary_disabled">Don\'t block calls or messages from numbers not in the contact list</string>
-    <string name="blacklist_unknown_numbers_summary">Block incoming <xliff:g id="type">%s</xliff:g> from numbers not in the contact list</string>
-    <string name="blacklist_summary_type_calls_only">calls</string>
+    <string name="blacklist_title">Liste noire</string>
+    <string name="blacklist_settings_title">Gestion de la liste noire</string>
+    <string name="blacklist_edit_dialog_title">Éditer la liste noire</string>
+    <string name="blacklist_prefs">Paramètres</string>
+    <string name="blacklist_button_delete">Supprimer</string>
+    <string name="blacklist_empty_text">Vous n\'avez aucun numéro en liste noire. Ajoutez un numéro en appuyant sur le bouton (+).</string>
+    <string name="blacklist_disabled_empty_text">Pour bloquer les appels et/ou les messages de certains numéros, activez la liste noire.</string>
+    <string name="blacklist_summary_disabled">Désactivé.</string>
+    <string name="blacklist_summary">Les appels entrants et les messages des numéros de la liste noire seront bloqués.</string>
+    <string name="blacklist_notify">Afficher la notification</string>
+    <string name="blacklist_private_numbers_title">Numéros privés</string>
+    <string name="blacklist_private_numbers_summary_disabled">Ne pas bloquer les appels des numéros privés.</string>
+    <string name="blacklist_private_numbers_summary">Bloquer les <xliff:g id="type">%s</xliff:g> entrants des numéros privés.</string>
+    <string name="blacklist_unknown_numbers_title">Numéros inconnus</string>
+    <string name="blacklist_unknown_numbers_summary_disabled">Ne pas bloquer les appels et messages des numéros qui ne sont pas dans la liste de contacts.</string>
+    <string name="blacklist_unknown_numbers_summary">Bloquer les <xliff:g id="type">%s</xliff:g> des numéros qui ne sont pas dans la liste de contacts.</string>
+    <string name="blacklist_summary_type_calls_only">appels</string>
     <string name="blacklist_summary_type_messages_only">messages</string>
-    <string name="blacklist_summary_type_calls_and_messages">calls and messages</string>
-    <string name="blacklist_regex_title">Use wildcards</string>
-    <string name="blacklist_regex_summary">Use . as a wildcard and * for repetition. E.g. 123.* blocks numbers starting with 123 and .*123.* blocks numbers containing 123</string>
-    <string name="blacklist_policy_block_calls">Block incoming calls</string>
-    <string name="blacklist_policy_block_messages">Block incoming messages</string>
+    <string name="blacklist_summary_type_calls_and_messages">appels et messages</string>
+    <string name="blacklist_regex_title">Utiliser les caractères génériques</string>
+    <string name="blacklist_regex_summary">Utiliser . comme caractère générique et * pour répétition. Ex: 123.* bloque les numéros commençant par 123 and .*123.* bloque les numéros contenant 123.</string>
+    <string name="blacklist_policy_block_calls">Bloquer les appels entrants</string>
+    <string name="blacklist_policy_block_messages">Bloquer les messages entrants</string>
 
     <!-- Blacklist management -->
-    <string name="add_blacklist_number">Add number</string>
-    <string name="remove_blacklist_number_title">Remove number</string>
-    <string name="remove_blacklist_entry">Do you want to remove this blacklist entry?</string>
-    <string name="select_contact">Select contact</string>
+    <string name="add_blacklist_number">Ajouter un numéro</string>
+    <string name="remove_blacklist_number_title">Supprimer un numéro</string>
+    <string name="remove_blacklist_entry">Voulez vous supprimer cette entrée de la liste noire ?</string>
+    <string name="select_contact">Sélectionner un contact</string>
 
     <!-- Custom Over scroll Settings -->
-    <string name="ui_overscroll_title">Over scrolling effects</string>
-    <string name="overscroll_glow_title">Over scroll Color</string>
-    <string name="edge_effect_title">Edge Glow effect</string>
-    <string name="bounce_effect_title">Bounce effect</string>
-    <string name="none_effect_title">None</string>
-    <string name="extra_heavy_title">Extra Heavy</string>
-    <string name="heavy_title">Heavy</string>
-    <string name="medium_title">Medium</string>
-    <string name="light_title">Light</string>
-    <string name="extra_light_title">Extra Light</string>
-    <string name="overscroll_title">Over scrolling effect</string>
-    <string name="overscroll_summary">Choose how scrollable objects look when they overshoot</string>
-    <string name="overscroll_weight_title">Over scrolling weight</string>
-    <string name="overscroll_weight_summary">Select the weight of the scrollable objects</string>
+    <string name="ui_overscroll_title">Les effets de défilement</string>
+    <string name="overscroll_glow_title">Couleur des effets de défilement</string>
+    <string name="edge_effect_title">Effet bordure Luminescente</string>
+    <string name="bounce_effect_title">Effet de rebond</string>
+    <string name="none_effect_title">Aucun</string>
+    <string name="extra_heavy_title">Très épais</string>
+    <string name="heavy_title">Epais</string>
+    <string name="medium_title">moyen</string>
+    <string name="light_title">Léger</string>
+    <string name="extra_light_title">Très léger</string>
+    <string name="overscroll_title">Les effets de défilement</string>
+    <string name="overscroll_summary">Choisissez le style de défilement des listes</string>
+    <string name="overscroll_weight_title">Taille de l\'effet de défilement</string>
+    <string name="overscroll_weight_summary">Séléctionner la taille de défilement des listes</string>
     <string name="anim_settings_title">Animations</string>
 
     <!-- Telo Radio -->
-    <string name="telo_radio_settings_title">Connection manager</string>
-    <string name="telo_radio_options_category">Screen on configuration</string>
+    <string name="telo_radio_settings_title">Gestionnaire de connexions</string>
+    <string name="telo_radio_options_category">Configuration avec écran allumé</string>
     <string name="telo_radio_lte_title">LTE</string>
-    <string name="telo_radio_lte_summary">Select this option if you use LTE (4G)</string>
-    <string name="telo_radio_2g_wifi_title">2G on Wi-Fi</string>
-    <string name="telo_radio_2g_wifi_title_summary">When Wi-Fi is connected network mode is switched to 2G</string>
-    <string name="telo_radio_2g_screenoff_category">Screen off configuration</string>
-    <string name="telo_radio_2g_screenoff_title">2G with screen off</string>
-    <string name="telo_radio_2g_screenoff_summary">The device will switch to 2G when the screen is off</string>
-    <string name="telo_radio_2g_screenoff_timeout_title">Time to switch to 2G</string>
+    <string name="telo_radio_lte_summary">Sélectionnez cette option si vous utilisez la LTE (4G)</string>
+    <string name="telo_radio_2g_wifi_title">2G avec Wi-Fi</string>
+    <string name="telo_radio_2g_wifi_title_summary">Quand une connexion Wi-Fi est activé, le mode réseau est commuté en 2G</string>
+    <string name="telo_radio_2g_screenoff_category">Configuration avec écran éteint</string>
+    <string name="telo_radio_2g_screenoff_title">2G avec écran éteint</string>
+    <string name="telo_radio_2g_screenoff_summary">L\'appareil bascule en 2G lorsque l\'écran est éteint</string>
+    <string name="telo_radio_2g_screenoff_timeout_title">Temps pour commuter en 2G</string>
     <string name="telo_radio_2g_3min">3 minutes</string>
     <string name="telo_radio_2g_5min">5 minutes</string>
     <string name="telo_radio_2g_10min">10 minutes</string>
     <string name="telo_radio_2g_15min">15 minutes</string>
     <string name="telo_radio_2g_20min">20 minutes</string>
-    <string name="telo_radio_go_3g_unlock_title">3G unlock</string>
-    <string name="telo_radio_go_3g_unlock_summary">When device is unlocked network mode switches to 3G again</string>
+    <string name="telo_radio_go_3g_unlock_title">3G si déverrouillé</string>
+    <string name="telo_radio_go_3g_unlock_summary">Lorsque l\'appareil est déverrouillé, le mode de réseau commute en 3G à nouveau</string>
 </resources>
