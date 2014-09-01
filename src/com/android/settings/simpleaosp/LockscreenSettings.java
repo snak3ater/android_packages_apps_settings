@@ -32,6 +32,7 @@ import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.SeekBarPreference;
+import android.preference.SwitchPreference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
@@ -57,7 +58,7 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
     private static final String BATTERY_AROUND_LOCKSCREEN_RING = "battery_around_lockscreen_ring";
 
     private SystemSettingCheckBoxPreference mNotificationPeek;
-    private SystemSettingCheckBoxPreference mSeeThrough;
+    private SwitchPreference mSeeThrough;
     private SeekBarPreference mBlurRadius;
     private PackageStatusReceiver mPackageStatusReceiver;
     private IntentFilter mIntentFilter;
@@ -97,10 +98,11 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
         }
 
  	// lockscreen see through
-        mSeeThrough = (SystemSettingCheckBoxPreference) findPreference(KEY_SEE_THROUGH);
+        mSeeThrough = (SwitchPreference) findPreference(KEY_SEE_THROUGH);
         if (mSeeThrough != null) {
             mSeeThrough.setChecked(Settings.System.getInt(getContentResolver(),
                     Settings.System.LOCKSCREEN_SEE_THROUGH, 0) == 1);
+		mSeeThrough.setOnPreferenceChangeListener(this);
         }
 
 	// lock screen blur radius
@@ -138,7 +140,13 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
     }
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
-    if (preference == mPeekPickupTimeout) {
+	ContentResolver cr = getActivity().getContentResolver();
+	if (preference == mSeeThrough) {
+	boolean value = (Boolean) objValue;
+	Settings.System.putInt(cr, Settings.System.LOCKSCREEN_SEE_THROUGH,
+	value ? 1 : 0);
+	return true;
+   	} else if (preference == mPeekPickupTimeout) {
 	    int index = mPeekPickupTimeout.findIndexOfValue((String) objValue);
 	    int peekPickupTimeout = Integer.valueOf((String) objValue);
             Settings.System.putIntForUser(getContentResolver(),
@@ -165,13 +173,7 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
 
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
 	boolean value;
-	if (preference == mSeeThrough) {
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.LOCKSCREEN_SEE_THROUGH,
-                    mSeeThrough.isChecked() ? 1 : 0);
-		mBlurRadius.setEnabled(mSeeThrough.isChecked() && mSeeThrough.isEnabled());
-            return true;
- 	} else if (preference == mLockRingBattery) {
+	if (preference == mLockRingBattery) {
 	value = mLockRingBattery.isChecked();
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.BATTERY_AROUND_LOCKSCREEN_RING, value ? 1 : 0);

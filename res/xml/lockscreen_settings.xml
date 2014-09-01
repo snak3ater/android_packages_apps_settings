@@ -14,14 +14,16 @@
             android:key="lockscreen_general_category"
             android:title="@string/general_string">
 
-        <com.android.settings.simpleaosp.SystemSettingCheckBoxPreference
-            android:key="battery_around_lockscreen_ring"
-            android:title="@string/battery_around_lockscreen_ring"
-	    android:defaultValue="false" />
+	<PreferenceScreen
+        android:key="lockscreen_blur"
+        android:title="@string/see_through_title"  
+        android:summary="@string/see_through_summary">
 
-        <com.android.settings.simpleaosp.SystemSettingCheckBoxPreference
+
+        <SwitchPreference
             android:key="see_through"
             android:title="@string/see_through_title"
+	    android:defaultValue="false"
             android:summary="@string/see_through_summary" />
 
 	<SeekBarPreference
@@ -29,7 +31,14 @@
             android:title="@string/blur_radius_title"
             android:summary="@string/blur_radius_summary"
             android:max="25"
-            android:defaultValue="12" />
+            android:defaultValue="12"
+	    android:dependency="see_through" />
+	</PreferenceScreen>
+
+	<com.android.settings.simpleaosp.SystemSettingCheckBoxPreference
+            android:key="battery_around_lockscreen_ring"
+            android:title="@string/battery_around_lockscreen_ring"
+	    android:defaultValue="false" />
         </PreferenceCategory>
         
         <!-- Notifications -->
