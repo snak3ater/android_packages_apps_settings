@@ -47,40 +47,21 @@ import com.android.settings.Utils;
 public class LockscreenSettings extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
     private static final String TAG = "LockscreenSettings";
 
-    private static final String KEY_PEEK = "notification_peek";
-    private static final String PEEK_APPLICATION = "com.jedga.peek";
+    
     private static final String KEY_SEE_THROUGH = "see_through";
     private static final String KEY_BLUR_RADIUS = "blur_radius";
-    private static final String KEY_PEEK_PICKUP_TIMEOUT = "peek_pickup_timeout";
-    private static final String KEY_PEEK_WAKE_TIMEOUT = "peek_wake_timeout";
     private static final String KEY_LOCKSCREEN_GENERAL_CATEGORY = "lockscreen_general_category";
+    private static final String KEY_PEEK_NOTIFICATONS = "peek_notifications";
     // Omni Additions
     private static final String BATTERY_AROUND_LOCKSCREEN_RING = "battery_around_lockscreen_ring";
 
-    private SystemSettingCheckBoxPreference mNotificationPeek;
+
     private SwitchPreference mSeeThrough;
     private SeekBarPreference mBlurRadius;
-    private PackageStatusReceiver mPackageStatusReceiver;
-    private IntentFilter mIntentFilter;
-    private ListPreference mPeekPickupTimeout;
-    private ListPreference mPeekWakeTimeout;
+    private PreferenceScreen mPeekNotifications;
+    
     // Omni Additions
     private SystemSettingCheckBoxPreference mLockRingBattery;
-
-    private boolean isPeekAppInstalled() {
-        return isPackageInstalled(PEEK_APPLICATION);
-    }
-
-    private boolean isPackageInstalled(String packagename) {
-        PackageManager pm = getActivity().getPackageManager();
-        try {
-            pm.getPackageInfo(packagename, PackageManager.GET_ACTIVITIES);
-            return true;
-        } catch (NameNotFoundException e) {
-            return false;
-        }
-    }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -88,6 +69,8 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
 
         addPreferencesFromResource(R.xml.lockscreen_settings);
         PreferenceScreen prefSet = getPreferenceScreen();
+
+	mPeekNotifications = (PreferenceScreen) prefSet.findPreference(KEY_PEEK_NOTIFICATONS);
 
 	// Add the additional Omni settings
         mLockRingBattery = (SystemSettingCheckBoxPreference) getPreferenceScreen()
@@ -111,32 +94,6 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
                 Settings.System.LOCKSCREEN_BLUR_RADIUS, 12));
         mBlurRadius.setOnPreferenceChangeListener(this);
         mBlurRadius.setEnabled(mSeeThrough.isChecked() && mSeeThrough.isEnabled());
-
-	if (mPackageStatusReceiver == null) {
-            mPackageStatusReceiver = new PackageStatusReceiver();
-        }
-        if (mIntentFilter == null) {
-            mIntentFilter = new IntentFilter();
-            mIntentFilter.addAction(Intent.ACTION_PACKAGE_ADDED);
-            mIntentFilter.addAction(Intent.ACTION_PACKAGE_REMOVED);
-        }
-        getActivity().registerReceiver(mPackageStatusReceiver, mIntentFilter);
-
-	mNotificationPeek = (SystemSettingCheckBoxPreference) findPreference(KEY_PEEK);
-
-	mPeekPickupTimeout = (ListPreference) prefSet.findPreference(KEY_PEEK_PICKUP_TIMEOUT);
-        int peekPickupTimeout = Settings.System.getIntForUser(getContentResolver(),
-	Settings.System.PEEK_PICKUP_TIMEOUT, 10000, UserHandle.USER_CURRENT);
-        mPeekPickupTimeout.setValue(String.valueOf(peekPickupTimeout));
-        mPeekPickupTimeout.setSummary(mPeekPickupTimeout.getEntry());
-        mPeekPickupTimeout.setOnPreferenceChangeListener(this);
-
-	mPeekWakeTimeout = (ListPreference) prefSet.findPreference(KEY_PEEK_WAKE_TIMEOUT);
-        int peekWakeTimeout = Settings.System.getIntForUser(getContentResolver(),
-                Settings.System.PEEK_WAKE_TIMEOUT, 5000, UserHandle.USER_CURRENT);
-        mPeekWakeTimeout.setValue(String.valueOf(peekWakeTimeout));
-        mPeekWakeTimeout.setSummary(mPeekWakeTimeout.getEntry());
-        mPeekWakeTimeout.setOnPreferenceChangeListener(this);
     }
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
@@ -146,22 +103,6 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
 	Settings.System.putInt(cr, Settings.System.LOCKSCREEN_SEE_THROUGH,
 	value ? 1 : 0);
 	return true;
-   	} else if (preference == mPeekPickupTimeout) {
-	    int index = mPeekPickupTimeout.findIndexOfValue((String) objValue);
-	    int peekPickupTimeout = Integer.valueOf((String) objValue);
-            Settings.System.putIntForUser(getContentResolver(),
-                Settings.System.PEEK_PICKUP_TIMEOUT,
- 		peekPickupTimeout, UserHandle.USER_CURRENT);
-	    mPeekPickupTimeout.setSummary(mPeekPickupTimeout.getEntries()[index]);
-            return true;
-	} else if (preference == mPeekWakeTimeout) {
-            int index = mPeekWakeTimeout.findIndexOfValue((String) objValue);
-            int peekWakeTimeout = Integer.valueOf((String) objValue);
-            Settings.System.putIntForUser(getContentResolver(),
-                Settings.System.PEEK_WAKE_TIMEOUT,
-                    peekWakeTimeout, UserHandle.USER_CURRENT);
-            mPeekWakeTimeout.setSummary(mPeekWakeTimeout.getEntries()[index]);
-            return true;
 	} else if (preference == mBlurRadius) {
             Settings.System.putInt(getContentResolver(),
                     Settings.System.LOCKSCREEN_BLUR_RADIUS,
@@ -178,46 +119,17 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.BATTERY_AROUND_LOCKSCREEN_RING, value ? 1 : 0);
 	return true;
-	} else if (preference == mNotificationPeek) {
-            Settings.System.putInt(getContentResolver(), Settings.System.PEEK_STATE,
-                    mNotificationPeek.isChecked() ? 1 : 0);
-	return true; 
 	}
 		return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
     @Override
     public void onResume() {
-	getActivity().registerReceiver(mPackageStatusReceiver, mIntentFilter);
         super.onResume();
-    }
 
- private void updateState() {
-        updatePeekCheckbox();
-    }
-
-    private void updatePeekCheckbox() {
-        boolean enabled = Settings.System.getInt(getContentResolver(),
-                Settings.System.PEEK_STATE, 0) == 1;
-        mNotificationPeek.setChecked(enabled && !isPeekAppInstalled());
-        mNotificationPeek.setEnabled(!isPeekAppInstalled());
-      }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        getActivity().unregisterReceiver(mPackageStatusReceiver);
-    }
-
-     public class PackageStatusReceiver extends BroadcastReceiver {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            if (action.equals(Intent.ACTION_PACKAGE_ADDED)) {
-                updatePeekCheckbox();
-            } else if(action.equals(Intent.ACTION_PACKAGE_REMOVED)) {
-                updatePeekCheckbox();
-            }
-        }
+	boolean peekEnabled = Settings.System.getInt(
+	getContentResolver(), Settings.System.PEEK_STATE, 0) == 1;
+	mPeekNotifications.setSummary(peekEnabled
+	? R.string.summary_peek_notifications_enabled : R.string.summary_peek_notifications_disabled);
     }
 }

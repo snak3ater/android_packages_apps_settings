@@ -412,6 +412,10 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="notification_peek_title">Notification peek</string>
     <string name="notification_peek_summary">Show latest notification after picking up your device</string>
     <string name="peek_pickup_timeout_title">Peek pickup timeout</string>
+    <string name="peek_disabled_notice">Enable Peek notifications.</string>
+    <string name="peek_notifications">Peek notifications</string>
+    <string name="summary_peek_notifications_enabled">Peek notifications are enabled</string>
+    <string name="summary_peek_notifications_disabled">Peek notifications are disabled</string>
     <string name="peek_pickup_10seconds">10 seconds (default)</string>
     <string name="peek_pickup_30seconds">30 seconds</string>
     <string name="peek_pickup_45seconds">45 seconds</string>

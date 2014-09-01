@@ -46,23 +46,10 @@
             android:key="notification_category"
             android:title="@string/notification_category">
 
-       <com.android.settings.simpleaosp.SystemSettingCheckBoxPreference
+	<PreferenceScreen
+            android:fragment="com.android.settings.simpleaosp.PeekSettings"
             android:key="notification_peek"
-            android:title="@string/notification_peek_title"
-            android:summary="@string/notification_peek_summary" />
-
-       <ListPreference
-            android:key="peek_pickup_timeout"
-            android:title="@string/peek_pickup_timeout_title"
-            android:entries="@array/peek_pickup_timeout_entries"
-            android:entryValues="@array/peek_pickup_timeout_values"
-	    android:dependency="notification_peek" />
-
-       <ListPreference
-            android:key="peek_wake_timeout"
-            android:title="@string/peek_wake_timeout_title"
-            android:entries="@array/peek_wake_timeout_entries"
-            android:entryValues="@array/peek_wake_timeout_values"
-            android:dependency="notification_peek" />
+	    android:summary="@string/notification_peek_summary"
+            android:title="@string/notification_peek_title" />
 	</PreferenceCategory>
 </PreferenceScreen>
