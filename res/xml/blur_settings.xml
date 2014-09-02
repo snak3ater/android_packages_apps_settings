@@ -1,0 +1,12 @@
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/see_through_title"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+
+	<SeekBarPreference
+            android:key="blur_radius"
+            android:title="@string/blur_radius_title"
+            android:summary="@string/blur_radius_summary"
+            android:max="25"
+            android:defaultValue="12" />
+</PreferenceScreen>
