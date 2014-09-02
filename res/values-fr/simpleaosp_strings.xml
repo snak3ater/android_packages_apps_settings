@@ -125,10 +125,14 @@
     <string name="setting_lockscreen_background">Application du fond</string>
 
     <!--Lockscreen see through-->
-    <string name="see_through_title">voir à travers</string>
+    <string name="see_through_title">Transparence</string>
     <string name="see_through_summary">Affiche le contenu derrière votre écran de verrouillage, vos données peuvent être visibles par ceux qui vous entourent</string>
     <string name="blur_radius_title">Flouter l\'arrière plan</string>
     <string name="blur_radius_summary">Réglage de l\'intensité du flou de l\'écran de verrouillage</string>
+    <string name="blur_disabled_notice">Activer l\'écran de verrouillage transparent</string>
+    <string name="blur_notifications">Ecran de verrouillage transparent</string>
+    <string name="summary_blur_notifications_enabled">L\écran de verrouillage transparent est activé</string>
+    <string name="summary_blur_notifications_disabled">L\écran de verrouillage transparent est désactivé</string>
 
     <!-- Lockscreen interface -->
     <string name="lockscreen_title">Écran de verrouillage</string>
@@ -216,6 +220,7 @@
     <string name="auto_brightness_menu_remove">Retirer</string>
     <string name="auto_brightness_preview">Aperçu</string>
     <string name="auto_brightness_preview_dialog_title">Aperçu de la courbe de luminosité</string>
+    <string name="auto_brightness_help_dialog_title">Aide</string>
     <string name="auto_brightness_help_text"><b>Comment est calculée la luminosité ?</b>
 \n\n
 La courbe de luminosité est calculée en réalisant une <i>interpolation par spline cubique</i>
@@ -411,6 +416,10 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <string name="notification_peek_title">Notification Peek</string>
     <string name="notification_peek_summary">Afficher la dernière notification après avoir pris votre appareil</string>
     <string name="peek_pickup_timeout_title">Délai de récupération Peek</string>
+    <string name="peek_disabled_notice">Activer les notifications Peeks.</string>
+    <string name="peek_notifications">Notifications Peek</string>
+    <string name="summary_peek_notifications_enabled">Les notifications Peek sont activées</string>
+    <string name="summary_peek_notifications_disabled">Les notifications Peek sont désactivées</string>
     <string name="peek_pickup_10seconds">10 secondes (par défaut)</string>
     <string name="peek_pickup_30seconds">30 secondes</string>
     <string name="peek_pickup_45seconds">45 secondes</string>
@@ -490,9 +499,6 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <string name="quiet_hours_dim">Désactiver la LED</string>
     <string name="quiet_hours_dim_on">La LED de notification sera désactivée.</string>
     <string name="quiet_hours_dim_off">La LED de notification fonctionnera normalement.</string>
-    <string name="quiet_hours_system">Couper le son du système</string>
-    <string name="quiet_hours_system_on">Aucun son système ne sera joué.</string>
-    <string name="quiet_hours_system_off">Les sons seront joués normalement.</string>
     <string name="quiet_hours_haptic">Désactiver le retour haptique</string>
     <string name="quiet_hours_haptic_on">Le retour haptique sera désactivé.</string>
     <string name="quiet_hours_haptic_off">Le retour haptique fonctionnera normalement.</string>
@@ -502,7 +508,8 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <string name="quiet_hours_auto_sms_title">SMS entrants de:</string>
     <string name="quiet_hours_auto_sms_call_title">Appels entrants de:</string>
     <string name="quiet_hours_auto_string_title">Réponse à leur envoyer</string>
-    <string name="quiet_hours_auto_string_explain">Ce SMS automatique sera envoyé à quiconque essaie de vous contacter durant vos heures silencieuses.</string>
+    <string name="quiet_hours_auto_string_explain">Ce SMS automatique sera envoyé à quiconque essaie de vous contacter durant
+        	vos heures silencieuses.</string>
     <string name="quiet_hours_auto_sms_null">[Message automatisé] Je vous recontacte dès que possible.</string>
     <string name="quiet_hours_auto_disabled">Personne</string>
     <string name="quiet_hours_auto_enabled">Tous les numéros</string>
@@ -512,7 +519,8 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <string name="quiet_hours_sms_code_null">[Alarme]</string>
     <string name="quiet_hours_sms_bypass_title">SMS à vérifier</string>
     <string name="quiet_hours_sms_code_title">Mot-clé recherché</string>
-    <string name="quiet_hours_sms_code_explain">Si un SMS entrant contient ce mot-clé, les heures silencieuses seront outrepassées et votre appareil émettra un son.</string>
+    <string name="quiet_hours_sms_code_explain">Si un SMS entrant contient ce mot-clé, les heures silencieuses seront outrepassées et votre appareil
+        	émettra un son.</string>
     <string name="quiet_hours_call_bypass_title">Appels à vérifier</string>
     <string name="quiet_hours_calls_required_title">Nombre d\'appels en 30 minutes</string>
     <string name="quiet_hours_calls_required_summary">" appels pour outrepasser les heures silencieuses."</string>
@@ -727,4 +735,20 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <string name="telo_radio_2g_20min">20 minutes</string>
     <string name="telo_radio_go_3g_unlock_title">3G si déverrouillé</string>
     <string name="telo_radio_go_3g_unlock_summary">Lorsque l\'appareil est déverrouillé, le mode de réseau commute en 3G à nouveau</string>
+    
+    <!-- Navigation Bar customization-->
+    <string name="navigation_bar_button_title">Boutons &amp; Disposition</string>
+    <string name="navigation_bar_summary">Modifier et réorganiser les boutons de la barre de navigation</string>
+    <string name="navigation_bar_help_text">1 - Pour commencer l\'édition, appuyez sur l\'icône de verrouillage\n\n2 - Appuyez sur n\'importe quel bouton pour attribuer ou modifier les fonctionnalités\n\n3 - Appui long sur n\'importe quel bouton pour réorganiser l\'ordre\n\n4 - Pour sauvegarder, appuyez à nouveau sur l\'icône de verrouillage\n\n5 -Pour restaurer le système par défaut, appuyer sur le bouton réinitialisation\n\n</string>
+    <string name="navigation_bar_tips">\u2022 Actions ne peut être affectés à un bouton à la fois\n\n\u2022 Le bouton home ne peut être réassigné\n\n\u2022 Les boutons secondaires ne peuvent pas être réarrangées</string>
+    <string name="navigation_bar_tips_title">Conseils pratiques</string>
+    <string name="navigation_bar_reset_message">Supprimer les paramètres actuels et restaurer par défaut ?</string>
+    <string name="navigation_bar_save_message">Paramètres de la barre de navigation enregistrés</string>
+    <string name="navigation_bar_reset_toast">Barre de navigation réinitialisée par défaut</string>
+    <string name="navigation_bar_menu_editable">Modifiable</string>
+    <string name="navigation_bar_menu_locked">Verrouillé</string>
+
+    <!-- USB Mass Storage -->
+    <string name="storage_rescan_media">Nouvelle analyse du support pour le volume de stockage</string>
+    <string name="storage_rescan_media_complete">Analyse terminée</string>
 </resources>
