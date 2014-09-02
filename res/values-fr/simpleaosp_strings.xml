@@ -727,4 +727,20 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <string name="telo_radio_2g_20min">20 minutes</string>
     <string name="telo_radio_go_3g_unlock_title">3G si déverrouillé</string>
     <string name="telo_radio_go_3g_unlock_summary">Lorsque l\'appareil est déverrouillé, le mode de réseau commute en 3G à nouveau</string>
+    
+    <!-- Navigation Bar customization-->
+    <string name="navigation_bar_button_title">Boutons &amp; Disposition</string>
+    <string name="navigation_bar_summary">Modifier et réorganiser les boutons de la barre de navigation</string>
+    <string name="navigation_bar_help_text">1 - Pour commencer l\'édition, appuyez sur l\'icône de verrouillage\n\n2 - Appuyez sur n\'importe quel bouton pour attribuer ou modifier les fonctionnalités\n\n3 - Appui long sur n\'importe quel bouton pour réorganiser l\'ordre\n\n4 - Pour sauvegarder, appuyez à nouveau sur l\'icône de verrouillage\n\n5 -Pour restaurer le système par défaut, appuyer sur le bouton réinitialisation\n\n</string>
+    <string name="navigation_bar_tips">\u2022 Actions ne peut être affectés à un bouton à la fois\n\n\u2022 Le bouton home ne peut être réassigné\n\n\u2022 Les boutons secondaires ne peuvent pas être réarrangées</string>
+    <string name="navigation_bar_tips_title">Conseils pratiques</string>
+    <string name="navigation_bar_reset_message">Supprimer les paramètres actuels et restaurer par défaut ?</string>
+    <string name="navigation_bar_save_message">Paramètres de la barre de navigation enregistrés</string>
+    <string name="navigation_bar_reset_toast">Barre de navigation réinitialisée par défaut</string>
+    <string name="navigation_bar_menu_editable">Modifiable</string>
+    <string name="navigation_bar_menu_locked">Verrouillé</string>
+
+    <!-- USB Mass Storage -->
+    <string name="storage_rescan_media">Nouvelle analyse du support pour le volume de stockage</string>
+    <string name="storage_rescan_media_complete">Analyse terminée</string>
 </resources>
