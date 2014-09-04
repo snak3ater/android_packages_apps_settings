@@ -43,7 +43,7 @@
     <string name="navring_action_power_menu">Menu d\'alimentation</string>
 
     <!-- Navigation bar glow time -->
-    <string name="navigation_button_glow_time_title">Temps d\'appuie de la lueur</string>
+    <string name="navigation_button_glow_time_title">Temps d\'appui de la lueur</string>
 
     <!-- Description of the unlock target in the Slide unlock screen. [CHAR LIMIT=NONE] -->
     <string name="description_target_unlock">Déverrouiller</string>
@@ -82,7 +82,7 @@
     <string name="lockscreen_target_edit_msg">Sélectionner ou modifier l\'application souhaitée ou l\'activité et l\'icône associée</string>
 
     <!-- Title for application group setting screen -->
-    <string name="profile_applist_title">Apllications</string>
+    <string name="profile_applist_title">Applications</string>
     <!-- UI debug setting: title for app picker dialog [CHAR LIMIT=50] -->
 
     <!-- Lock screen shortcuts -->
@@ -502,6 +502,9 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <string name="quiet_hours_haptic">Désactiver le retour haptique</string>
     <string name="quiet_hours_haptic_on">Le retour haptique sera désactivé.</string>
     <string name="quiet_hours_haptic_off">Le retour haptique fonctionnera normalement.</string>
+    <string name="quiet_hours_system">Désactiver les sons système</string>
+    <string name="quiet_hours_system_on">Les sons système sont désactivés</string>
+    <string name="quiet_hours_system_off">Les sons système vont fonctionner normalement</string>
     <string name="quiet_hours_active_from">Actif de</string>
     <string name="quiet_hours_active_to">jusqu\'à</string>
     <string name="quiet_hours_auto_sms_group">Réponse automatique</string>
