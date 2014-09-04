@@ -43,7 +43,7 @@
     <string name="navring_action_power_menu">Menu d\'alimentation</string>
 
     <!-- Navigation bar glow time -->
-    <string name="navigation_button_glow_time_title">Temps d\'appuie de la lueur</string>
+    <string name="navigation_button_glow_time_title">Temps d\'appui de la lueur</string>
 
     <!-- Description of the unlock target in the Slide unlock screen. [CHAR LIMIT=NONE] -->
     <string name="description_target_unlock">Déverrouiller</string>
