@@ -502,6 +502,9 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <string name="quiet_hours_haptic">Désactiver le retour haptique</string>
     <string name="quiet_hours_haptic_on">Le retour haptique sera désactivé.</string>
     <string name="quiet_hours_haptic_off">Le retour haptique fonctionnera normalement.</string>
+    <string name="quiet_hours_system">Désactiver les sons système</string>
+    <string name="quiet_hours_system_on">Les sons système sont désactivés</string>
+    <string name="quiet_hours_system_off">Les sons système vont fonctionner normalement</string>
     <string name="quiet_hours_active_from">Actif de</string>
     <string name="quiet_hours_active_to">jusqu\'à</string>
     <string name="quiet_hours_auto_sms_group">Réponse automatique</string>
