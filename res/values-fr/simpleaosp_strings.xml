@@ -82,7 +82,7 @@
     <string name="lockscreen_target_edit_msg">Sélectionner ou modifier l\'application souhaitée ou l\'activité et l\'icône associée</string>
 
     <!-- Title for application group setting screen -->
-    <string name="profile_applist_title">Apllications</string>
+    <string name="profile_applist_title">Applications</string>
     <!-- UI debug setting: title for app picker dialog [CHAR LIMIT=50] -->
 
     <!-- Lock screen shortcuts -->
