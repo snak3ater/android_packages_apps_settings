@@ -187,11 +187,11 @@
     <string name="themes_settings_title">Thèmes</string>
     
     <!-- The following are entries under the themes menu -->
-    <string name="themepacks_settings_title">Packs de thème</string>
+    <string name="themepacks_settings_title">Packs de thèmes</string>
     <string name="styles_settings_title">Styles</string>
     <string name="icons_settings_title">Icônes</string>
     <string name="fonts_settings_title">Polices d\'écriture</string>
-    <string name="lockscreen_wallpaper_settings_title">Fonds d\'écran de l\'écran de verrouillage</string>
+    <string name="lockscreen_wallpaper_settings_title">Fonds d\'écran de verrouillage</string>
     <string name="bootanim_settings_title">Animations de démarrage</string>
     <string name="soundpack_settings_title">Packs de sons</string> 
 
@@ -642,8 +642,8 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <string name="low_battery_warning_policy_title">Avertissement de batterie faible</string>
     <string name="low_battery_warning_policy_popup_sound">Boîte de dialogue et son</string>
     <string name="low_battery_warning_policy_notif_sound">Notification et son</string>
-    <string name="low_battery_warning_policy_popup">Boîte de dialogue contextuelle seulement</string>
-    <string name="low_battery_warning_policy_notif">notification uniquement</string>
+    <string name="low_battery_warning_policy_popup">Boîte de dialogue seulement</string>
+    <string name="low_battery_warning_policy_notif">Notification uniquement</string>
     <string name="low_battery_warning_policy_sound">Son uniquement</string>
 
     <!-- Lockscreen widget settings -->
