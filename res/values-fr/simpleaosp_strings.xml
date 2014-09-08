@@ -31,7 +31,7 @@
     <string name="navring_action_open_ime_switcher">Ouvrir le sélecteur de clavier</string>
     <string name="navring_action_kill_app">Tuer l\'application</string>
     <string name="navring_action_none">Aucun</string>
-    <string name="navring_action_take_screenshot">prendre une capture d\'écran</string>
+    <string name="navring_action_take_screenshot">Prendre une capture d\'écran</string>
     <string name="navring_action_ring_vibrate">Sonnerie/Vibreur</string>
     <string name="navring_action_ring_silent">Sonnerie/Silencieux</string>
     <string name="navring_action_ring_vibrate_silent">Sonnerie/Vibreur/Silencieux</string>
