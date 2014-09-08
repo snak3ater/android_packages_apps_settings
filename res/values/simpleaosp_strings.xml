@@ -6,7 +6,7 @@
 
     <!-- SimpleAOSP build version -->
     <string name="simpleaosp_version">SimpleAOSP version</string>
-    <string name="simpleaosp_version_default">Local build</string>
+    <string name="simpleaosp_version_default">Unknown</string>
 
     <!-- SuperSU header name - the app hides itself from launcher based on this resource name being present in com.android.settings -->
     <string name="supersu_title">SuperSU</string>
