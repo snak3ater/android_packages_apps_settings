@@ -545,7 +545,7 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <string name="quiet_hours_notification_resume">Reprendre</string>
     <string name="quiet_hours_snoozed_title">Heures silencieuses en pause <xliff:g id="time">%1$d</xliff:g> minutes</string>
     <string name="quiet_hours_notification_snooze">Répétition</string>
-    <string name="quiet_hours_snooze_time">Rappel d'alarme</string>
+    <string name="quiet_hours_snooze_time">Rappel d\'alarme</string>
     <string name="quiet_hours_notification_stop">Stop</string>
     <string name="quiet_hours_start">Commencer maintenant</string>
     <string name="quiet_hours_whitelist_bypass_calls">Appel entrant</string>
@@ -559,7 +559,7 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <string name="quiet_hours_ringer_allow_whitelist">Outrepasser le contact seulement</string>
     <string name="quiet_hours_bypass_options_group">Option d\'alarme</string>
     <string name="quiet_hours_auto_sms_summary">Envoyer un message automatique de réponse pour les appels entrants non traités ou les messages texte</string>
-    <string name="quiet_hours_bypass_summary">Démarrer l\'alarme si un appel entrant ou un message texte correspond à des critères d'outrepassement. Toujours démarrer l'alarme si activée</string>
+    <string name="quiet_hours_bypass_summary">Démarrer l\'alarme si un appel entrant ou un message texte correspond à des critères d\'outrepassement. Toujours démarrer l\'alarme si activée</string>
 
     <!-- Time range preference -->
     <string name="start_time_title">Début</string>
