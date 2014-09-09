@@ -131,12 +131,6 @@
                 android:title="@string/build_number"
                 android:summary="@string/device_info_default"/>
 
-        <!-- SimpleAOSP build version -->
-        <Preference android:key="simpleaosp_version"
-                style="?android:preferenceInformationStyle"
-                android:title="@string/simpleaosp_version"
-                android:summary="@string/simpleaosp_version_default" />
-
         <!-- SimpleAOSP build date -->
         <Preference android:key="build_date"
                 style="?android:preferenceInformationStyle"
