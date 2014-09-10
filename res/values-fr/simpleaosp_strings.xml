@@ -151,10 +151,6 @@
     <string name="link_volume_ringtones">Lier les volumes de sonnerie &amp; de notification</string>
     <string name="volume_ring_only_description">Sonnerie</string>
 
-    <!-- Voice+ -->
-    <string name="voice_plus_title">Voice+</string>
-    <string name="voice_plus_summary">Activer toutes les applications pour envoyer des messages SMS à partir de Google Voice</string>
-
     <!-- Volume rocker behaviours -->
     <string name="volume_rocker_category_title">Touches volume</string>
 

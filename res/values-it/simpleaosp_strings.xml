@@ -151,10 +151,6 @@
     <string name="link_volume_ringtones">Collega suoneria &amp; volume notifiche</string>
     <string name="volume_ring_only_description">Suoneria</string>
 
-    <!-- Voice+ -->
-    <string name="voice_plus_title">Voice+</string>
-    <string name="voice_plus_summary">Permetti a tutte le app di spedire SMS tramite Voice+</string>
-
     <!-- Volume rocker behaviours -->
     <string name="volume_rocker_category_title">Volume rocker</string>
     

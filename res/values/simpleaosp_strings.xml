@@ -151,10 +151,6 @@
     <string name="link_volume_ringtones">Link ringtone &amp; notifications volumes</string>
     <string name="volume_ring_only_description">Ringtone</string>
 
-    <!-- Voice+ -->
-    <string name="voice_plus_title">Voice+</string>
-    <string name="voice_plus_summary">Enable all apps to send SMS messages through Google Voice</string>
-
     <!-- Volume rocker behaviours -->
     <string name="volume_rocker_category_title">Volume rocker</string>
     
