@@ -86,6 +86,7 @@
         <item>@string/battery_bar_percent</item>
         <item>@string/battery_circle</item>
         <item>@string/battery_circle_percent</item>
+	<item>@string/battery_percent_only</item>
     </string-array>
 
     <string-array name="values_battery_submenu" translatable="false">
@@ -93,6 +94,7 @@
         <item>1</item>
         <item>2</item>
         <item>3</item>
+        <item>4</item>
     </string-array>
 
     <!-- Custom lock screen background-->
