@@ -98,6 +98,7 @@ import com.android.settings.wifi.WifiEnabler;
 import com.android.settings.wifi.WifiSettings;
 import com.android.settings.wifi.p2p.WifiP2pSettings;
 import com.android.settings.simpleaosp.QuietHours;
+import com.android.settings.simpleaosp.HoverSettings;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -359,7 +360,8 @@ public class Settings extends PreferenceActivity
         KeyboardLayoutPickerFragment.class.getName(),
         QuietHours.class.getName(),
         ThemeSettings.class.getName(),
-        BlacklistSettings.class.getName()
+        BlacklistSettings.class.getName(),
+	HoverSettings.class.getName()
     };
 
     @Override
@@ -1170,4 +1172,5 @@ public class Settings extends PreferenceActivity
     public static class PrintJobSettingsActivity extends Settings { /* empty */ }
     public static class ThemeSettingsActivity extends Settings { /* empty */ }
     public static class BlacklistSettingsActivity extends Settings { /* empty */ }
+    public static class HoverSettingsActivity extends Settings { /* empty */ }
 }
