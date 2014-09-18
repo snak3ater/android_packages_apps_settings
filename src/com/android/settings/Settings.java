@@ -100,6 +100,7 @@ import com.android.settings.wifi.p2p.WifiP2pSettings;
 import com.android.settings.simpleaosp.QuietHours;
 import com.android.settings.simpleaosp.HoverSettings;
 import com.android.settings.simpleaosp.PieSettings;
+import com.android.settings.simpleaosp.DisplayRotation;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -363,7 +364,8 @@ public class Settings extends PreferenceActivity
         ThemeSettings.class.getName(),
         BlacklistSettings.class.getName(),
 	HoverSettings.class.getName(),
-	PieSettings.class.getName()
+	PieSettings.class.getName(),
+	DisplayRotation.class.getName()
     };
 
     @Override
@@ -1176,4 +1178,5 @@ public class Settings extends PreferenceActivity
     public static class BlacklistSettingsActivity extends Settings { /* empty */ }
     public static class HoverSettingsActivity extends Settings { /* empty */ }
     public static class PieSettingsActivity extends Settings { /* empty */ }
+    public static class DisplayRotationSettingsActivity extends Settings { /* empty */ }
 }
