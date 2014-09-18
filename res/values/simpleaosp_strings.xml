@@ -771,23 +771,27 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
 	<!-- Pie Settings-->
 	<string name="pie_settings_title">Pie Settings</string>
+	<string name="pie_settings_summary">Adjust Pie controls</string>
 	<string name="pie_settings_dimensions_category">Dimensions</string>
 	<string name="pie_settings_reset">Reset</string>
 	<string name="pie_settings_reset_message">Reset pie settings to default?</string>
 	<!-- Pie Size -->
 	<string name="pie_size">Size</string>
+	<string name="pie_size_summary">Define Pie controls size</string>
 	<string name="pie_size_tiny">Tiny</string>
 	<string name="pie_size_small">Small</string>
 	<string name="pie_size_normal">Normal (Default)</string>
 	<string name="pie_size_large">Large</string>
 	<!-- Pie Gap -->
 	<string name="pie_gap">Gap</string>
+	<string name="pie_gap_summary">Adjust the gap that separates Pie elements</string>
 	<string name="pie_gap_none">None (Default)</string>
 	<string name="pie_gap_small">small</string>
 	<string name="pie_gap_big">big</string>
 	<string name="pie_gap_huge">huge</string>
 	<!-- Pie Angle -->
 	<string name="pie_angle">Angle</string>
+	<string name="pie_angle_summary">Adjust the angle of pie\'s egdes from the attachment</string>
 	<string name="pie_angle_none">None</string>
 	<string name="pie_angle_small">Small</string>
 	<string name="pie_angle_normal">Normal (Default)</string>

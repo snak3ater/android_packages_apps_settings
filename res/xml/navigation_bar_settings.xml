@@ -5,15 +5,16 @@
     android:title="@string/navigation_bar_title">
 
     <PreferenceScreen
+		android:key="pie_settings"
+		android:title="@string/pie_settings_title"
+		android:fragment="com.android.settings.simpleaosp.PieSettings"
+		android:summary="@string/pie_settings_summary" />
+
+    <PreferenceScreen
             android:fragment="com.android.settings.cyanogenmod.NavRing"
             android:summary="@string/navigation_ring_summary"
             android:key="navigation_ring_shortcuts"
             android:title="@string/navigation_ring_title"/>
-
-	<PreferenceScreen
-		android:key="pie_settings"
-		android:title="@string/pie_settings_title"
-		android:fragment="com.android.settings.simpleaosp.PieSettings" />
 
     <!-- General -->
     <PreferenceCategory
