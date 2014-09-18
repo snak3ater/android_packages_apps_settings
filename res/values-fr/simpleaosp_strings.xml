@@ -765,4 +765,7 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <!-- USB Mass Storage -->
     <string name="storage_rescan_media">Nouvelle analyse du support pour le volume de stockage</string>
     <string name="storage_rescan_media_complete">Analyse terminée</string>
+
+    <!-- Restart SystemUI -->
+    <string name="restart_systemui">Redémarrer SystemUI</string>
 </resources>
