@@ -10,6 +10,11 @@
             android:key="navigation_ring_shortcuts"
             android:title="@string/navigation_ring_title"/>
 
+	<PreferenceScreen
+		android:key="pie_settings"
+		android:title="@string/pie_settings_title"
+		android:fragment="com.android.settings.simpleaosp.PieSettings" />
+
     <!-- General -->
     <PreferenceCategory
             android:key="navigation_bar_general_category"
