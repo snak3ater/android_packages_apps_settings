@@ -1,0 +1,37 @@
+<PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:title="@string/pie_settings_title"
+        xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+        android:key="pie_settings">
+
+    <PreferenceCategory
+        android:key="dimensions_category"
+        android:title="@string/pie_settings_dimensions_category">
+
+        <ListPreference
+            android:key="pie_size"
+            android:title="@string/pie_size"
+	    android:summary="@string/pie_size_summary"
+            android:entries="@array/pie_size_entries"
+            android:entryValues="@array/pie_size_values"
+            android:defaultValue="1.0" />
+
+        <ListPreference
+            android:key="pie_gap"
+            android:title="@string/pie_gap"
+	    android:summary="@string/pie_gap_summary"
+            android:entries="@array/pie_gap_entries"
+            android:entryValues="@array/pie_gap_values"
+            android:defaultValue="1" />
+
+        <ListPreference
+            android:key="pie_angle"
+            android:title="@string/pie_angle"
+	    android:summary="@string/pie_angle_summary"
+            android:entries="@array/pie_angle_entries"
+            android:entryValues="@array/pie_angle_values"
+            android:defaultValue="12" />
+
+    </PreferenceCategory>
+</PreferenceScreen>
+

@@ -802,4 +802,33 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Restart SystemUI -->
     <string name="restart_systemui">Restart systemui</string>
+
+    <!-- Pie Settings-->
+    <string name="pie_settings_title">Pie settings</string>
+    <string name="pie_settings_summary">Adjust pie controls</string>
+    <string name="pie_settings_dimensions_category">Dimensions</string>
+    <string name="pie_settings_reset">Reset</string>
+    <string name="pie_settings_reset_message">Reset pie settings to default?</string>
+    <!-- Pie Size -->
+    <string name="pie_size">Size</string>
+    <string name="pie_size_summary">Define pie controls size</string>
+    <string name="pie_size_tiny">Tiny</string>
+    <string name="pie_size_small">Small</string>
+    <string name="pie_size_normal">Normal (default)</string>
+    <string name="pie_size_large">Large</string>
+    <!-- Pie Gap -->
+    <string name="pie_gap">Gap</string>
+    <string name="pie_gap_summary">Adjust the gap that separates pie elements</string>
+    <string name="pie_gap_none">None (default)</string>
+    <string name="pie_gap_small">Small</string>
+    <string name="pie_gap_big">Big</string>
+    <string name="pie_gap_huge">Huge</string>
+    <!-- Pie Angle -->
+    <string name="pie_angle">Angle</string>
+    <string name="pie_angle_summary">Adjust the angle of pie\'s egdes from the attachment</string>
+    <string name="pie_angle_none">None</string>
+    <string name="pie_angle_small">Small</string>
+    <string name="pie_angle_normal">Normal (default)</string>
+    <string name="pie_angle_big">Big</string>
+    <string name="pie_angle_huge">Huge</string>
 </resources>
