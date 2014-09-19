@@ -767,5 +767,5 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <string name="storage_rescan_media_complete">Analyse terminée</string>
 
     <!-- Restart SystemUI -->
-    <string name="restart_systemui">Redémarrer SystemUI</string>
+    <string name="restart_systemui">Redémarrer le systeme</string>
 </resources>
