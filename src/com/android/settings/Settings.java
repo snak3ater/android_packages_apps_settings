@@ -101,6 +101,7 @@ import com.android.settings.simpleaosp.QuietHours;
 import com.android.settings.simpleaosp.HoverSettings;
 import com.android.settings.simpleaosp.PieSettings;
 import com.android.settings.simpleaosp.DisplayRotation;
+import com.android.settings.headsup.HeadsUpSettings;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -365,7 +366,8 @@ public class Settings extends PreferenceActivity
         BlacklistSettings.class.getName(),
 	HoverSettings.class.getName(),
 	PieSettings.class.getName(),
-	DisplayRotation.class.getName()
+	DisplayRotation.class.getName(),
+	HeadsUpSettings.class.getName(),
     };
 
     @Override
@@ -1179,4 +1181,5 @@ public class Settings extends PreferenceActivity
     public static class HoverSettingsActivity extends Settings { /* empty */ }
     public static class PieSettingsActivity extends Settings { /* empty */ }
     public static class DisplayRotationSettingsActivity extends Settings { /* empty */ }
+    public static class HeadsupSettingsActivity extends Settings { /* empty */ }
 }
