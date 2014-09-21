@@ -2,7 +2,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- About phone screen, build date of ROM -->
     <string name="build_date">Date de la Build SimpleAOSP</string>
-    <string name="build_date_default">2012-01-01-0000</string>
+    <string name="build_date_default">01-01-2012-0000</string>
 
     <!-- SuperSU header name - the app hides itself from launcher based on this resource name being present in com.android.settings -->
     <string name="supersu_title">SuperSU</string>
@@ -767,5 +767,34 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <string name="storage_rescan_media_complete">Analyse terminée</string>
 
     <!-- Restart SystemUI -->
-    <string name="restart_systemui">Redémarrer SystemUI</string>
+    <string name="restart_systemui">Redémarrer le systeme</string>
+
+    <!-- Pie Settings-->
+    <string name="pie_settings_title">Réglages du Pie</string>
+    <string name="pie_settings_summary">Ajuster les contrôles du Pie</string>
+    <string name="pie_settings_dimensions_category">Dimensions</string>
+    <string name="pie_settings_reset">Réinitialiser</string>
+    <string name="pie_settings_reset_message">Réinitialiser les réglages du PIE par défaut ?</string>
+    <!-- Pie Size -->
+    <string name="pie_size">Taille</string>
+    <string name="pie_size_summary">Définir les contôles de la taille du Pie</string>
+    <string name="pie_size_tiny">Minuscule</string>
+    <string name="pie_size_small">Petit</string>
+    <string name="pie_size_normal">Normal (Par défaut)</string>
+    <string name="pie_size_large">Large</string>
+    <!-- Pie Gap -->
+    <string name="pie_gap">Intervalle</string>
+    <string name="pie_gap_summary">Ajuster l\'intervalle qui sépare les éléments du Pie</string>
+    <string name="pie_gap_none">Aucun (Par défaut)</string>
+    <string name="pie_gap_small">Petit</string>
+    <string name="pie_gap_big">Grand</string>
+    <string name="pie_gap_huge">Enorme</string>
+    <!-- Pie Angle -->
+    <string name="pie_angle">Angle</string>
+    <string name="pie_angle_summary">Ajuster l\'angle des bords du Pie</string>
+    <string name="pie_angle_none">Aucun</string>
+    <string name="pie_angle_small">Petit</string>
+    <string name="pie_angle_normal">Normal (Par défaut)</string>
+    <string name="pie_angle_big">Grand</string>
+    <string name="pie_angle_huge">Enorme</string>
 </resources>
