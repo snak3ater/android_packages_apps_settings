@@ -34,6 +34,7 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
     // Default timeout for heads up snooze. 5 minutes.
     protected static final int DEFAULT_TIME_HEADS_UP_SNOOZE = 300000;
 
+    private static final String PREF_HEADS_UP_MASTER_SWITCH = "heads_up_master_switch";
     private static final String PREF_HEADS_UP_EXPANDED = "heads_up_expanded";
     private static final String PREF_HEADS_UP_SNOOZE_TIME = "heads_up_snooze_time";
     private static final String PREF_HEADS_UP_TIME_OUT = "heads_up_time_out";
@@ -43,6 +44,7 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
     private static final String HEADS_UP_BG_COLOR = "heads_up_bg_color";
     private static final String HEADS_UP_TEXT_COLOR = "heads_up_text_color";
     
+    CheckBoxPreference mHeadsUpMasterSwitch;
     ListPreference mHeadsUpSnoozeTime;
     ListPreference mHeadsUpTimeOut;
     CheckBoxPreference mHeadsUpExpanded;
@@ -92,6 +94,11 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
         }
         mHeadsUpTextColor.setNewPreviewColor(intTextColor);
         setHasOptionsMenu(true);
+
+        mHeadsUpMasterSwitch = (CheckBoxPreference) findPreference(PREF_HEADS_UP_MASTER_SWITCH);
+        mHeadsUpMasterSwitch.setChecked(Settings.System.getIntForUser(getContentResolver(),
+                Settings.System.HEADS_UP_MASTER_SWITCH, 0, UserHandle.USER_CURRENT) == 1);
+        mHeadsUpMasterSwitch.setOnPreferenceChangeListener(this);
 
         mHeadsUpExpanded = (CheckBoxPreference) findPreference(PREF_HEADS_UP_EXPANDED);
         mHeadsUpExpanded.setChecked(Settings.System.getIntForUser(getContentResolver(),
@@ -145,7 +152,12 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mHeadsUpSnoozeTime) {
+        if (preference == mHeadsUpMasterSwitch) {
+            Settings.System.putIntForUser(getContentResolver(),
+                    Settings.System.HEADS_UP_MASTER_SWITCH,
+                    (Boolean) newValue ? 1 : 0, UserHandle.USER_CURRENT);
+            return true;
+        } else if (preference == mHeadsUpSnoozeTime) {
             int headsUpSnoozeTime = Integer.valueOf((String) newValue);
             Settings.System.putInt(getContentResolver(),
                     Settings.System.HEADS_UP_SNOOZE_TIME,
