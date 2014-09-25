@@ -797,4 +797,12 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <string name="pie_angle_normal">Normal (Par défaut)</string>
     <string name="pie_angle_big">Grand</string>
     <string name="pie_angle_huge">Enorme</string>
+    
+     <!-- EdgeGesture service -->
+     <string name="edge_gesture_service_title">Block gesture touch events</string>
+     <string name="edge_gesture_service_summary">Don\'t send touch events for navigation and status bar gestures to apps</string>
+
+     <!-- Setting checkbox summary for displaying USB debugging notification -->
+     <string name="adb_notify">Notification débogage USB</string>
+     <string name="adb_notify_summary">Afficher une notification lorsque le débogage USB est actif</string>
 </resources>
