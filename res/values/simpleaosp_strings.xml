@@ -795,8 +795,11 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="heads_up_switch_label">Enable heads up notification</string>
     <string name="heads_up_gravity_title">Show at the bottom</string>
     <string name="heads_up_gravity_summary">Show heads up notification at the bottom of the screen</string>
-    <string name="heads_up_note_title">IMPORTANT</string>
-    <string name="heads_up_note_summary">The checkbox above enable Heads Up but you still need to go into Settings -> Apps and pick each application that will receive notifications through Heads Up mode. NOTE: with Heads up globaly disabled CALL UI will stop receive notifications through it in case you enabled them</string>
+
+    <string name="headsup_disabled_notice">Enable headsup notifications.</string>
+    <string name="headsup_notifications">Headsup notifications</string>
+    <string name="summary_headsup_notifications_enabled">Headsup notifications are enabled</string>
+    <string name="summary_headsup_notifications_disabled">Headsup notifications are disabled.The above switch enable Heads Up but you still need to go into Settings -> Apps and pick each application that will receive notifications through Heads Up mode. NOTE: with Heads up globaly disabled CALL UI will stop receive notifications through it in case you enabled them</string>
 
     <!-- Heads-up floating window -->
     <string name="heads_up_floating_window">Launch in floating window</string>
