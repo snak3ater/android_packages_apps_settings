@@ -2,13 +2,17 @@ package com.android.settings.simpleaosp;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.app.Activity;
+import android.app.ActionBar;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.database.ContentObserver;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
+import android.preference.PreferenceActivity;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
@@ -16,11 +20,21 @@ import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.preference.RingtonePreference;
 import android.provider.Settings;
+import android.os.Handler;
 import android.os.UserHandle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MenuInflater;
-
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.Switch;
+import android.widget.TextView;
 
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
@@ -34,7 +48,6 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
     // Default timeout for heads up snooze. 5 minutes.
     protected static final int DEFAULT_TIME_HEADS_UP_SNOOZE = 300000;
 
-    private static final String PREF_HEADS_UP_MASTER_SWITCH = "heads_up_master_switch";
     private static final String PREF_HEADS_UP_EXPANDED = "heads_up_expanded";
     private static final String PREF_HEADS_UP_SNOOZE_TIME = "heads_up_snooze_time";
     private static final String PREF_HEADS_UP_TIME_OUT = "heads_up_time_out";
@@ -44,7 +57,6 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
     private static final String HEADS_UP_BG_COLOR = "heads_up_bg_color";
     private static final String HEADS_UP_TEXT_COLOR = "heads_up_text_color";
     
-    CheckBoxPreference mHeadsUpMasterSwitch;
     ListPreference mHeadsUpSnoozeTime;
     ListPreference mHeadsUpTimeOut;
     CheckBoxPreference mHeadsUpExpanded;
@@ -57,6 +69,50 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
     private static final int MENU_RESET = Menu.FIRST;
     private static final int DEFAULT_BACKGROUND_COLOR = 0x00ffffff;
     private static final int DEFAULT_TEXT_COLOR = 0xffffffff;
+
+    private Switch mActionBarSwitch;
+    private HeadsupNotificationsEnabler mHeadsupEnabler;
+
+    private ViewGroup mPrefsContainer;
+    private View mDisabledText;
+
+    private ContentObserver mSettingsObserver = new ContentObserver(new Handler()) {
+        @Override
+        public void onChange(boolean selfChange, Uri uri) {
+            updateEnabledState();
+        }
+    };
+
+    @Override
+      public void onActivityCreated(Bundle icicle) {
+        // We don't call super.onActivityCreated() here, since it assumes we already set up
+        // Preference (probably in onCreate()), while ProfilesSettings exceptionally set it up in
+        // this method.
+        // On/off switch
+        Activity activity = getActivity();
+        //Switch
+        mActionBarSwitch = new Switch(activity);
+
+        if (activity instanceof PreferenceActivity) {
+            PreferenceActivity preferenceActivity = (PreferenceActivity) activity;
+            if (preferenceActivity.onIsHidingHeaders() || !preferenceActivity.onIsMultiPane()) {
+                final int padding = activity.getResources().getDimensionPixelSize(
+                        R.dimen.action_bar_switch_padding);
+                mActionBarSwitch.setPaddingRelative(0, 0, padding, 0);
+                activity.getActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM,
+                        ActionBar.DISPLAY_SHOW_CUSTOM);
+                activity.getActionBar().setCustomView(mActionBarSwitch, new ActionBar.LayoutParams(
+                        ActionBar.LayoutParams.WRAP_CONTENT,
+                        ActionBar.LayoutParams.WRAP_CONTENT,
+                        Gravity.CENTER_VERTICAL | Gravity.END));
+            }
+        }
+
+        mHeadsupEnabler = new HeadsupNotificationsEnabler(activity, mActionBarSwitch);
+        // After confirming PreferenceScreen is available, we call super.
+          super.onActivityCreated(icicle);
+          setHasOptionsMenu(true);
+      }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -94,11 +150,6 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
         }
         mHeadsUpTextColor.setNewPreviewColor(intTextColor);
         setHasOptionsMenu(true);
-
-        mHeadsUpMasterSwitch = (CheckBoxPreference) findPreference(PREF_HEADS_UP_MASTER_SWITCH);
-        mHeadsUpMasterSwitch.setChecked(Settings.System.getIntForUser(getContentResolver(),
-                Settings.System.HEADS_UP_MASTER_SWITCH, 0, UserHandle.USER_CURRENT) == 1);
-        mHeadsUpMasterSwitch.setOnPreferenceChangeListener(this);
 
         mHeadsUpExpanded = (CheckBoxPreference) findPreference(PREF_HEADS_UP_EXPANDED);
         mHeadsUpExpanded.setChecked(Settings.System.getIntForUser(getContentResolver(),
@@ -146,18 +197,8 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-    }
-
-    @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mHeadsUpMasterSwitch) {
-            Settings.System.putIntForUser(getContentResolver(),
-                    Settings.System.HEADS_UP_MASTER_SWITCH,
-                    (Boolean) newValue ? 1 : 0, UserHandle.USER_CURRENT);
-            return true;
-        } else if (preference == mHeadsUpSnoozeTime) {
+        if (preference == mHeadsUpSnoozeTime) {
             int headsUpSnoozeTime = Integer.valueOf((String) newValue);
             Settings.System.putInt(getContentResolver(),
                     Settings.System.HEADS_UP_SNOOZE_TIME,
@@ -221,6 +262,39 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
         return false;
     }
 
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+            Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.headsup_fragment, container, false);
+        mPrefsContainer = (ViewGroup) v.findViewById(R.id.prefs_container);
+        mDisabledText = v.findViewById(R.id.disabled_text);
+
+        View prefs = super.onCreateView(inflater, mPrefsContainer, savedInstanceState);
+        mPrefsContainer.addView(prefs);
+
+        return v;
+    }
+
+    @Override
+      public void onResume() {
+        super.onResume();
+        if (mHeadsupEnabler != null) {
+            mHeadsupEnabler.resume();
+        }
+        getContentResolver().registerContentObserver(
+                Settings.System.getUriFor(Settings.System.HEADS_UP_MASTER_SWITCH),
+                true, mSettingsObserver);
+        updateEnabledState();
+    }
+
+    public void onPause() {
+        super.onPause();
+        if (mHeadsupEnabler != null) {
+            mHeadsupEnabler.pause();
+        }
+        getContentResolver().unregisterContentObserver(mSettingsObserver);
+    }
+
     private void updateHeadsUpSnoozeTimeSummary(int value) {
         String summary = value != 0
                 ? getResources().getString(R.string.heads_up_snooze_summary, value / 60 / 1000)
@@ -279,5 +353,12 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
                 Settings.System.HEADS_UP_TEXT_COLOR, 0);
         mHeadsUpTextColor.setNewPreviewColor(DEFAULT_TEXT_COLOR);
         mHeadsUpTextColor.setSummary(R.string.heads_up_default_color);
+	}
+
+	private void updateEnabledState() {
+        boolean enabled = Settings.System.getInt(getContentResolver(),
+                Settings.System.HEADS_UP_MASTER_SWITCH, 0) != 0;
+        mPrefsContainer.setVisibility(enabled ? View.VISIBLE : View.GONE);
+        mDisabledText.setVisibility(enabled ? View.GONE : View.VISIBLE);
     }
 }
