@@ -27,6 +27,12 @@
             android:summary="@string/status_bar_notif_count_summary"
             android:defaultValue="false" />
 
+	<com.android.settings.simpleaosp.SystemSettingCheckBoxPreference
+            android:key="force_expanded_notifications"
+            android:title="@string/notification_force_expand_title"
+            android:summary="@string/notification_force_expand_summary"
+            android:defaultValue="false" />
+
     <PreferenceScreen
 		android:key="network_traffic_state"
 		android:fragment="com.android.settings.simpleaosp.NetworkTraffic"
