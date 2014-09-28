@@ -373,8 +373,9 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <string name="reset_string">Réinitialiser</string>
     <string name="reset">Réinitialiser</string>
     <string name="empty_string">vide</string>
-     <string name="ok">OK</string>
-
+    <string name="ok">OK</string>
+    <string name="font_size_sample">Definition</string>
+    
     <!-- Add application dialog box title -->
     <string name="profile_choose_app">Choisir l\'application</string>
 
