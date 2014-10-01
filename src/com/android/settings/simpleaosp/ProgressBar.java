@@ -34,7 +34,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.android.settings.R;
-import net.margaritov.preference.colorpicker.ColorPickerPreference;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.chameleonos.SeekBarPreference;
 
@@ -48,10 +47,6 @@ public class ProgressBar extends SettingsPreferenceFragment implements
 	private static final String PROGRESSBAR_WIDTH = "progressbar_width";
 	private static final String PROGRESSBAR_LENGTH = "progressbar_length";
 	private static final String PROGRESSBAR_COUNT = "progressbar_count";
-	private static final String PROGRESSBAR_COLOR_1 = "progressbar_color_1";
-	private static final String PROGRESSBAR_COLOR_2 = "progressbar_color_2";
-	private static final String PROGRESSBAR_COLOR_3 = "progressbar_color_3";
-	private static final String PROGRESSBAR_COLOR_4 = "progressbar_color_4";
 	private static final String KEY_PROGRESSBAR_INTERPOLATOR = "progressbar_interpolators";
 
 	private CheckBoxPreference mprogressbar_mirror;
@@ -60,10 +55,6 @@ public class ProgressBar extends SettingsPreferenceFragment implements
 	private SeekBarPreference mprogressbar_width;
 	private SeekBarPreference mprogressbar_length;
 	private SeekBarPreference mprogressbar_count;
-	private ColorPickerPreference mprogressbar_color_1;
-	private ColorPickerPreference mprogressbar_color_2;
-	private ColorPickerPreference mprogressbar_color_3;
-	private ColorPickerPreference mprogressbar_color_4;
 	private ListPreference mprogressbar_interpolator;
 
         private static final int MENU_RESET = Menu.FIRST;
@@ -101,26 +92,6 @@ public class ProgressBar extends SettingsPreferenceFragment implements
 		                            Settings.System.PROGRESSBAR_COUNT, 6));
 		mprogressbar_count.setOnPreferenceChangeListener(this);
 
-		mprogressbar_color_1 = (ColorPickerPreference) findPreference(PROGRESSBAR_COLOR_1);
-		int intColor1 = Settings.System.getInt(getActivity().getContentResolver(), Settings.System.PROGRESSBAR_COLOR_1, -1);
-		mprogressbar_color_1.setNewPreviewColor(intColor1);
-		mprogressbar_color_1.setOnPreferenceChangeListener(this);
-
-		mprogressbar_color_2 = (ColorPickerPreference) findPreference(PROGRESSBAR_COLOR_2);
-		int intColor2 = Settings.System.getInt(getActivity().getContentResolver(), Settings.System.PROGRESSBAR_COLOR_2, -1);
-		mprogressbar_color_2.setNewPreviewColor(intColor2);
-		mprogressbar_color_2.setOnPreferenceChangeListener(this);
-
-		mprogressbar_color_3 = (ColorPickerPreference) findPreference(PROGRESSBAR_COLOR_3);
-		int intColor3 = Settings.System.getInt(getActivity().getContentResolver(), Settings.System.PROGRESSBAR_COLOR_3, -1);
-		mprogressbar_color_3.setNewPreviewColor(intColor3);
-		mprogressbar_color_3.setOnPreferenceChangeListener(this);
-
-		mprogressbar_color_4 = (ColorPickerPreference) findPreference(PROGRESSBAR_COLOR_4);
-		int intColor4 = Settings.System.getInt(getActivity().getContentResolver(), Settings.System.PROGRESSBAR_COLOR_4, -1);
-		mprogressbar_color_4.setNewPreviewColor(intColor4);
-		mprogressbar_color_4.setOnPreferenceChangeListener(this);
-
 		mprogressbar_interpolator = (ListPreference)findPreference(KEY_PROGRESSBAR_INTERPOLATOR);
 		mprogressbar_interpolator.setSummary(mprogressbar_interpolator.getEntry());
 		int interpolatorindex = Settings.System.getInt(getActivity().getContentResolver(), Settings.System.PROGRESSBAR_INTERPOLATOR, 0);
@@ -153,14 +124,14 @@ public class ProgressBar extends SettingsPreferenceFragment implements
 		alertDialog.setMessage(R.string.progressbar_reset_message);
 		alertDialog.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
-				ProgressBarColorReset();
+				ProgressBarReset();
 			}
 		});
 		alertDialog.setNegativeButton(R.string.cancel, null);
 		alertDialog.create().show();
 	}
 
-	private void ProgressBarColorReset() {
+	private void ProgressBarReset() {
 
 		Settings.System.putInt(getContentResolver(), Settings.System.PROGRESSBAR_MIRROR, 0);
 		Settings.System.putInt(getContentResolver(), Settings.System.PROGRESSBAR_REVERSE, 0);
@@ -168,10 +139,6 @@ public class ProgressBar extends SettingsPreferenceFragment implements
 		Settings.System.putInt(getContentResolver(), Settings.System.PROGRESSBAR_WIDTH, 6);
 		Settings.System.putInt(getContentResolver(), Settings.System.PROGRESSBAR_LENGTH, 10);
 		Settings.System.putInt(getContentResolver(), Settings.System.PROGRESSBAR_COUNT, 6);
-		Settings.System.putInt(getContentResolver(), Settings.System.PROGRESSBAR_COLOR_1, -1);
-		Settings.System.putInt(getContentResolver(), Settings.System.PROGRESSBAR_COLOR_2, -1);
-		Settings.System.putInt(getContentResolver(), Settings.System.PROGRESSBAR_COLOR_3, -1);
-		Settings.System.putInt(getContentResolver(), Settings.System.PROGRESSBAR_COLOR_4, -1);
 
 		mprogressbar_mirror.setChecked(false);
 		mprogressbar_reverse.setChecked(false);
@@ -179,10 +146,6 @@ public class ProgressBar extends SettingsPreferenceFragment implements
 		mprogressbar_width.setValue(6);
 		mprogressbar_length.setValue(10);
 		mprogressbar_count.setValue(6);
-		mprogressbar_color_1.setNewPreviewColor(-1);
-		mprogressbar_color_2.setNewPreviewColor(-1);
-		mprogressbar_color_3.setNewPreviewColor(-1);
-		mprogressbar_color_4.setNewPreviewColor(-1);
  	}
 
 	@Override
@@ -230,26 +193,6 @@ public class ProgressBar extends SettingsPreferenceFragment implements
 			int count = ((Integer)newValue).intValue();
 			Settings.System.putInt(getContentResolver(),
 			                       Settings.System.PROGRESSBAR_COUNT, count);
-			return true;
-		} else if ( preference == mprogressbar_color_1) {
-			int color1 = ((Integer)newValue).intValue();
-			Settings.System.putInt(getContentResolver(),
-			                       Settings.System.PROGRESSBAR_COLOR_1, color1);
-			return true;
-		} else if ( preference == mprogressbar_color_2) {
-			int color2 = ((Integer)newValue).intValue();
-			Settings.System.putInt(getContentResolver(),
-			                       Settings.System.PROGRESSBAR_COLOR_2, color2);
-			return true;
-		} else if ( preference == mprogressbar_color_3) {
-			int color3 = ((Integer)newValue).intValue();
-			Settings.System.putInt(getContentResolver(),
-			                       Settings.System.PROGRESSBAR_COLOR_3, color3);
-			return true;
-		} else if ( preference == mprogressbar_color_4) {
-			int color4 = ((Integer)newValue).intValue();
-			Settings.System.putInt(getContentResolver(),
-			                       Settings.System.PROGRESSBAR_COLOR_4, color4);
 			return true;
 		} else if ( preference == mprogressbar_interpolator) {
 			int index = mprogressbar_interpolator.findIndexOfValue((String) newValue);

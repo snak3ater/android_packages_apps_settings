@@ -30,6 +30,13 @@
             android:title="@string/progressbar_reverse_title"
             android:defaultValue="false" />
 
+	<ListPreference
+            android:key="progressbar_interpolators"
+            android:title="@string/progressbar_interpolator"
+            android:entries="@array/progressbar_interpolators_entries"
+            android:entryValues="@array/progressbar_interpolators_values"
+            android:persistent="false" />
+
         <com.android.settings.chameleonos.SeekBarPreference
             android:key="progressbar_speed"
             android:persistent="false"
@@ -73,31 +80,5 @@
             settings:unitsLeft="Sections Count: "
             settings:unitsRight=""
             android:defaultValue="6" />
-
-        <ListPreference
-            android:key="progressbar_interpolators"
-            android:title="@string/progressbar_interpolator"
-            android:entries="@array/progressbar_interpolators_entries"
-            android:entryValues="@array/progressbar_interpolators_values"
-            android:persistent="false" />
-
-        <net.margaritov.preference.colorpicker.ColorPickerPreference
-            android:key="progressbar_color_1"
-            android:title="@string/progressbar_color_1_title"
-            android:defaultValue="#33b5e5" />
-
-        <net.margaritov.preference.colorpicker.ColorPickerPreference
-            android:key="progressbar_color_2"
-            android:title="@string/progressbar_color_2_title" />
-
-        <net.margaritov.preference.colorpicker.ColorPickerPreference
-            android:key="progressbar_color_3"
-            android:title="@string/progressbar_color_3_title" />
-
-        <net.margaritov.preference.colorpicker.ColorPickerPreference
-            android:key="progressbar_color_4"
-            android:title="@string/progressbar_color_4_title" />
-
     </PreferenceCategory>
-
 </PreferenceScreen>
