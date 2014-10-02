@@ -259,19 +259,14 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <string name="progressbar_width_title">Largeur de trait</string>
     <string name="progressbar_length_title">Longueur du séparateur</string>
     <string name="progressbar_count_title">Nombre de sections</string>
-    <string name="progressbar_color_1_title">Couleur 1</string>
-    <string name="progressbar_color_2_title">Couleur 2</string>
-    <string name="progressbar_color_3_title">Couleur 3</string>
-    <string name="progressbar_color_4_title">Couleur 4</string>
     <string name="sample_progressbar_text">Aperçu</string>
     <string name="progressbar_interpolator">Interpolateur</string>
     <string name="progressbar_none">Aucun</string>
     <string name="progressbar_acclerate">Accélérer</string>
     <string name="progressbar_linear">Linéaire</string>
-    <string name="progressbar_acceleratedecelerate">Accélérer Décélérer</string>
+    <string name="progressbar_acceleratedecelerate">Accélérer / Décélérer</string>
     <string name="progressbar_decelerate">Décélérer</string>
     <string name="progressbar_reset_message">Réinitialiser la barre de progression avec le style par défaut ?</string>
-    <string name="ram_bar_button_reset">Réinitialiser la couleur</string>
     <string name="ram_bar_reset">Réinitialiser</string>
 
     <!-- Color picker -->
@@ -768,7 +763,7 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <string name="storage_rescan_media_complete">Analyse terminée</string>
 
     <!-- Restart SystemUI -->
-    <string name="restart_systemui">Redémarrer le systeme</string>
+    <string name="restart_systemui">Redémarrer le l'interface utilisateur</string>
 
     <!-- Pie Settings-->
     <string name="pie_settings_title">Réglages du Pie</string>
@@ -800,10 +795,14 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <string name="pie_angle_huge">Enorme</string>
     
      <!-- EdgeGesture service -->
-     <string name="edge_gesture_service_title">Block gesture touch events</string>
-     <string name="edge_gesture_service_summary">Don\'t send touch events for navigation and status bar gestures to apps</string>
+     <string name="edge_gesture_service_title">Bloquer le geste des événements tactiles</string>
+     <string name="edge_gesture_service_summary">Ne pas activer les événements tactiles pour la navigation et les gestes de la barre d\'état</string>
 
      <!-- Setting checkbox summary for displaying USB debugging notification -->
      <string name="adb_notify">Notification débogage USB</string>
      <string name="adb_notify_summary">Afficher une notification lorsque le débogage USB est actif</string>
+
+    <!-- Proximity wake -->
+    <string name="proximity_wake_title">Eviter tout risque de réveil</string>
+    <string name="proximity_wake_summary">Vérifier le capteur de proximité avant de réveiller l\'écran</string>
 </resources>
