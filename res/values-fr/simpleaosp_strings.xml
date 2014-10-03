@@ -763,7 +763,7 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <string name="storage_rescan_media_complete">Analyse terminée</string>
 
     <!-- Restart SystemUI -->
-    <string name="restart_systemui">Redémarrer le l\'interface utilisateur</string>
+    <string name="restart_systemui">Redémarrer l\'interface utilisateur</string>
 
     <!-- Pie Settings-->
     <string name="pie_settings_title">Réglages du Pie</string>
