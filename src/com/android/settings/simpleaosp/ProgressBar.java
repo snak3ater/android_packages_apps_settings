@@ -102,7 +102,7 @@ public class ProgressBar extends SettingsPreferenceFragment implements
 
 	@Override
 	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-		menu.add(0, MENU_RESET, 0, R.string.ram_bar_button_reset)
+		menu.add(0, MENU_RESET, 0, R.string.ram_bar_reset)
 		.setIcon(R.drawable.ic_settings_backup)
 		.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 	}
