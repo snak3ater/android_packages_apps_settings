@@ -321,7 +321,6 @@ dos con el fin de insertar puntos de control adicionales. \'Borrar\' elimina lin
     <string name="clock_date_style_lowercase">Minúsculas</string>
     <string name="clock_date_style_uppercase">Mayúsculas</string>
     <string name="clock_date_format_custom">Formato java personalizado</string>
-    <string name="status_bar_clock_style_reset_message">¿Resetear el color del  reloj?</string>
 
     <!-- Status bar brightness control -->
     <string name="status_bar_toggle_brightness">Control de brillo</string>
