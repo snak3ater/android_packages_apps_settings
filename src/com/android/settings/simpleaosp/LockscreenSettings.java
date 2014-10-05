@@ -48,14 +48,12 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
     private static final String TAG = "LockscreenSettings";
 
     
-    private static final String KEY_SEE_THROUGH = "see_through";
     private static final String KEY_LOCKSCREEN_GENERAL_CATEGORY = "lockscreen_general_category";
     private static final String KEY_PEEK_NOTIFICATONS = "peek_notifications";
     // Omni Additions
     private static final String BATTERY_AROUND_LOCKSCREEN_RING = "battery_around_lockscreen_ring";
 
     private PreferenceScreen mPeekNotifications;
-    private PreferenceScreen mseethrough;
     
     // Omni Additions
     private SystemSettingCheckBoxPreference mLockRingBattery;
@@ -68,7 +66,6 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
         PreferenceScreen prefSet = getPreferenceScreen();
 
 	mPeekNotifications = (PreferenceScreen) prefSet.findPreference(KEY_PEEK_NOTIFICATONS);
-	mseethrough = (PreferenceScreen) prefSet.findPreference(KEY_SEE_THROUGH);
 
 	// Add the additional Omni settings
         mLockRingBattery = (SystemSettingCheckBoxPreference) getPreferenceScreen()
@@ -102,10 +99,5 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
 	getContentResolver(), Settings.System.PEEK_STATE, 0) == 1;
 	mPeekNotifications.setSummary(peekEnabled
 	? R.string.summary_peek_notifications_enabled : R.string.summary_peek_notifications_disabled);
-
-	boolean blurEnabled = Settings.System.getInt(
- 	getContentResolver(), Settings.System.LOCKSCREEN_SEE_THROUGH, 0) == 1;
-	mseethrough.setSummary(blurEnabled
-	? R.string.summary_blur_notifications_enabled : R.string.summary_blur_notifications_disabled);
     }
 }

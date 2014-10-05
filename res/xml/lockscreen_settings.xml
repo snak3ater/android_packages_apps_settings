@@ -14,12 +14,6 @@
             android:key="lockscreen_general_category"
             android:title="@string/general_string">
 
-	<PreferenceScreen
-            android:fragment="com.android.settings.simpleaosp.BlurSettings"
-            android:key="lockscreen_blur"
-	    android:summary="@string/see_through_summary"
-            android:title="@string/see_through_title" />
-
 	<com.android.settings.simpleaosp.SystemSettingCheckBoxPreference
             android:key="battery_around_lockscreen_ring"
             android:title="@string/battery_around_lockscreen_ring"
