@@ -43,7 +43,7 @@ public class PeekSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
 
-    private static final String PEEK_APPLICATION = "com.jedga.peek";
+    private static final String PEEK_APPLICATION = "com.jedga.peek.free";
     private static final String KEY_PEEK_PICKUP_TIMEOUT = "peek_pickup_timeout";
     private static final String KEY_PEEK_WAKE_TIMEOUT = "peek_wake_timeout";
 
