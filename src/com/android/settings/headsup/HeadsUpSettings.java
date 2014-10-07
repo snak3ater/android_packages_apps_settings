@@ -71,7 +71,6 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
     // Default timeout for heads up snooze. 5 minutes.
     protected static final int DEFAULT_TIME_HEADS_UP_SNOOZE = 300000;
 
-    private static final String PREF_HEADS_UP_GRAVITY = "heads_up_gravity";
     private static final String PREF_HEADS_UP_EXPANDED = "heads_up_expanded";
     private static final String PREF_HEADS_UP_SHOW_UPDATE = "heads_up_show_update";
     private static final String PREF_HEADS_UP_SNOOZE_TIME = "heads_up_snooze_time";
@@ -81,7 +80,6 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
     private static final String HEADS_UP_TEXT_COLOR =
             "heads_up_text_color";
 
-    private CheckBoxPreference mHeadsUpGravity;
     private CheckBoxPreference mHeadsUpExpanded;
     private CheckBoxPreference mHeadsUpShowUpdates;
     private ListPreference mHeadsUpSnoozeTime;
@@ -156,11 +154,6 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
         }
         mHeadsUpTextColor.setNewPreviewColor(intTextColor);
         setHasOptionsMenu(true);
-
-        mHeadsUpGravity = (CheckBoxPreference) findPreference(PREF_HEADS_UP_GRAVITY);
-        mHeadsUpGravity.setChecked(Settings.System.getIntForUser(getContentResolver(),
-                Settings.System.HEADS_UP_GRAVITY_BOTTOM, 0, UserHandle.USER_CURRENT) == 1);
-        mHeadsUpGravity.setOnPreferenceChangeListener(this);
 
         mHeadsUpExpanded = (CheckBoxPreference) findPreference(PREF_HEADS_UP_EXPANDED);
         mHeadsUpExpanded.setChecked(Settings.System.getIntForUser(getContentResolver(),
@@ -292,12 +285,7 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mHeadsUpGravity) {
-            Settings.System.putIntForUser(getContentResolver(),
-                    Settings.System.HEADS_UP_GRAVITY_BOTTOM,
-                    (Boolean) newValue ? 1 : 0, UserHandle.USER_CURRENT);
-            return true;
-        } else if (preference == mHeadsUpExpanded) {
+        if (preference == mHeadsUpExpanded) {
             Settings.System.putIntForUser(getContentResolver(),
                     Settings.System.HEADS_UP_EXPANDED,
                     (Boolean) newValue ? 1 : 0, UserHandle.USER_CURRENT);

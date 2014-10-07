@@ -662,8 +662,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="heads_up_blacklist_title">Blacklist</string>
     <string name="heads_up_disabled_notice">To allow applications to display interactive notifications in a pop-up window on your screen, enable heads up.</string>
     <string name="heads_up_summary">Enable and customize heads up notifications</string>
-    <string name="heads_up_gravity_title">Show at the bottom</string>
-    <string name="heads_up_gravity_summary">Show heads up notification at the bottom of the screen</string> 
 
     <!-- Heads-up floating window -->
     <string name="heads_up_floating_window">Launch in floating window</string>
