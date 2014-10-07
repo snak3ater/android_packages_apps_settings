@@ -668,6 +668,14 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Heads-up floating window -->
     <string name="heads_up_floating_window">Launch in floating window</string>
 
+    <string name="heads_up_bg_color_title">Background color</string>
+    <string name="heads_up_text_color_title">Text color</string>
+    <string name="heads_up_default_color">Heads Up default</string>
+    <string name="reset_default_message">Reset default</string>
+    <string name="shortcut_action_reset">Reset</string>
+    <string name="shortcut_action_reset_message">Reset all entries to default?</string>
+    <string name="heads_up_reset_message">Reset all colors to default?</string>
+
     <string name="increasing_ring_title">Ascending ringtone</string>
     <!-- Sound settings screen, the caption of the checkbox for making incoming calls increase in volume -->
     <string name="checkbox_increasing_ring">Enable</string>

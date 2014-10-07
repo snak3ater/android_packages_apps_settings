@@ -40,6 +40,9 @@ import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -57,6 +60,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import net.margaritov.preference.colorpicker.ColorPickerPreference;
+
 public class HeadsUpSettings extends SettingsPreferenceFragment
         implements AdapterView.OnItemLongClickListener, Preference.OnPreferenceClickListener, OnPreferenceChangeListener {
 
@@ -71,12 +76,23 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
     private static final String PREF_HEADS_UP_SHOW_UPDATE = "heads_up_show_update";
     private static final String PREF_HEADS_UP_SNOOZE_TIME = "heads_up_snooze_time";
     private static final String PREF_HEADS_UP_TIME_OUT = "heads_up_time_out";
+    private static final String HEADS_UP_BG_COLOR =
+            "heads_up_bg_color";
+    private static final String HEADS_UP_TEXT_COLOR =
+            "heads_up_text_color";
 
     private CheckBoxPreference mHeadsUpGravity;
     private CheckBoxPreference mHeadsUpExpanded;
     private CheckBoxPreference mHeadsUpShowUpdates;
     private ListPreference mHeadsUpSnoozeTime;
     private ListPreference mHeadsUpTimeOut;
+
+    private ColorPickerPreference mHeadsUpBgColor;
+    private ColorPickerPreference mHeadsUpTextColor;
+
+    private static final int MENU_RESET = Menu.FIRST;
+    private static final int DEFAULT_BACKGROUND_COLOR = 0x00ffffff;
+    private static final int DEFAULT_TEXT_COLOR = 0xffffffff;
 
     private PackageListAdapter mPackageAdapter;
     private PackageManager mPackageManager;
@@ -111,6 +127,35 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
         mPackageManager = getPackageManager();
         mPackageAdapter = new PackageListAdapter(getActivity());
         PackageManager pm = getPackageManager();
+
+ 	// Heads Up background color
+        mHeadsUpBgColor =
+                (ColorPickerPreference) findPreference(HEADS_UP_BG_COLOR);
+        mHeadsUpBgColor.setOnPreferenceChangeListener(this);
+        final int intColor = Settings.System.getInt(getContentResolver(),
+                Settings.System.HEADS_UP_BG_COLOR, 0x00ffffff);
+        String hexColor = String.format("#%08x", (0x00ffffff & intColor));
+        if (hexColor.equals("#00ffffff")) {
+            mHeadsUpBgColor.setSummary(R.string.heads_up_default_color);
+        } else {
+            mHeadsUpBgColor.setSummary(hexColor);
+        }
+        mHeadsUpBgColor.setNewPreviewColor(intColor);
+
+        // Heads Up text color
+        mHeadsUpTextColor =
+                (ColorPickerPreference) findPreference(HEADS_UP_TEXT_COLOR);
+        mHeadsUpTextColor.setOnPreferenceChangeListener(this);
+        final int intTextColor = Settings.System.getInt(getContentResolver(),
+                Settings.System.HEADS_UP_TEXT_COLOR, 0x00000000);
+        String hexTextColor = String.format("#%08x", (0x00000000 & intTextColor));
+        if (hexTextColor.equals("#00000000")) {
+            mHeadsUpTextColor.setSummary(R.string.heads_up_default_color);
+        } else {
+            mHeadsUpTextColor.setSummary(hexTextColor);
+        }
+        mHeadsUpTextColor.setNewPreviewColor(intTextColor);
+        setHasOptionsMenu(true);
 
         mHeadsUpGravity = (CheckBoxPreference) findPreference(PREF_HEADS_UP_GRAVITY);
         mHeadsUpGravity.setChecked(Settings.System.getIntForUser(getContentResolver(),
@@ -275,6 +320,32 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
                     Settings.System.HEADS_UP_NOTIFCATION_DECAY,
                     headsUpTimeOut);
             updateHeadsUpTimeOutSummary(headsUpTimeOut);
+            return true;
+	 } else if (preference == mHeadsUpBgColor) {
+            String hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(newValue)));
+            if (hex.equals("#00ffffff")) {
+                preference.setSummary(R.string.heads_up_default_color);
+            } else {
+                preference.setSummary(hex);
+            }
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.HEADS_UP_BG_COLOR,
+                    intHex);
+            return true;
+        } else if (preference == mHeadsUpTextColor) {
+            String hexText = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(newValue)));
+            if (hexText.equals("#00000000")) {
+                preference.setSummary(R.string.heads_up_default_color);
+            } else {
+                preference.setSummary(hexText);
+            }
+            int intHexText = ColorPickerPreference.convertToColorInt(hexText);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.HEADS_UP_TEXT_COLOR,
+                    intHexText);
             return true;
         }
         return false;
@@ -552,5 +623,47 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
 
         builder.show();
         return true;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.add(0, MENU_RESET, 0, R.string.reset_default_message)
+                .setIcon(R.drawable.ic_settings_backup)
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case MENU_RESET:
+                resetToDefault();
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
+    }
+
+    private void resetToDefault() {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+        alertDialog.setTitle(R.string.shortcut_action_reset);
+        alertDialog.setMessage(R.string.heads_up_reset_message);
+        alertDialog.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                resetValues();
+            }
+        });
+        alertDialog.setNegativeButton(R.string.cancel, null);
+        alertDialog.create().show();
+    }
+
+    private void resetValues() {
+        Settings.System.putInt(getContentResolver(),
+                Settings.System.HEADS_UP_BG_COLOR, DEFAULT_BACKGROUND_COLOR);
+        mHeadsUpBgColor.setNewPreviewColor(DEFAULT_BACKGROUND_COLOR);
+        mHeadsUpBgColor.setSummary(R.string.heads_up_default_color);
+        Settings.System.putInt(getContentResolver(),
+                Settings.System.HEADS_UP_TEXT_COLOR, 0);
+        mHeadsUpTextColor.setNewPreviewColor(DEFAULT_TEXT_COLOR);
+        mHeadsUpTextColor.setSummary(R.string.heads_up_default_color);
     }
 }
