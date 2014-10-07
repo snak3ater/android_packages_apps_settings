@@ -97,7 +97,5 @@ public class LockscreenSettings extends SettingsPreferenceFragment implements On
 
 	boolean peekEnabled = Settings.System.getInt(
 	getContentResolver(), Settings.System.PEEK_STATE, 0) == 1;
-	mPeekNotifications.setSummary(peekEnabled
-	? R.string.summary_peek_notifications_enabled : R.string.summary_peek_notifications_disabled);
     }
 }

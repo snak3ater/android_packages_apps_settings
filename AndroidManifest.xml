@@ -2010,5 +2010,6 @@
         <activity android:name="com.android.settings.cyanogenmod.LockscreenInterface" />
         <activity android:name=".simpleaosp.StatusBarClockStyle" />
         <activity android:name=".headsup.HeadsUpSettings" />
+	<activity android:name=".simpleaosp.SimpleSettings" />
     </application>
 </manifest>

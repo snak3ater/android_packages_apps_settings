@@ -102,6 +102,7 @@ import com.android.settings.simpleaosp.HoverSettings;
 import com.android.settings.simpleaosp.PieSettings;
 import com.android.settings.simpleaosp.DisplayRotation;
 import com.android.settings.headsup.HeadsUpSettings;
+import com.android.settings.simpleaosp.SimpleSettings;
 
 import java.util.ArrayList;
 import java.util.Collections;
