@@ -26,15 +26,13 @@ OnPreferenceChangeListener {
     private static final String DOUBLE_TAP_SLEEP_GESTURE = "double_tap_sleep_gesture";
     // Notification Count
     private static final String STATUSBAR_NOTIF_COUNT = "status_bar_notif_count";
-    private static final String KEY_HOVER_NOTIFICATONS = "hover_notifications"; 
-    private static final String KEY_HEADSUP_NOTIFICATONS = "headsup_notifications";   
+    private static final String KEY_HOVER_NOTIFICATONS = "hover_notifications";    
 
     private CheckBoxPreference mStatusBarBrightnessControl;
     // Double-tap to sleep
     private CheckBoxPreference mStatusBarDoubleTapSleepGesture;
     private CheckBoxPreference mStatusBarNotifCount;
     private PreferenceScreen mhoverNotifications;
-    private PreferenceScreen mheadsupNotifications;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,8 +43,6 @@ OnPreferenceChangeListener {
         ContentResolver resolver = getActivity().getContentResolver();
 
         mhoverNotifications = (PreferenceScreen) prefSet.findPreference(KEY_HOVER_NOTIFICATONS);
-
-mheadsupNotifications = (PreferenceScreen) prefSet.findPreference(KEY_HEADSUP_NOTIFICATONS);
 
  	    // Notification Count
  	    mStatusBarNotifCount = (CheckBoxPreference) findPreference(STATUSBAR_NOTIF_COUNT);
@@ -109,10 +105,5 @@ mheadsupNotifications = (PreferenceScreen) prefSet.findPreference(KEY_HEADSUP_NO
                 getContentResolver(), Settings.System.HOVER_STATE, 0) == 1;
         mhoverNotifications.setSummary(hoverEnabled
                 ? R.string.summary_hover_notifications_enabled : R.string.summary_hover_notifications_disabled);
-
-	boolean headsupEnabled = Settings.System.getInt(
-                getContentResolver(), Settings.System.HEADS_UP_MASTER_SWITCH, 0) == 1;
-        mheadsupNotifications.setSummary(headsupEnabled
-                ? R.string.summary_headsup_notifications_enabled : R.string.summary_headsup_notifications_disabled);
     }
 }
