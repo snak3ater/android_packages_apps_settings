@@ -124,16 +124,6 @@
     <string name="background_result_not_successful">fond non changé</string>
     <string name="setting_lockscreen_background">Application du fond</string>
 
-    <!--Lockscreen see through-->
-    <string name="see_through_title">Transparence</string>
-    <string name="see_through_summary">Affiche le contenu derrière votre écran de verrouillage</string>
-    <string name="blur_radius_title">Flouter l\'arrière plan</string>
-    <string name="blur_radius_summary">Réglage de l\'intensité du flou de l\'écran de verrouillage</string>
-    <string name="blur_disabled_notice">Activer l\'écran de verrouillage transparent</string>
-    <string name="blur_notifications">Ecran de verrouillage transparent</string>
-    <string name="summary_blur_notifications_enabled">L\écran de verrouillage transparent est activé</string>
-    <string name="summary_blur_notifications_disabled">L\écran de verrouillage transparent est désactivé</string>
-
     <!-- Lockscreen interface -->
     <string name="lockscreen_title">Écran de verrouillage</string>
 
