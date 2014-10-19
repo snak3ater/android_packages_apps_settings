@@ -748,6 +748,18 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <string name="telo_radio_go_3g_unlock_title">3G si déverrouillé</string>
     <string name="telo_radio_go_3g_unlock_summary">Lorsque l\'appareil est déverrouillé, le mode de réseau commute en 3G à nouveau</string>
 
+    <!-- Navigation Bar customization-->
+    <string name="navigation_bar_button_title">Boutons et disposition</string>
+    <string name="navigation_bar_summary">Modifier et réorganiser les boutons de la barre de navigation</string>
+    <string name="navigation_bar_help_text">1 - Pour commencer l\'édition, appuyez sur l\'icône de verrouillage\n\n2 - Appuyez sur n\'importe quel bouton pour attribuer ou modifier les fonctionnalités\n\n3 - Appuyez longuement sur n\'importe quel bouton pour modifier l\'ordre\n\n4 - Pour enregistrer, appuyez à nouveau sur l\'icône de verrouillage\n\n5 - Pour restaurer le système par défaut, appuyez sur le bouton de remise à zéro\n\n</string>
+    <string name="navigation_bar_tips">\u2022 Les actions ne peuvent être affectés à un bouton à la fois\n\n\u2022 Le bouton d\'accueil ne peut être réaffecté \n\n\u2022 Les boutons secondaires ne peuvent pas être réorganisées</string>
+    <string name="navigation_bar_tips_title">Conseils pratiques</string>
+    <string name="navigation_bar_reset_message">Supprimer les paramètres actuels et les restaurer par défaut ?</string>
+    <string name="navigation_bar_save_message">Paramètres de la barre de navigation sauvegardés</string>
+    <string name="navigation_bar_reset_toast">Barre de navigation réinitialisés par défaut</string>
+    <string name="navigation_bar_menu_editable">Modifiable</string>
+    <string name="navigation_bar_menu_locked">Verrouillé</string>
+	
     <!-- USB Mass Storage -->
     <string name="storage_rescan_media">Nouvelle analyse du support pour le volume de stockage</string>
     <string name="storage_rescan_media_complete">Analyse terminée</string>
@@ -795,4 +807,10 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <!-- Proximity wake -->
     <string name="proximity_wake_title">Eviter tout risque de réveil</string>
     <string name="proximity_wake_summary">Vérifier le capteur de proximité avant de réveiller l\'écran</string>
+
+    <!-- Message of dialog confirming that user wants to restart their device with a new runtime -->
+    <string name="custom_runtime_warning_title">Avertissement</string>
+    <string name="custom_runtime_warning_message">ART n\'est pas supporté par la Rom SimpleAOSP. Ce paramètre est inclus pour l\'expérimentation seulement et a le potentiel de causer de l\'instabilité, accidents, la perte de données ou empêcher le bon démarrage de votre appareil. Lire &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;la présentation ART&lt;/a&gt; pour plus d\'information.&lt;br/&gt;&lt;br/&gt;Nous vous demandons de ne pas déposer de rapports d\'erreur si vous avez activé ART en tant que moteur d\'exécution.&lt;br/&gt;&lt;br/&gt;Êtes-vous sûr de vouloir redémarrer pour changer l\'exécution de<xliff:g id="old" example="libdvm.so">%1$s</xliff:g> to <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
+
+    <string name="long_press_kill_delay">Délai pour tuer l\'application</string>
 </resources>
