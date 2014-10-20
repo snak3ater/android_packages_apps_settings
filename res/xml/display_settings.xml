@@ -64,6 +64,11 @@
                 android:fragment="com.android.settings.simpleaosp.Animations"
                 android:title="@string/anim_settings_title" />
 
+	<PreferenceScreen
+                android:key="dynamic_statusbar"
+                android:fragment="com.android.settings.simpleaosp.DsbSettings"
+                android:title="@string/dynamic_status_bar_title" />
+
         <PreferenceScreen
                 android:key="status_bar"
                 android:fragment="com.android.settings.simpleaosp.StatusBarSettings"
