@@ -429,8 +429,9 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <string name="menu_hidden_apps_delete">Réinitialiser</string>
     <string name="menu_hidden_apps_reset_lock">Réinitialiser le schéma de déverrouillage</string>
     <string name="protected_apps">Protection des applications</string>
-    <string name="saving_protected_components">Sauvegarde de l\'état des éléments</string>
-
+    <string name="saving_protected_components">Sauvegarde de l\'état des éléments\u2026</string>
+    <string name="launch_app">Lancer l\'application</string>
+    
     <!-- Protected apps lockpattern reset button -->
     <string name="lockpattern_reset_button">Réinitialiser le schéma</string>
     <string name="lockpattern_settings_reset_summary">Entrer le compte e-mail principal et le mot de passe associé pour réinitialiser verrouillage</string>
