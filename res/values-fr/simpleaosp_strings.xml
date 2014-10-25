@@ -579,7 +579,7 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <string name="hover_exclude_from_insecure_lock_screen_summary">Vérifiez d\'exclure les notifications hover de l\'écran de verrouillage non sécurisé</string>
 
     <!--  Plug-in prompt -->
-    <string name="plug_in_prompt_settings_title">Branchement / débranchement rapide</string>
+    <string name="plug_in_prompt_settings_title">Branchement / débranchement</string>
 
     <!-- Turn on display when power connected; turn off display when power disconnected -->
     <string name="wake_when_plugged_or_unplugged_title">Réveil par le connecteur</string>
