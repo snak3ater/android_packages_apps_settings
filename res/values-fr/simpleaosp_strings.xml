@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- About phone screen, build date of ROM -->
-    <string name="build_date">Date de la Build SimpleAOSP</string>
+    <string name="build_date">Date de la version SimpleAOSP</string>
     <string name="build_date_default">01-01-2012-0000</string>
 
     <!-- SuperSU header name - the app hides itself from launcher based on this resource name being present in com.android.settings -->
@@ -161,7 +161,6 @@
      <string name="battery_circle">Batterie cercle</string>
      <string name="battery_circle_percent">Batterie cercle et pourcentage</string>
      <string name="battery_hidden">Cachée</string>
-     <string name="battery_percent_only">Pourcentage seulement</string>
 
     <!-- kill app long press back -->
     <string name="kill_app_longpress_back">Tuer l\'application avec la touche retour</string>
@@ -243,7 +242,7 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <string name="progressbar_title">Barre de progression</string>
     <string name="progressbar_summary">Voir ou changer les animations et couleur de la barre de progression</string>
     <string name="progressbar_category_title">Options de personnalisation de la barre de progression</string>
-    <string name="progressbar_mirror_title">Mode mirroir</string>
+    <string name="progressbar_mirror_title">Mode miroir</string>
     <string name="progressbar_reverse_title">inversée</string>
     <string name="progressbar_speed_title">Vitesse</string>
     <string name="progressbar_width_title">Largeur de trait</string>
@@ -359,7 +358,7 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <string name="reset">Réinitialiser</string>
     <string name="empty_string">vide</string>
     <string name="ok">OK</string>
-    <string name="font_size_sample">Definition</string>
+    <string name="font_size_sample">Définition</string>
     
     <!-- Add application dialog box title -->
     <string name="profile_choose_app">Choisir l\'application</string>
@@ -497,7 +496,7 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <string name="quiet_hours_auto_string_title">Réponse à leur envoyer</string>
     <string name="quiet_hours_auto_string_explain">Ce SMS automatique sera envoyé à quiconque essaie de vous contacter durant
         	vos heures silencieuses.</string>
-    <string name="quiet_hours_auto_sms_null">[Message automatisé] Je vous recontacte dès que possible.</string>
+    <string name="quiet_hours_auto_sms_null">[Message automatisé] Je vous contacte dès que possible.</string>
     <string name="quiet_hours_auto_disabled">Personne</string>
     <string name="quiet_hours_auto_enabled">Tous les numéros</string>
     <string name="quiet_hours_auto_contacts">Contacts uniquement</string>
@@ -538,12 +537,12 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <string name="quiet_hours_whitelist">Outrepasser le contact</string>
     <string name="quiet_hours_whitelist_summary">Contacts outrepassant les heures creuses</string>
     <string name="quiet_hours_whitelist_button_delete">Supprimer</string>
-    <string name="quiet_hours_whitelist_edit_dialog_title">Editer le contatc</string>
+    <string name="quiet_hours_whitelist_edit_dialog_title">Editer le contact</string>
     <string name="quiet_hours_options_group">Options</string>
     <string name="quiet_hours_ringer_allow_whitelist">Outrepasser le contact seulement</string>
     <string name="quiet_hours_bypass_options_group">Option d\'alarme</string>
     <string name="quiet_hours_auto_sms_summary">Envoyer un message automatique de réponse pour les appels entrants non traités ou les messages texte</string>
-    <string name="quiet_hours_bypass_summary">Démarrer l\'alarme si un appel entrant ou un message texte correspond à des critères d\'outrepassement. Toujours démarrer l\'alarme si activée</string>
+    <string name="quiet_hours_bypass_summary">Démarrer l\'alarme si un appel entrant ou un message texte correspond à des critères d\'outre-passement. Toujours démarrer l\'alarme si activée</string>
 
     <!-- Time range preference -->
     <string name="start_time_title">Début</string>
@@ -663,8 +662,8 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <string name="lockscreen_maximize_widgets_summary">Affiche les widgets maximisé quand l\'écran s\'allume.</string>
     <string name="lockscreen_disable_hints_title">Désactiver les suggestions</string>
     <string name="lockscreen_disable_hints_summary">Désactive le halo qui entoure les widgets sur l\'écran de verrouillage en mode portrait.</string>
-    <string name="lockscreen_use_widget_container_carousel_title">Activer le caroussel</string>
-    <string name="lockscreen_use_widget_container_carousel_summary">Utilise l\'animation caroussel en mode portrait lors du défilement des widgets.</string>
+    <string name="lockscreen_use_widget_container_carousel_title">Activer le carrousel</string>
+    <string name="lockscreen_use_widget_container_carousel_summary">Utilise l\'animation carrousel en mode portrait lors du défilement des widgets.</string>
     <string name="lockscreen_widget_frame_title">Désactiver le cadre des widgets</string>
     <string name="lockscreen_widget_frame_summary">Désactive le cadre de fond des widgets.</string>
 
@@ -727,7 +726,7 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <string name="overscroll_title">Les effets de défilement</string>
     <string name="overscroll_summary">Choisissez le style de défilement des listes</string>
     <string name="overscroll_weight_title">Taille de l\'effet de défilement</string>
-    <string name="overscroll_weight_summary">Séléctionner la taille de défilement des listes</string>
+    <string name="overscroll_weight_summary">Sélectionner la taille de défilement des listes</string>
     <string name="anim_settings_title">Animations</string>
 
     <!-- Telo Radio -->
@@ -776,7 +775,7 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <string name="pie_settings_reset_message">Réinitialiser les réglages du PIE par défaut ?</string>
     <!-- Pie Size -->
     <string name="pie_size">Taille</string>
-    <string name="pie_size_summary">Définir les contôles de la taille du Pie</string>
+    <string name="pie_size_summary">Définir les contrôles de la taille du Pie</string>
     <string name="pie_size_tiny">Minuscule</string>
     <string name="pie_size_small">Petit</string>
     <string name="pie_size_normal">Normal (Par défaut)</string>
@@ -814,4 +813,15 @@ contrôle additionnel. \'Retirer\' supprime la ligne sélectionnée.
     <string name="custom_runtime_warning_message">ART n\'est pas supporté par la Rom SimpleAOSP. Ce paramètre est inclus pour l\'expérimentation seulement et a le potentiel de causer de l\'instabilité, accidents, la perte de données ou empêcher le bon démarrage de votre appareil. Lire &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;la présentation ART&lt;/a&gt; pour plus d\'information.&lt;br/&gt;&lt;br/&gt;Nous vous demandons de ne pas déposer de rapports d\'erreur si vous avez activé ART en tant que moteur d\'exécution.&lt;br/&gt;&lt;br/&gt;Êtes-vous sûr de vouloir redémarrer pour changer l\'exécution de<xliff:g id="old" example="libdvm.so">%1$s</xliff:g> to <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
 
     <string name="long_press_kill_delay">Délai pour tuer l\'application</string>
+	
+    <!-- Dynamic system bars -->
+    <string name="dynamic_system_bars_category_title">Barres de système dynamique</string>
+    <string name="dynamic_status_bar_title">Barres de statut dynamique</string>
+    <string name="dynamic_status_bar_summary">Mettre à jour automatiquement l\'arrière-plan de la barre de statut</string>
+    <string name="dynamic_navigation_bar_title">Barres de navigation dynamique</string>
+    <string name="dynamic_navigation_bar_summary">Mettre à jour automatiquement l\'arrière-plan de la barre de navigation</string>
+    <string name="dynamic_system_bars_gradient_title">Barre de système en dégradé</string>
+    <string name="dynamic_system_bars_gradient_summary">Superposer un dégradé sur ​​les barres de système</string>
+    <string name="dynamic_status_bar_filter_title">Barre de statut sombre</string>
+    <string name="dynamic_status_bar_filter_summary">Superposer un filtre sombre sur la barre de statut</string>
 </resources>
